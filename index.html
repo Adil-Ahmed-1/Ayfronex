@@ -1531,6 +1531,202 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* ============================================================
+           CHATBOT STYLES
+           ============================================================ */
+        .chatbot-container {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 9999;
+            width: 380px;
+            max-width: 90vw;
+        }
+
+        .chatbot-toggle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #f97316, #ea580c);
+            color: #fff;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            box-shadow: 0 8px 30px rgba(249, 115, 22, 0.4);
+            transition: transform 0.3s ease;
+            float: right;
+        }
+
+        .chatbot-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .chatbot-window {
+            display: none;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            height: 500px;
+            max-height: 80vh;
+            margin-bottom: 16px;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .chatbot-window.open {
+            display: flex;
+        }
+
+        .chatbot-header {
+            padding: 16px 20px;
+            background: var(--bg-card);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .chatbot-header h5 {
+            color: #fff;
+            margin: 0;
+            font-size: 16px;
+        }
+
+        .chatbot-header .close-chat {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .chatbot-header .close-chat:hover {
+            color: var(--accent);
+        }
+
+        .chatbot-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 16px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .chatbot-message {
+            max-width: 85%;
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .chatbot-message.bot {
+            background: var(--bg-card);
+            color: var(--text-primary);
+            align-self: flex-start;
+            border: 1px solid var(--border-color);
+            border-bottom-left-radius: 4px;
+        }
+
+        .chatbot-message.user {
+            background: linear-gradient(135deg, #f97316, #ea580c);
+            color: #fff;
+            align-self: flex-end;
+            border-bottom-right-radius: 4px;
+        }
+
+        .chatbot-message .typing-dots {
+            display: inline-flex;
+            gap: 4px;
+        }
+
+        .chatbot-message .typing-dots span {
+            width: 8px;
+            height: 8px;
+            background: var(--text-muted);
+            border-radius: 50%;
+            animation: typing 1.4s infinite;
+        }
+
+        .chatbot-message .typing-dots span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        .chatbot-message .typing-dots span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes typing {
+            0%, 60%, 100% {
+                transform: translateY(0);
+                opacity: 0.4;
+            }
+            30% {
+                transform: translateY(-6px);
+                opacity: 1;
+            }
+        }
+
+        .chatbot-input {
+            padding: 12px 16px;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            gap: 10px;
+            flex-shrink: 0;
+        }
+
+        .chatbot-input input {
+            flex: 1;
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 30px;
+            padding: 10px 16px;
+            color: var(--text-primary);
+            font-family: inherit;
+            outline: none;
+            font-size: 14px;
+        }
+
+        .chatbot-input input:focus {
+            border-color: var(--accent);
+        }
+
+        .chatbot-input input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .chatbot-input button {
+            background: linear-gradient(135deg, #f97316, #ea580c);
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 16px;
+        }
+
+        .chatbot-input button:hover {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 480px) {
+            .chatbot-container {
+                bottom: 16px;
+                right: 16px;
+                width: calc(100% - 32px);
+            }
+            .chatbot-window {
+                height: 400px;
+            }
+            .chatbot-toggle {
+                width: 52px;
+                height: 52px;
+                font-size: 22px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1546,33 +1742,24 @@
                 </a>
 
                 <ul class="nav-menu-main">
-                    <li class="menu-item"><a href="index.html" class="item-link active">Home</a></li>
-                    <li class="menu-item"><a href="about.html" class="item-link">About</a></li>
+                    <li class="menu-item"><a href="#" class="item-link active">Home</a></li>
+                    <li class="menu-item"><a href="#about" class="item-link">About</a></li>
                     <li class="menu-item">
                         <a href="#" class="item-link">Services <span class="arrow"><i class="fas fa-chevron-down"></i></span></a>
                         <ul class="sub-menu">
-                            <li class="sub-menu-item"><a href="services/graphic-design.html" class="item-link">Graphic Design</a></li>
-                            <li class="sub-menu-item"><a href="services/web-development.html" class="item-link">Web Development</a></li>
-                            <li class="sub-menu-item"><a href="services/web-design.html" class="item-link">Web Design</a></li>
-                            <li class="sub-menu-item"><a href="services/video-editing.html" class="item-link">Video Editing</a></li>
-                            <li class="sub-menu-item"><a href="services/seo.html" class="item-link">SEO Services</a></li>
-                            <li class="sub-menu-item"><a href="services/content-writing.html" class="item-link">Content Writing</a></li>
-                            <li class="sub-menu-item"><a href="services/portfolio.html" class="item-link">Portfolio</a></li>
+                            <li class="sub-menu-item"><a href="#" class="item-link">Graphic Design</a></li>
+                            <li class="sub-menu-item"><a href="#" class="item-link">Web Development</a></li>
+                            <li class="sub-menu-item"><a href="#" class="item-link">Web Design</a></li>
+                            <li class="sub-menu-item"><a href="#" class="item-link">Video Editing</a></li>
+                            <li class="sub-menu-item"><a href="#" class="item-link">SEO Services</a></li>
+                            <li class="sub-menu-item"><a href="#" class="item-link">Content Writing</a></li>
                         </ul>
                     </li>
-                    <li class="menu-item"><a href="packages.html" class="item-link">Packages</a></li>
-                    <li class="menu-item">
-                        <a href="#" class="item-link">Brief Forms <span class="arrow"><i class="fas fa-chevron-down"></i></span></a>
-                        <ul class="sub-menu">
-                            <li class="sub-menu-item"><a href="brief-forms/logo.html" class="item-link">Logo</a></li>
-                            <li class="sub-menu-item"><a href="brief-forms/new-website.html" class="item-link">New Website</a></li>
-                            <li class="sub-menu-item"><a href="brief-forms/existing-website.html" class="item-link">Existing Website</a></li>
-                        </ul>
-                    </li>
-                    <li class="menu-item"><a href="contact.html" class="item-link">Contact</a></li>
+                    <li class="menu-item"><a href="#pricing" class="item-link">Packages</a></li>
+                    <li class="menu-item"><a href="#contact" class="item-link">Contact</a></li>
                 </ul>
 
-                <a href="#" class="btn-accent d-lg-flex d-none">Get a Quote</a>
+                <a href="#contact" class="btn-accent d-lg-flex d-none">Get a Quote</a>
                 <span class="mobile-menu" id="menuToggle"><i class="fas fa-bars"></i></span>
             </div>
         </div>
@@ -1583,34 +1770,25 @@
     ============================================================ -->
     <div class="offcanvas-menu" id="offcanvasMenu">
         <div class="canvas_head">
-            <a href="index.html" class="offcanvas-logo"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 56'%3E%3Crect width='200' height='56' rx='12' fill='%23f97316'/%3E%3Ctext x='18' y='37' font-family='Plus Jakarta Sans, sans-serif' font-size='26' fill='%23ffffff' font-weight='800'%3EAYFRONEX%3C/text%3E%3C/svg%3E" alt=""></a>
+            <a href="#" class="offcanvas-logo"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 56'%3E%3Crect width='200' height='56' rx='12' fill='%23f97316'/%3E%3Ctext x='18' y='37' font-family='Plus Jakarta Sans, sans-serif' font-size='26' fill='%23ffffff' font-weight='800'%3EAYFRONEX%3C/text%3E%3C/svg%3E" alt=""></a>
             <button class="close-btn" id="closeMenuBtn"><i class="fas fa-times"></i></button>
         </div>
         <ul class="nav-ul-mb">
-            <li><a href="index.html" class="mb-menu-link active">Home</a></li>
-            <li><a href="about.html" class="mb-menu-link">About</a></li>
+            <li><a href="#" class="mb-menu-link active">Home</a></li>
+            <li><a href="#about" class="mb-menu-link">About</a></li>
             <li class="has-sub-menu">
                 <span class="mb-menu-link" data-target="#subMenuServices">Services <i class="fas fa-chevron-down"></i></span>
                 <ul class="sub-nav-menu" id="subMenuServices">
-                    <li><a href="services/graphic-design.html" class="item-link">Graphic Design</a></li>
-                    <li><a href="services/web-development.html" class="item-link">Web Development</a></li>
-                    <li><a href="services/web-design.html" class="item-link">Web Design</a></li>
-                    <li><a href="services/video-editing.html" class="item-link">Video Editing</a></li>
-                    <li><a href="services/seo.html" class="item-link">SEO Services</a></li>
-                    <li><a href="services/content-writing.html" class="item-link">Content Writing</a></li>
-                    <li><a href="services/portfolio.html" class="item-link">Portfolio</a></li>
+                    <li><a href="#" class="item-link">Graphic Design</a></li>
+                    <li><a href="#" class="item-link">Web Development</a></li>
+                    <li><a href="#" class="item-link">Web Design</a></li>
+                    <li><a href="#" class="item-link">Video Editing</a></li>
+                    <li><a href="#" class="item-link">SEO Services</a></li>
+                    <li><a href="#" class="item-link">Content Writing</a></li>
                 </ul>
             </li>
-            <li><a href="packages.html" class="mb-menu-link">Packages</a></li>
-            <li class="has-sub-menu">
-                <span class="mb-menu-link" data-target="#subMenuBriefForms">Brief Forms <i class="fas fa-chevron-down"></i></span>
-                <ul class="sub-nav-menu" id="subMenuBriefForms">
-                    <li><a href="brief-forms/logo.html" class="item-link">Logo</a></li>
-                    <li><a href="brief-forms/new-website.html" class="item-link">New Website</a></li>
-                    <li><a href="brief-forms/existing-website.html" class="item-link">Existing Website</a></li>
-                </ul>
-            </li>
-            <li><a href="contact.html" class="mb-menu-link">Contact</a></li>
+            <li><a href="#pricing" class="mb-menu-link">Packages</a></li>
+            <li><a href="#contact" class="mb-menu-link">Contact</a></li>
         </ul>
     </div>
     <div class="menu-overlay" id="menuOverlay"></div>
@@ -1620,9 +1798,9 @@
     ============================================================ -->
     <section class="section-hero" id="home">
         <div class="hero-slider">
-            <div class="hero-slide active" style="background-image: url('assets/img/programmer-night.jpg?w=1600&h=900&fit=crop');"></div>
-            <div class="hero-slide" style="background-image: url('assets/img/close-up-retouching-app-computer-empty-studio-nobody-photography-office-with-professional-editing-equipment-technology-pictures-photograph-retouch-work.jpg?w=1600&h=900&fit=crop');"></div>
-            <div class="hero-slide" style="background-image: url('assets/img/responsive-web-design-adaptive-user-interface-digital-devises-laptop-tablet-monitor_1199132-222053.webp?w=1600&h=900&fit=crop');"></div>
+            <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1600&h=900&fit=crop');"></div>
+            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1600&h=900&fit=crop');"></div>
+            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1600&h=900&fit=crop');"></div>
         </div>
 
         <div class="container hero-content-wrap">
@@ -1634,8 +1812,8 @@
                 </h1>
                 <p class="text reveal visible">At Ayfornex, we do more than just design. From complete brand identities to website design and social media creatives, we create powerful digital experiences that stand out.</p>
                 <div class="bot-btns reveal visible">
-                    <a href="#" class="btn-accent">Explore Services</a>
-                    <a href="#" class="btn-outline">View Pricing Plans</a>
+                    <a href="#services" class="btn-accent">Explore Services</a>
+                    <a href="#pricing" class="btn-outline">View Pricing Plans</a>
                 </div>
             </div>
         </div>
@@ -1644,7 +1822,6 @@
             <button class="dot active" data-index="0" aria-label="Slide 1"></button>
             <button class="dot" data-index="1" aria-label="Slide 2"></button>
             <button class="dot" data-index="2" aria-label="Slide 3"></button>
-            <button class="dot" data-index="3" aria-label="Slide 4"></button>
         </div>
     </section>
 
@@ -1682,7 +1859,7 @@
                             </div>
                         </div>
                     </div>
-                    <a href="#" class="btn-accent mt-4 reveal">Read More</a>
+                    <a href="#services" class="btn-accent mt-4 reveal">Read More</a>
                 </div>
 
                 <div class="col-lg-6">
@@ -1716,7 +1893,7 @@
                         <p class="reveal">Discover a full suite of creative solutions designed to elevate your brand. From eye-catching logos to complete digital branding — we deliver quality, speed, and style.</p>
 
                         <div class="service-image-container reveal" id="serviceImageContainer">
-                            <img id="serviceMainImage" src="assets/img/responsive-web-design-adaptive-user-interface-digital-devises-laptop-tablet-monitor_1199132-222053.webp?w=800&h=500&fit=crop" alt="Service">
+                            <img id="serviceMainImage" src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=500&fit=crop" alt="Service">
                         </div>
                     </div>
                 </div>
@@ -1798,89 +1975,45 @@
                 <button class="tab-btn active" data-tab="website">Website Design</button>
                 <button class="tab-btn" data-tab="logo">Logo Design</button>
                 <button class="tab-btn" data-tab="video">Video Animation</button>
-                <button class="tab-btn" data-tab="illustration">Illustration</button>
             </div>
 
             <div class="tab-content active" id="tab-website">
                 <div class="project-grid">
-                    <div class="project-card" data-title="catalyx-technoligies" data-desc="A modern travel booking platform with stunning visuals and seamless user experience." data-link="https://catalyx-technoligies-inc.vercel.app/" data-image="assets/img/catalyx-technoligies-inc-vercel-app-2026-08-15-03_49_31.png?w=800&h=600&fit=crop">
-                        <div class="card-image-wrap"><div class="card-image" style="background-image:url('assets/img/catalyx-technoligies-inc-vercel-app-2026-08-15-03_49_31.png?w=600&h=450&fit=crop');"></div></div>
-                        <div class="card-overlay"><div class="project-title">Catalyx-technoligies</div><button class="view-btn" onclick="event.stopPropagation(); openProjectModal(this.closest('.project-card'))"><i class="fas fa-eye"></i> View Project</button></div>
+                    <div class="project-card" data-title="Tech Startup" data-desc="Modern website for a tech startup with seamless user experience." data-link="#" data-image="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop">
+                        <div class="card-image-wrap"><div class="card-image" style="background-image:url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=450&fit=crop');"></div></div>
+                        <div class="card-overlay"><div class="project-title">Tech Startup</div><button class="view-btn" onclick="event.stopPropagation(); openProjectModal(this.closest('.project-card'))"><i class="fas fa-eye"></i> View Project</button></div>
                     </div>
-                    <div class="project-card" data-title="Alpha Tech" data-desc="Corporate website for a tech startup with modern design and responsive layout." data-link="https://threeinone-platform.mystartupcrew.com/public/" data-image="assets/img/threeinone-platform-mystartupcrew-public-2026-08-15-03_53_25.png?w=800&h=600&fit=crop">
-                        <div class="card-image-wrap"><div class="card-image" style="background-image:url('assets/img/threeinone-platform-mystartupcrew-public-2026-08-15-03_53_25 copy.png?w=600&h=450&fit=crop');"></div></div>
-                        <div class="card-overlay"><div class="project-title">Learn Hub</div><button class="view-btn" onclick="event.stopPropagation(); openProjectModal(this.closest('.project-card'))"><i class="fas fa-eye"></i> View Project</button></div>
+                    <div class="project-card" data-title="E-Commerce" data-desc="Full-featured e-commerce platform with smooth checkout process." data-link="#" data-image="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop">
+                        <div class="card-image-wrap"><div class="card-image" style="background-image:url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=450&fit=crop');"></div></div>
+                        <div class="card-overlay"><div class="project-title">E-Commerce</div><button class="view-btn" onclick="event.stopPropagation(); openProjectModal(this.closest('.project-card'))"><i class="fas fa-eye"></i> View Project</button></div>
                     </div>
-                    <div class="project-card" data-title="GELEC Solutions" data-desc="Industrial solutions provider with a clean, professional web presence." data-link="https://threeinone-platform.mystartupcrew.com/public/admin/dashboard" data-image="assets/img/dashbaord.png?w=800&h=600&fit=crop">
-                        <div class="card-image-wrap"><div class="card-image" style="background-image:url('assets/img/dashbaord.png?w=600&h=450&fit=crop');"></div></div>
-                        <div class="card-overlay"><div class="project-title">GELEC Solutions</div><button class="view-btn" onclick="event.stopPropagation(); openProjectModal(this.closest('.project-card'))"><i class="fas fa-eye"></i> View Project</button></div>
-                    </div>
-                    <div class="project-card" data-title="AI Future" data-desc="AI-powered platform with futuristic design and interactive elements." data-link="https://medixen.vercel.app/" data-image="assets/img/medixen.png?w=800&h=600&fit=crop">
-                        <div class="card-image-wrap"><div class="card-image" style="background-image:url('assets/img/medixen.png?w=600&h=450&fit=crop');"></div></div>
-                        <div class="card-overlay"><div class="project-title">AI Future</div><button class="view-btn" onclick="event.stopPropagation(); openProjectModal(this.closest('.project-card'))"><i class="fas fa-eye"></i> View Project</button></div>
-                    </div>
-                    <div class="project-card" data-title="TopGill" data-desc="E-commerce platform with advanced filtering and smooth checkout process." data-link="https://adilahmedkhoso.netlify.app/" data-image="assets/img/portfolio.png?w=800&h=600&fit=crop">
-                        <div class="card-image-wrap"><div class="card-image" style="background-image:url('assets/img/portfolio.png?w=600&h=450&fit=crop');"></div></div>
-                        <div class="card-overlay"><div class="project-title">TopGill</div><button class="view-btn" onclick="event.stopPropagation(); openProjectModal(this.closest('.project-card'))"><i class="fas fa-eye"></i> View Project</button></div>
-                    </div>
-                    <div class="project-card" data-title="BIW Safety" data-desc="Safety management system with intuitive dashboard and real-time reporting." data-link="https://adil-burger-shop.vercel.app/" data-image="assets/img/Fastfood.png?w=800&h=600&fit=crop">
-                        <div class="card-image-wrap"><div class="card-image" style="background-image:url('assets/img/Fastfood.png?w=600&h=450&fit=crop');"></div></div>
-                        <div class="card-overlay"><div class="project-title">BIW Safety</div><button class="view-btn" onclick="event.stopPropagation(); openProjectModal(this.closest('.project-card'))"><i class="fas fa-eye"></i> View Project</button></div>
+                    <div class="project-card" data-title="Portfolio" data-desc="Creative portfolio website for a photographer with stunning gallery." data-link="#" data-image="https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800&h=600&fit=crop">
+                        <div class="card-image-wrap"><div class="card-image" style="background-image:url('https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=600&h=450&fit=crop');"></div></div>
+                        <div class="card-overlay"><div class="project-title">Portfolio</div><button class="view-btn" onclick="event.stopPropagation(); openProjectModal(this.closest('.project-card'))"><i class="fas fa-eye"></i> View Project</button></div>
                     </div>
                 </div>
             </div>
 
             <div class="tab-content" id="tab-logo">
                 <div class="project-grid">
-                    <div class="project-card" data-title="Mascot Logo" data-desc="Vibrant mascot logo design for a sports brand with dynamic character." data-link="#" data-image="assets/img/562a8d68-7d79-4e37-a833-537bea9c7b5e.jpg?w=800&h=600&fit=crop">
-                        <div class="card-image-wrap"><div class="card-image" style="background-image:url('assets/img/562a8d68-7d79-4e37-a833-537bea9c7b5e.jpg?w=600&h=450&fit=crop');"></div></div>
-                        <div class="card-overlay"><div class="project-title">Mascot Logo</div><button class="view-btn" onclick="event.stopPropagation(); openProjectModal(this.closest('.project-card'))"><i class="fas fa-eye"></i> View Project</button></div>
+                    <div class="project-card" data-title="Modern Logo" data-desc="Sleek modern logo design for a tech company." data-link="#" data-image="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=800&h=600&fit=crop">
+                        <div class="card-image-wrap"><div class="card-image" style="background-image:url('https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=600&h=450&fit=crop');"></div></div>
+                        <div class="card-overlay"><div class="project-title">Modern Logo</div><button class="view-btn" onclick="event.stopPropagation(); openProjectModal(this.closest('.project-card'))"><i class="fas fa-eye"></i> View Project</button></div>
                     </div>
-                    <div class="project-card" data-title="Vintage Tattoo" data-desc="Classic vintage tattoo style logo with intricate floral frame." data-link="#" data-image="assets/img/6524101.jpg?w=800&h=600&fit=crop">
-                        <div class="card-image-wrap"><div class="card-image" style="background-image:url('assets/img/6524101.jpg?w=600&h=450&fit=crop');"></div></div>
-                        <div class="card-overlay"><div class="project-title">Vintage Tattoo</div><button class="view-btn" onclick="event.stopPropagation(); openProjectModal(this.closest('.project-card'))"><i class="fas fa-eye"></i> View Project</button></div>
-                    </div>
-                    <div class="project-card" data-title="Emblem Logo" data-desc="Elegant emblem-style logo for a distinguished brand identity." data-link="#" data-image="assets/img/10090485.jpg?w=800&h=600&fit=crop">
-                        <div class="card-image-wrap"><div class="card-image" style="background-image:url('assets/img/10090485.jpg?w=600&h=450&fit=crop');"></div></div>
-                        <div class="card-overlay"><div class="project-title">Emblem Logo</div><button class="view-btn" onclick="event.stopPropagation(); openProjectModal(this.closest('.project-card'))"><i class="fas fa-eye"></i> View Project</button></div>
-                    </div>
-                    <div class="project-card" data-title="Tech Logo" data-desc="Modern tech logo with sleek typography and innovative icon." data-link="#" data-image="assets/img/OKE9TT0.jpg?w=800&h=600&fit=crop">
-                        <div class="card-image-wrap"><div class="card-image" style="background-image:url('assets/img/OKE9TT0.jpg?w=600&h=450&fit=crop');"></div></div>
-                        <div class="card-overlay"><div class="project-title">Tech Logo</div><button class="view-btn" onclick="event.stopPropagation(); openProjectModal(this.closest('.project-card'))"><i class="fas fa-eye"></i> View Project</button></div>
+                    <div class="project-card" data-title="Vintage Logo" data-desc="Classic vintage logo with retro feel." data-link="#" data-image="https://images.unsplash.com/photo-1551817958-0d6ffb1b3b8a?w=800&h=600&fit=crop">
+                        <div class="card-image-wrap"><div class="card-image" style="background-image:url('https://images.unsplash.com/photo-1551817958-0d6ffb1b3b8a?w=600&h=450&fit=crop');"></div></div>
+                        <div class="card-overlay"><div class="project-title">Vintage Logo</div><button class="view-btn" onclick="event.stopPropagation(); openProjectModal(this.closest('.project-card'))"><i class="fas fa-eye"></i> View Project</button></div>
                     </div>
                 </div>
             </div>
 
             <div class="tab-content" id="tab-video">
                 <div class="project-grid">
-                    <div class="project-card video-card" data-title="Cinematic Trailer" data-desc="Epic cinematic trailer with stunning visual effects and sound design." data-link="#" data-image="assets/img/Video Ani.jpg?w=800&h=600&fit=crop">
-                        <div class="card-image-wrap"><div class="card-image" style="background-image:url('assets/img/Video Ani.jpg?w=600&h=450&fit=crop');"><div class="play-overlay"><i class="fas fa-play-circle"></i></div></div></div>
+                    <div class="project-card video-card" data-title="Promo Video" data-desc="Professional promotional video with stunning effects." data-link="#" data-image="https://images.unsplash.com/photo-1536240478700-b869070f9279?w=800&h=600&fit=crop">
+                        <div class="card-image-wrap"><div class="card-image" style="background-image:url('https://images.unsplash.com/photo-1536240478700-b869070f9279?w=600&h=450&fit=crop');"><div class="play-overlay"><i class="fas fa-play-circle"></i></div></div></div>
                     </div>
-                    <div class="project-card video-card" data-title="Motion Graphics" data-desc="Dynamic motion graphics project with vibrant animation and storytelling." data-link="#" data-image="assets/img/video animation1.jpg?w=800&h=600&fit=crop">
-                        <div class="card-image-wrap"><div class="card-image" style="background-image:url('assets/img/video animation1.jpg?w=600&h=450&fit=crop');"><div class="play-overlay"><i class="fas fa-play-circle"></i></div></div></div>
-                    </div>
-                    <div class="project-card video-card" data-title="3D Animation" data-desc="Immersive 3D animation showcasing product visualization and creativity." data-link="#" data-image="assets/img/view-3d-male-videographer.jpg?w=800&h=600&fit=crop">
-                        <div class="card-image-wrap"><div class="card-image" style="background-image:url('assets/img/view-3d-male-videographer.jpg?w=600&h=450&fit=crop');"><div class="play-overlay"><i class="fas fa-play-circle"></i></div></div></div>
-                    </div>
-                    <div class="project-card video-card" data-title="Brand Film" data-desc="Professional brand film that captures the essence of the company." data-link="#" data-image="assets/img/focused-male-editor-working-video-montage-creative-software.jpg?w=800&h=600&fit=crop">
-                        <div class="card-image-wrap"><div class="card-image" style="background-image:url('assets/img/focused-male-editor-working-video-montage-creative-software.jpg?w=600&h=450&fit=crop');"><div class="play-overlay"><i class="fas fa-play-circle"></i></div></div></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="tab-content" id="tab-illustration">
-                <div class="project-grid">
-                    <div class="project-card" data-title="Mountain Illustration" data-desc="Retro mountain biking illustration with vintage poster style." data-link="#" data-image="assets/img/Mountain Illustration.jpg?w=800&h=600&fit=crop">
-                        <div class="card-image-wrap"><div class="card-image" style="background-image:url('assets/img/Mountain Illustration.jpg?w=600&h=450&fit=crop');"></div></div>
-                        <div class="card-overlay"><div class="project-title">Mountain Illustration</div><button class="view-btn" onclick="event.stopPropagation(); openProjectModal(this.closest('.project-card'))"><i class="fas fa-eye"></i> View Project</button></div>
-                    </div>
-                    <div class="project-card" data-title="Lo-Fi Concept" data-desc="Lo-fi aesthetic illustration with gradient colors and chill vibes." data-link="#" data-image="assets/img/Lo-Fi Concept.jpg?w=800&h=600&fit=crop">
-                        <div class="card-image-wrap"><div class="card-image" style="background-image:url('assets/img/Lo-Fi Concept.jpg?w=600&h=450&fit=crop');"></div></div>
-                        <div class="card-overlay"><div class="project-title">Lo-Fi Concept</div><button class="view-btn" onclick="event.stopPropagation(); openProjectModal(this.closest('.project-card'))"><i class="fas fa-eye"></i> View Project</button></div>
-                    </div>
-                    <div class="project-card" data-title="Mosquito Illustration" data-desc="Creative vector illustration of mosquito bite concept with humor." data-link="#" data-image="assets/img/llustration.jpg?w=800&h=600&fit=crop">
-                        <div class="card-image-wrap"><div class="card-image" style="background-image:url('assets/img/llustration.jpg?w=600&h=450&fit=crop');"></div></div>
-                        <div class="card-overlay"><div class="project-title">Illustration</div><button class="view-btn" onclick="event.stopPropagation(); openProjectModal(this.closest('.project-card'))"><i class="fas fa-eye"></i> View Project</button></div>
+                    <div class="project-card video-card" data-title="Animation" data-desc="Creative 2D animation for brand storytelling." data-link="#" data-image="https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=800&h=600&fit=crop">
+                        <div class="card-image-wrap"><div class="card-image" style="background-image:url('https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=600&h=450&fit=crop');"><div class="play-overlay"><i class="fas fa-play-circle"></i></div></div></div>
                     </div>
                 </div>
             </div>
@@ -1915,7 +2048,7 @@
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
                             <div class="feature-slide">
-                                <div class="feature-image"><img src="assets/img/graphic design.jpg?w=400&h=300&fit=crop" alt="Graphic Design"></div>
+                                <div class="feature-image"><img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=300&fit=crop" alt="Graphic Design"></div>
                                 <div class="feature-body">
                                     <div class="icon"><i class="fas fa-paint-brush"></i></div>
                                     <h6>Graphic Design</h6>
@@ -1926,7 +2059,7 @@
                         </div>
                         <div class="swiper-slide">
                             <div class="feature-slide">
-                                <div class="feature-image"><img src="assets/img/web.jpg?w=400&h=300&fit=crop" alt="Web Development"></div>
+                                <div class="feature-image"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop" alt="Web Development"></div>
                                 <div class="feature-body">
                                     <div class="icon"><i class="fas fa-code"></i></div>
                                     <h6>Web Development</h6>
@@ -1937,7 +2070,7 @@
                         </div>
                         <div class="swiper-slide">
                             <div class="feature-slide">
-                                <div class="feature-image"><img src="assets/img/Video Editing.jpg?w=400&h=300&fit=crop" alt="Video Editing"></div>
+                                <div class="feature-image"><img src="https://images.unsplash.com/photo-1536240478700-b869070f9279?w=400&h=300&fit=crop" alt="Video Editing"></div>
                                 <div class="feature-body">
                                     <div class="icon"><i class="fas fa-video"></i></div>
                                     <h6>Video Editing</h6>
@@ -1948,7 +2081,7 @@
                         </div>
                         <div class="swiper-slide">
                             <div class="feature-slide">
-                                <div class="feature-image"><img src="assets/img/SEO Services.jpg?w=400&h=300&fit=crop" alt="SEO Services"></div>
+                                <div class="feature-image"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop" alt="SEO Services"></div>
                                 <div class="feature-body">
                                     <div class="icon"><i class="fas fa-chart-line"></i></div>
                                     <h6>SEO Services</h6>
@@ -1959,7 +2092,7 @@
                         </div>
                         <div class="swiper-slide">
                             <div class="feature-slide">
-                                <div class="feature-image"><img src="assets/img/Responsive Design.jpg?w=400&h=300&fit=crop" alt="Responsive Design"></div>
+                                <div class="feature-image"><img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=300&fit=crop" alt="Responsive Design"></div>
                                 <div class="feature-body">
                                     <div class="icon"><i class="fas fa-mobile-alt"></i></div>
                                     <h6>Responsive Design</h6>
@@ -1970,7 +2103,7 @@
                         </div>
                         <div class="swiper-slide">
                             <div class="feature-slide">
-                                <div class="feature-image"><img src="assets/img/Fast Delivery.jpg?w=400&h=300&fit=crop" alt="Fast Delivery"></div>
+                                <div class="feature-image"><img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=300&fit=crop" alt="Fast Delivery"></div>
                                 <div class="feature-body">
                                     <div class="icon"><i class="fas fa-rocket"></i></div>
                                     <h6>Fast Delivery</h6>
@@ -2005,7 +2138,7 @@
                         <div class="plan-name">Basic Plan</div>
                         <div class="plan-sub">For startups</div>
                         <div class="price">$50 <span>/ project</span></div>
-                        <a href="#" class="btn-accent mt-3 d-inline-block">Get Started</a>
+                        <a href="#contact" class="btn-accent mt-3 d-inline-block">Get Started</a>
                         <ul class="mt-4">
                             <li><i class="fas fa-check"></i> 4 to 5 Custom Logo Design</li>
                             <li><i class="fas fa-check"></i> Unlimited Revision Rounds</li>
@@ -2020,7 +2153,7 @@
                         <div class="plan-name">Enterprise Plan</div>
                         <div class="plan-sub">For organisations</div>
                         <div class="price">$499 <span>/ project</span></div>
-                        <a href="#" class="btn-accent mt-3 d-inline-block">Get Started</a>
+                        <a href="#contact" class="btn-accent mt-3 d-inline-block">Get Started</a>
                         <ul class="mt-4">
                             <li><i class="fas fa-check"></i> 5 Page Website</li>
                             <li><i class="fas fa-check"></i> 3 Banner Design</li>
@@ -2036,7 +2169,7 @@
     </section>
 
     <!-- ============================================================
-    CONTACT - SMTP (Direct Gmail - No EmailJS, No Third-Party)
+    CONTACT - EMAILJS
     ============================================================ -->
     <section class="section-contact" id="contact">
         <div class="container">
@@ -2066,7 +2199,7 @@
                             <strong>❌ Error!</strong> <span id="errorText">Something went wrong. Please try again.</span>
                         </div>
 
-                        <!-- ✅ SMTP Form - Direct Gmail (No EmailJS) -->
+                        <!-- ✅ EmailJS Form -->
                         <form id="contactForm">
                             <div class="row g-3">
                                 <div class="col-6">
@@ -2117,15 +2250,125 @@
     </footer>
 
     <!-- ============================================================
+    CHATBOT - AI ASSISTANT
+    ============================================================ -->
+    <div class="chatbot-container">
+        <div class="chatbot-window" id="chatWindow">
+            <div class="chatbot-header">
+                <h5><i class="fas fa-robot" style="color: var(--accent);"></i> Ayfronex</h5>
+                <button class="close-chat" onclick="toggleChat()"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="chatbot-messages" id="chatMessages">
+                <div class="chatbot-message bot">👋 Welcome to AYFRONEX! How can I help you today?</div>
+                <!-- <div class="chatbot-message bot">💡 You can ask me about our services, pricing, or anything else!</div> -->
+            </div>
+            <div class="chatbot-input">
+                <input type="text" id="chatInput" placeholder="Type your message..." onkeypress="if(event.key==='Enter') sendMessage()">
+                <button onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+        <button class="chatbot-toggle" onclick="toggleChat()">
+            <i class="fas fa-comment-dots"></i>
+        </button>
+    </div>
+
+    <!-- ============================================================
     SCRIPTS
     ============================================================ -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 
-    <!-- ✅ SMTP.js - DIRECT GMAIL (NO EMAILJS) - LOAD AT END -->
-    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <!-- ✅ EmailJS Library -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
     <script>
+        // ============================================================
+        // INITIALIZE EMAILJS
+        // ⚠️ REPLACE "YOUR_PUBLIC_KEY_HERE" WITH YOUR ACTUAL PUBLIC KEY
+        // Get it from: https://dashboard.emailjs.com/admin/account/api-keys
+        // ============================================================
+        (function() {
+            emailjs.init("AmaK53N9o34A9tQaC");
+        })();
+
+        // ============================================================
+        // CONTACT FORM - EMAILJS
+        // ============================================================
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('contactForm');
+            if (!form) return;
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                const btn = document.getElementById('submitBtn');
+                const successMsg = document.getElementById('successMsg');
+                const errorMsg = document.getElementById('errorMsg');
+                const successText = document.getElementById('successText');
+                const errorText = document.getElementById('errorText');
+
+                successMsg.style.display = 'none';
+                errorMsg.style.display = 'none';
+
+                const name = document.getElementById('userName').value.trim();
+                const email = document.getElementById('userEmail').value.trim();
+                const phone = document.getElementById('userPhone').value.trim();
+                const message = document.getElementById('userMessage').value.trim();
+
+                if (!name || !email || !message) {
+                    errorText.textContent = 'Please fill in all required fields.';
+                    errorMsg.style.display = 'block';
+                    return;
+                }
+
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    errorText.textContent = 'Please enter a valid email address.';
+                    errorMsg.style.display = 'block';
+                    return;
+                }
+
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '<span><i class="fas fa-spinner fa-spin"></i> Sending...</span>';
+                btn.disabled = true;
+
+                // ⚠️ REPLACE THESE WITH YOUR ACTUAL VALUES
+                const SERVICE_ID = 'service_b23rffz'; // ✅ Your Service ID
+                const TEMPLATE_ID = 'ayfronex_contact'; // ⚠️ Create template in EmailJS
+                const PUBLIC_KEY = 'AmaK53N9o34A9tQaC'; // ⚠️ Your Public Key
+
+                const templateParams = {
+                    from_name: name,
+                    from_email: email,
+                    phone: phone || 'Not provided',
+                    message: message,
+                    to_email: 'adward.ayfronex@gmail.com',
+                    to_name: 'AYFRONEX Admin'
+                };
+
+                emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY)
+                    .then(function(response) {
+                        console.log('✅ Email sent:', response);
+                        successText.textContent = 'Thank you! Your message has been sent successfully. We will get back to you soon.';
+                        successMsg.style.display = 'block';
+                        form.reset();
+                        btn.innerHTML = '<span>✓ Sent!</span>';
+                        setTimeout(() => {
+                            btn.innerHTML = originalText;
+                            btn.disabled = false;
+                            successMsg.style.display = 'none';
+                        }, 5000);
+                    })
+                    .catch(function(error) {
+                        console.error('❌ Error:', error);
+                        errorText.textContent = 'Failed to send message. Please try again or contact us directly at adward.ayfronex@gmail.com';
+                        errorMsg.style.display = 'block';
+                        btn.innerHTML = originalText;
+                        btn.disabled = false;
+                    });
+            });
+        });
+
         // ============================================================
         // HEADER SCROLL
         // ============================================================
@@ -2296,113 +2539,6 @@
         });
 
         // ============================================================
-        // ✅ CONTACT FORM - SMTP (Direct Gmail - No EmailJS)
-        // ============================================================
-        document.addEventListener('DOMContentLoaded', function() {
-            const form = document.getElementById('contactForm');
-            if (!form) return;
-
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-
-                const btn = document.getElementById('submitBtn');
-                const successMsg = document.getElementById('successMsg');
-                const errorMsg = document.getElementById('errorMsg');
-                const successText = document.getElementById('successText');
-                const errorText = document.getElementById('errorText');
-
-                successMsg.style.display = 'none';
-                errorMsg.style.display = 'none';
-
-                const name = document.getElementById('userName').value.trim();
-                const email = document.getElementById('userEmail').value.trim();
-                const phone = document.getElementById('userPhone').value.trim();
-                const message = document.getElementById('userMessage').value.trim();
-
-                if (!name || !email || !message) {
-                    errorText.textContent = 'Please fill in all required fields.';
-                    errorMsg.style.display = 'block';
-                    return;
-                }
-
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (!emailRegex.test(email)) {
-                    errorText.textContent = 'Please enter a valid email address.';
-                    errorMsg.style.display = 'block';
-                    return;
-                }
-
-                // ✅ CRITICAL CHECK: Agar Email library load nahi hui to error dikhao
-                if (typeof Email === 'undefined') {
-                    errorText.textContent = 'SMTP library not loaded. Please disable ad-blocker and refresh the page.';
-                    errorMsg.style.display = 'block';
-                    btn.disabled = false;
-                    return;
-                }
-
-                const originalText = btn.innerHTML;
-                btn.innerHTML = '<span><i class="fas fa-spinner fa-spin"></i> Sending...</span>';
-                btn.disabled = true;
-
-                const emailBody = `
-                    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background: #f9f9f9; border-radius: 10px;">
-                        <h2 style="color: #f97316; border-bottom: 2px solid #f97316; padding-bottom: 10px;">New Contact Form Submission</h2>
-                        <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
-                            <tr>
-                                <td style="padding: 10px; font-weight: bold; background: #eee; width: 30%;">Name</td>
-                                <td style="padding: 10px; background: #fff;">${name}</td>
-                            </tr>
-                            <tr>
-                                <td style="padding: 10px; font-weight: bold; background: #eee;">Email</td>
-                                <td style="padding: 10px; background: #fff;">${email}</td>
-                            </tr>
-                            <tr>
-                                <td style="padding: 10px; font-weight: bold; background: #eee;">Phone</td>
-                                <td style="padding: 10px; background: #fff;">${phone || 'Not provided'}</td>
-                            </tr>
-                            <tr>
-                                <td style="padding: 10px; font-weight: bold; background: #eee; vertical-align: top;">Message</td>
-                                <td style="padding: 10px; background: #fff;">${message.replace(/\n/g, '<br>')}</td>
-                            </tr>
-                        </table>
-                        <p style="margin-top: 20px; color: #666; font-size: 12px;">This email was sent from AYFRONEX website contact form.</p>
-                    </div>
-                `;
-
-                Email.send({
-                    Host: "smtp.gmail.com",
-                    Username: "adward.ayfronex@gmail.com",
-                    Password: "elxhoamhgzaowuua", // ✅ Bina space ke (16-digit App Password)
-                    To: 'adward.ayfronex@gmail.com',
-                    From: "adward.ayfronex@gmail.com",
-                    Subject: `New Contact: ${name} - AYFRONEX`,
-                    Body: emailBody
-                }).then(
-                    function(response) {
-                        console.log('✅ Email sent successfully:', response);
-                        successText.textContent = 'Thank you! Your message has been sent successfully. We will get back to you soon.';
-                        successMsg.style.display = 'block';
-                        form.reset();
-                        btn.innerHTML = '<span>✓ Sent!</span>';
-                        setTimeout(() => {
-                            btn.innerHTML = originalText;
-                            btn.disabled = false;
-                            successMsg.style.display = 'none';
-                        }, 5000);
-                    }
-                ).catch(
-                    function(error) {
-                        console.error('❌ Error sending email:', error);
-                        errorText.textContent = 'Failed to send message. Please try again or contact us directly at adward.ayfronex@gmail.com';
-                        errorMsg.style.display = 'block';
-                        btn.innerHTML = originalText;
-                        btn.disabled = false;
-                    }
-                );
-            });
-        });
-
-        // ============================================================
         // SCROLL REVEAL
         // ============================================================
         const revealObserver = new IntersectionObserver((entries) => {
@@ -2474,6 +2610,75 @@
 
             startSlider();
         })();
+
+        // ============================================================
+        // CHATBOT
+        // ============================================================
+        function toggleChat() {
+            const window = document.getElementById('chatWindow');
+            window.classList.toggle('open');
+            if (window.classList.contains('open')) {
+                document.getElementById('chatInput').focus();
+            }
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const messages = document.getElementById('chatMessages');
+            const text = input.value.trim();
+
+            if (!text) return;
+
+            messages.innerHTML += `<div class="chatbot-message user">${text}</div>`;
+            input.value = '';
+            messages.scrollTop = messages.scrollHeight;
+
+            // Show typing indicator
+            const typingId = 'typing-' + Date.now();
+            messages.innerHTML += `
+                <div class="chatbot-message bot" id="${typingId}">
+                    <div class="typing-dots">
+                        <span></span><span></span><span></span>
+                    </div>
+                </div>
+            `;
+            messages.scrollTop = messages.scrollHeight;
+
+            setTimeout(() => {
+                const typingEl = document.getElementById(typingId);
+                if (typingEl) typingEl.remove();
+
+                const reply = getAIResponse(text.toLowerCase());
+                messages.innerHTML += `<div class="chatbot-message bot">${reply}</div>`;
+                messages.scrollTop = messages.scrollHeight;
+            }, 800);
+        }
+
+        function getAIResponse(message) {
+            const responses = {
+                'hello|hi|hey|howdy': '👋 Hello! Welcome to AYFRONEX! How can I assist you with your brand transformation today?',
+                'services|what do you do|offer': '🎨 We offer: Graphic Design, 🌐 Web Development & Design, 📹 Video Editing, 📈 SEO Services, and 📝 Content Writing. What would you like to know more about?',
+                'price|cost|how much|pricing|plans': '💲 We have flexible pricing plans starting from $50 for logos and $499 for complete websites. Check our Pricing section for detailed plans!',
+                'website|web|site|development': '🌐 We build modern, responsive websites starting at $499. Includes 5 pages, jQuery slider, social media integration, and more!',
+                'logo|branding|identity': '🎨 Our logo design packages start at $50 and include 4-5 custom concepts, unlimited revisions, and all file formats (PNG, JPEG, SVG).',
+                'video|editing|animation': '📹 We create professional videos and animations for your brand. Contact us for a custom quote based on your needs!',
+                'seo|marketing|rank': '📈 Our SEO services help you rank higher on Google and attract more customers. We use proven, data-driven strategies for the best results.',
+                'time|how long|delivery|deadline': '⏱️ We deliver most projects within 24-72 hours. Quality work with quick turnaround!',
+                'contact|reach|email|phone': '📧 You can reach us at adward.ayfronex@gmail.com or call +92323-3703689. Or just fill out the contact form on our website!',
+                'thanks|thank you|thx|appreciate': 'You\'re welcome! 😊 Is there anything else I can help you with?',
+                'bye|goodbye|see you|exit': 'Goodbye! 👋 Feel free to come back anytime. Have a great day!',
+                'who are you|what are you': '🤖 I\'m AYFRONEX\'s AI Assistant! I\'m here to help you learn about our services, pricing, and answer any questions you have.',
+                'help|support': '💡 I can help you with: \n• Information about our services\n• Pricing details\n• Project timelines\n• Contact information\nJust ask me anything!'
+            };
+
+            for (const [keywords, reply] of Object.entries(responses)) {
+                if (keywords.split('|').some(k => message.includes(k))) {
+                    return reply;
+                }
+            }
+
+            return '🤔 I\'m not sure about that. Can you please rephrase? Or you can contact us directly at adward.ayfronex@gmail.com for personalized assistance!';
+        }
     </script>
 </body>
 </html>
