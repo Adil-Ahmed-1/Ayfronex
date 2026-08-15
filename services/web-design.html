@@ -1,0 +1,1524 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<head>
+    <meta charset="utf-8">
+    <title>Web Design - AYFRONEX</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="AYFRONEX - Web Design Agency. We create sleek, responsive, and engaging websites that deliver real results.">
+
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+    <style>
+        /* ============================================================
+                   ROOT VARIABLES
+                   ============================================================ */
+        :root {
+            --bg-primary: #07070d;
+            --bg-secondary: #0f0f1a;
+            --bg-card: #161625;
+            --text-primary: #f0f0f8;
+            --text-secondary: #b0b0c8;
+            --text-muted: #7878a0;
+            --accent: #f97316;
+            --accent-glow: rgba(249, 115, 22, 0.15);
+            --border-color: rgba(255, 255, 255, 0.05);
+            --radius: 16px;
+            --radius-lg: 24px;
+            --transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        /* ============================================================
+                   RESET & BASE
+                   ============================================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        img {
+            max-width: 100%;
+        }
+
+        .container {
+            max-width: 1200px;
+            padding: 0 20px;
+            margin: 0 auto;
+        }
+
+        /* ============================================================
+                   SCROLLBAR
+                   ============================================================ */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ea580c;
+        }
+
+        /* ============================================================
+                   BUTTONS
+                   ============================================================ */
+        .btn-accent {
+            background: linear-gradient(135deg, #f97316, #ea580c);
+            color: #fff;
+            border: none;
+            padding: 14px 36px;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 15px;
+            transition: var(--transition);
+            display: inline-block;
+            box-shadow: 0 4px 20px rgba(249, 115, 22, 0.25);
+        }
+        .btn-accent:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(249, 115, 22, 0.35);
+            color: #fff;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text-primary);
+            border: 2px solid rgba(255, 255, 255, 0.08);
+            padding: 14px 36px;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 15px;
+            transition: var(--transition);
+            display: inline-block;
+        }
+        .btn-outline:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        /* ============================================================
+                   SECTION HEADINGS
+                   ============================================================ */
+        .badge-section {
+            display: inline-block;
+            color: var(--accent);
+            font-size: 12px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 30px;
+        }
+        .badge-section::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 2px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        .heading-title {
+            font-size: 44px;
+            font-weight: 700;
+            line-height: 1.12;
+            letter-spacing: -0.02em;
+        }
+        .heading-title .highlight {
+            background: linear-gradient(135deg, #f97316, #fbbf24);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        @media (max-width: 768px) {
+            .heading-title {
+                font-size: 32px;
+            }
+        }
+
+        /* ============================================================
+                   HEADER WITH DROPDOWNS
+                   ============================================================ */
+        .tf-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 14px 0;
+            background: rgba(7, 7, 13, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+        .tf-header.scrolled {
+            padding: 6px 0;
+            background: rgba(7, 7, 13, 0.96);
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-site img {
+            height: 42px;
+            transition: height 0.3s ease;
+        }
+        .tf-header.scrolled .logo-site img {
+            height: 34px;
+        }
+
+        /* Desktop Navigation with Dropdowns */
+        .nav-menu-main {
+            display: flex;
+            gap: 2px;
+            align-items: center;
+            list-style: none;
+        }
+
+        .nav-menu-main .menu-item {
+            position: relative;
+        }
+
+        .nav-menu-main .item-link {
+            color: var(--text-secondary);
+            padding: 8px 18px;
+            font-size: 14px;
+            font-weight: 500;
+            border-radius: 30px;
+            transition: var(--transition);
+            display: block;
+            cursor: pointer;
+        }
+
+        .nav-menu-main .item-link:hover,
+        .nav-menu-main .item-link.active {
+            color: var(--accent);
+            background: rgba(249, 115, 22, 0.08);
+        }
+
+        .nav-menu-main .item-link .arrow {
+            font-size: 10px;
+            margin-left: 4px;
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .nav-menu-main .menu-item:hover .item-link .arrow {
+            transform: rotate(180deg);
+        }
+
+        /* Dropdown Menu */
+        .nav-menu-main .sub-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 220px;
+            background: rgba(14, 14, 16, 0.98);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 8px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(12px) scale(0.96);
+            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+            transform-origin: top center;
+            z-index: 100;
+        }
+
+        .nav-menu-main .menu-item:hover .sub-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0) scale(1);
+        }
+
+        .nav-menu-main .sub-menu .sub-menu-item .item-link {
+            padding: 10px 16px;
+            border-radius: var(--radius);
+            font-size: 14px;
+            color: var(--text-secondary);
+            transition: var(--transition);
+        }
+
+        .nav-menu-main .sub-menu .sub-menu-item .item-link:hover {
+            color: var(--accent);
+            background: rgba(249, 115, 22, 0.06);
+        }
+
+        .mobile-menu {
+            display: none;
+            color: var(--text-primary);
+            font-size: 24px;
+            cursor: pointer;
+            padding: 4px 8px;
+        }
+
+        @media (max-width: 1199px) {
+            .nav-menu-main {
+                display: none;
+            }
+            .mobile-menu {
+                display: block;
+            }
+            .tf-header .btn-accent.d-lg-flex {
+                display: none !important;
+            }
+        }
+
+        /* ============================================================
+                   OFF CANVAS
+                   ============================================================ */
+        .offcanvas-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            max-width: 380px;
+            height: 100%;
+            background: var(--bg-secondary);
+            z-index: 9999;
+            padding: 30px 26px;
+            transition: right 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+            overflow-y: auto;
+            border-left: 1px solid var(--border-color);
+        }
+        .offcanvas-menu.show {
+            right: 0;
+        }
+
+        .offcanvas-menu .canvas_head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .offcanvas-menu .offcanvas-logo img {
+            height: 36px;
+        }
+        .offcanvas-menu .close-btn {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 26px;
+            cursor: pointer;
+            padding: 4px 8px;
+            transition: color 0.3s;
+        }
+        .offcanvas-menu .close-btn:hover {
+            color: var(--accent);
+        }
+
+        .offcanvas-menu .nav-ul-mb li {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        }
+        .offcanvas-menu .nav-ul-mb .mb-menu-link {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+            color: var(--text-secondary);
+            font-size: 18px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .offcanvas-menu .nav-ul-mb .mb-menu-link:hover,
+        .offcanvas-menu .nav-ul-mb .mb-menu-link.active {
+            color: var(--accent);
+        }
+
+        .offcanvas-menu .sub-nav-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            padding-left: 20px;
+        }
+        .offcanvas-menu .sub-nav-menu.show {
+            max-height: 400px;
+        }
+        .offcanvas-menu .sub-nav-menu .item-link {
+            display: block;
+            padding: 12px 0;
+            color: var(--text-muted);
+            font-size: 15px;
+            transition: color 0.3s;
+        }
+        .offcanvas-menu .sub-nav-menu .item-link:hover {
+            color: var(--accent);
+        }
+
+        .menu-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 9998;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+        }
+        .menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* ============================================================
+                   HERO
+                   ============================================================ */
+        .section-hero {
+            padding: 160px 0 100px;
+            background: var(--bg-primary);
+            position: relative;
+            overflow: hidden;
+        }
+        .section-hero::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -20%;
+            width: 70%;
+            height: 80%;
+            background: radial-gradient(circle, rgba(249, 115, 22, 0.05), transparent 70%);
+            pointer-events: none;
+        }
+        .section-hero .content-wrap {
+            position: relative;
+            z-index: 2;
+        }
+        .section-hero .sub {
+            color: var(--accent);
+            font-size: 13px;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 18px;
+        }
+        .section-hero .title {
+            font-size: 68px;
+            font-weight: 800;
+            line-height: 1.06;
+            margin-bottom: 24px;
+        }
+        .section-hero .title .highlight {
+            background: linear-gradient(135deg, #f97316, #fbbf24);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .section-hero .text {
+            color: var(--text-secondary);
+            font-size: 18px;
+            max-width: 580px;
+            margin: 0 auto 38px;
+            line-height: 1.8;
+        }
+        .section-hero .bot-btns {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 992px) {
+            .section-hero .title {
+                font-size: 44px;
+            }
+        }
+        @media (max-width: 576px) {
+            .section-hero {
+                padding: 130px 0 60px;
+            }
+            .section-hero .title {
+                font-size: 32px;
+            }
+            .section-hero .text {
+                font-size: 16px;
+            }
+            .bot-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+            .btn-outline {
+                margin-top: 6px;
+            }
+        }
+
+        /* ============================================================
+                   ABOUT SECTION
+                   ============================================================ */
+        .section-about {
+            padding: 80px 0;
+            background: var(--bg-secondary);
+        }
+        .section-about .about-image {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+        .section-about .about-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        .section-about .about-image:hover img {
+            transform: scale(1.03);
+        }
+
+        /* ============================================================
+                   PROJECTS - WEBSITE DESIGN GALLERY
+                   ============================================================ */
+        .section-projects {
+            padding: 80px 0;
+            background: var(--bg-primary);
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .project-card {
+            border-radius: var(--radius);
+            overflow: hidden;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+            cursor: pointer;
+            aspect-ratio: 4/3;
+            position: relative;
+        }
+
+        .project-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        .project-card .card-image-wrap {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .project-card .card-image {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center top;
+            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            will-change: transform;
+        }
+
+        .project-card:hover .card-image {
+            transform: translateY(-75%);
+        }
+
+        .project-card .card-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(7, 7, 13, 0.7);
+            backdrop-filter: blur(4px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            padding: 20px;
+        }
+
+        .project-card:hover .card-overlay {
+            opacity: 1;
+        }
+
+        .project-card .card-overlay .view-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            color: #fff;
+            transition: var(--transition);
+            margin-bottom: 12px;
+        }
+
+        .project-card .card-overlay .view-icon:hover {
+            transform: scale(1.1);
+        }
+
+        .project-card .card-overlay .project-title {
+            color: #fff;
+            font-weight: 600;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        @media (max-width: 992px) {
+            .project-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 576px) {
+            .project-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 14px;
+            }
+            .project-card {
+                aspect-ratio: 4/3;
+            }
+        }
+
+        /* ============================================================
+                   FEATURES - WEB DESIGN SPECIFIC
+                   ============================================================ */
+        .section-features {
+            padding: 80px 0;
+            background: var(--bg-secondary);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .feature-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 34px 28px;
+            transition: var(--transition);
+            height: 100%;
+            text-align: center;
+        }
+
+        .feature-item:hover {
+            border-color: var(--accent);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            background: rgba(249, 115, 22, 0.03);
+        }
+
+        .feature-item .icon {
+            font-size: 40px;
+            color: var(--accent);
+            margin-bottom: 16px;
+        }
+
+        .feature-item h6 {
+            font-weight: 700;
+            font-size: 18px;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .feature-item p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        @media (max-width: 992px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 576px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            .feature-item {
+                padding: 24px 18px;
+            }
+        }
+
+        /* ============================================================
+                   LIGHTBOX
+                   ============================================================ */
+        .lightbox-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(20px);
+            z-index: 99999;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+        .lightbox-overlay.active {
+            display: flex;
+        }
+        .lightbox-overlay .lightbox-inner {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+        }
+        .lightbox-overlay img {
+            max-width: 100%;
+            max-height: 85vh;
+            border-radius: var(--radius-lg);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+            object-fit: contain;
+            cursor: grab;
+            transition: transform 0.15s ease;
+        }
+        .lightbox-overlay img:active {
+            cursor: grabbing;
+        }
+        .lightbox-close {
+            position: fixed;
+            top: 30px;
+            right: 40px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font-size: 28px;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 20;
+        }
+        .lightbox-close:hover {
+            transform: rotate(90deg);
+            background: rgba(255, 255, 255, 0.12);
+        }
+        .lightbox-prev,
+        .lightbox-next {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 20;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font-size: 20px;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .lightbox-prev {
+            left: 30px;
+        }
+        .lightbox-next {
+            right: 30px;
+        }
+        .lightbox-prev:hover,
+        .lightbox-next:hover {
+            background: rgba(255, 255, 255, 0.12);
+        }
+        .lightbox-counter {
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 14px;
+            letter-spacing: 2px;
+            z-index: 20;
+            font-weight: 500;
+        }
+        .zoom-hint {
+            position: fixed;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255, 255, 255, 0.25);
+            font-size: 12px;
+            letter-spacing: 1px;
+            z-index: 20;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 6px 18px;
+            border-radius: 30px;
+            pointer-events: none;
+        }
+
+        /* ============================================================
+                   CONTACT
+                   ============================================================ */
+        .section-contact {
+            padding: 80px 0;
+            background: var(--bg-secondary);
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            transition: var(--transition);
+        }
+        .contact-info-item:hover {
+            border-color: var(--accent);
+            transform: translateX(6px);
+        }
+        .contact-info-item .icon {
+            width: 44px;
+            height: 44px;
+            background: rgba(249, 115, 22, 0.08);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .contact-info-item .label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-muted);
+        }
+        .contact-info-item .value {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .form-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 36px 32px;
+        }
+        .form-card .form-heading {
+            font-size: 26px;
+            font-weight: 700;
+            color: #fff;
+        }
+        .form-card .form-heading span {
+            color: var(--accent);
+        }
+        .form-card .form-sub {
+            color: var(--text-secondary);
+            font-size: 15px;
+            margin-bottom: 24px;
+        }
+
+        .form-group label {
+            color: var(--text-secondary);
+            font-size: 13px;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+        .form-group input,
+        .form-group textarea {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 12px 16px;
+            color: var(--text-primary);
+            width: 100%;
+            transition: var(--transition);
+            font-size: 15px;
+            font-family: inherit;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.06);
+            outline: none;
+        }
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .success-msg,
+        .error-msg {
+            padding: 14px 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            display: none;
+            font-size: 14px;
+        }
+        .success-msg {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid #22c55e;
+            color: #86efac;
+        }
+        .error-msg {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid #ef4444;
+            color: #fca5a5;
+        }
+
+        /* ============================================================
+                   FOOTER
+                   ============================================================ */
+        footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+            padding: 60px 0 30px;
+        }
+        footer .footer-logo img {
+            height: 46px;
+        }
+        footer .social-links {
+            display: flex;
+            gap: 14px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 20px 0 24px;
+        }
+        footer .social-links a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 22px;
+            border: 1px solid var(--border-color);
+            border-radius: 60px;
+            color: var(--text-secondary);
+            font-size: 14px;
+            transition: var(--transition);
+        }
+        footer .social-links a:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+        footer .footer-links a {
+            color: var(--text-secondary);
+            transition: color 0.3s;
+        }
+        footer .footer-links a:hover {
+            color: var(--accent);
+        }
+        footer .copy {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        /* ============================================================
+                   SCROLL REVEAL
+                   ============================================================ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================================
+    HEADER
+    ============================================================ -->
+    <header class="tf-header" id="tfHeader">
+        <div class="container">
+            <div class="header-inner">
+                <a href="#" class="logo-site">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 56'%3E%3Crect width='200' height='56' rx='12' fill='%23f97316'/%3E%3Ctext x='18' y='37' font-family='Plus Jakarta Sans, sans-serif' font-size='26' fill='%23ffffff' font-weight='800'%3EAYFRONEX%3C/text%3E%3C/svg%3E" alt="AYFRONEX">
+                </a>
+
+                <!-- Desktop Navigation with Dropdowns -->
+                <ul class="nav-menu-main">
+                    <li class="menu-item"><a href="../index.html" class="item-link">Home</a></li>
+                    <li class="menu-item"><a href="../about.html" class="item-link">About</a></li>
+
+                    <!-- Services Dropdown -->
+                    <li class="menu-item">
+                        <a href="#" class="item-link">
+                            Services <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li class="sub-menu-item"><a href="services/graphic-design.html" class="item-link">Graphic Design</a></li>
+                            <li class="sub-menu-item"><a href="services/web-development.html" class="item-link">Web Development</a></li>
+                            <li class="sub-menu-item"><a href="services/web-design.html" class="item-link">Web Design</a></li>
+                            <li class="sub-menu-item"><a href="services/video-editing.html" class="item-link">Video Editing</a></li>
+                            <li class="sub-menu-item"><a href="services/seo.html" class="item-link">SEO Services</a></li>
+                            <li class="sub-menu-item"><a href="services/content-writing.html" class="item-link">Content Writing</a></li>
+                            <li class="sub-menu-item"><a href="services/portfolio.html" class="item-link">Portfolio</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="menu-item"><a href="../packages.html" class="item-link">Packages</a></li>
+
+                    <!-- Brief Forms Dropdown -->
+                    <li class="menu-item">
+                        <a href="#" class="item-link active">
+                            Brief Forms <span class="arrow"><i class="fas fa-chevron-down"></i></span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li class="sub-menu-item"><a href="brief-forms/logo.html" class="item-link">Logo</a></li>
+                            <li class="sub-menu-item"><a href="brief-forms/new-website.html" class="item-link">New Website</a></li>
+                            <li class="sub-menu-item"><a href="brief-forms/existing-website.html" class="item-link">Existing Website</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="menu-item"><a href="../contact.html" class="item-link">Contact</a></li>
+                </ul>
+
+                <a href="../contact.html" class="btn-accent d-lg-flex d-none">Get a Quote</a>
+                <span class="mobile-menu" id="menuToggle"><i class="fas fa-bars"></i></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- ============================================================
+    OFF CANVAS
+    ============================================================ -->
+    <div class="offcanvas-menu" id="offcanvasMenu">
+        <div class="canvas_head">
+            <a href="#" class="offcanvas-logo"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 56'%3E%3Crect width='200' height='56' rx='12' fill='%23f97316'/%3E%3Ctext x='18' y='37' font-family='Plus Jakarta Sans, sans-serif' font-size='26' fill='%23ffffff' font-weight='800'%3EAYFRONEX%3C/text%3E%3C/svg%3E" alt=""></a>
+            <button class="close-btn" id="closeMenuBtn"><i class="fas fa-times"></i></button>
+        </div>
+        <ul class="nav-ul-mb">
+            <li><a href="index.html" class="mb-menu-link">Home</a></li>
+            <li><a href="about.html" class="mb-menu-link">About</a></li>
+            <li class="has-sub-menu">
+                <span class="mb-menu-link" data-target="#subMenuServices">
+                    Services <i class="fas fa-chevron-down"></i>
+                </span>
+                <ul class="sub-nav-menu" id="subMenuServices">
+                    <li><a href="graphic-design.html" class="item-link">Graphic Design</a></li>
+                    <li><a href="web-development.html" class="item-link">Web Development</a></li>
+                    <li><a href="web-design.html" class="item-link">Web Design</a></li>
+                    <li><a href="video-editing.html" class="item-link">Video Editing</a></li>
+                    <li><a href="seo.html" class="item-link">SEO Services</a></li>
+                    <li><a href="content-writing.html" class="item-link">Content Writing</a></li>
+                    <li><a href="portfolio.html" class="item-link">Portfolio</a></li>
+                </ul>
+            </li>
+            <li><a href="packages.html" class="mb-menu-link">Packages</a></li>
+            <li class="has-sub-menu">
+                <span class="mb-menu-link" data-target="#subMenuBriefForms">
+                    Brief Forms <i class="fas fa-chevron-down"></i>
+                </span>
+                <ul class="sub-nav-menu" id="subMenuBriefForms">
+                    <li><a href="brief-forms/logo.html" class="item-link">Logo</a></li>
+                    <li><a href="brief-forms/new-website.html" class="item-link">New Website</a></li>
+                    <li><a href="brief-forms/existing-website.html" class="item-link">Existing Website</a></li>
+                </ul>
+            </li>
+            <li><a href="contact.html" class="mb-menu-link">Contact</a></li>
+        </ul>
+    </div>
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <!-- ============================================================
+    HERO
+    ============================================================ -->
+    <section class="section-hero">
+        <div class="container">
+            <div class="content-wrap text-center">
+                <div class="sub reveal visible">Web Design</div>
+                <h1 class="title reveal visible">
+                    Behind Every Great<br>
+                    <span class="highlight">Brand Is a Stunning Website</span>
+                </h1>
+                <p class="text reveal visible">Your website is more than just an online presence—it's the digital face of your brand. We create sleek, responsive, and engaging websites that deliver real results.</p>
+                <div class="bot-btns reveal visible">
+                    <a href="#about" class="btn-accent">Learn More</a>
+                    <a href="#contact" class="btn-outline">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    ABOUT
+    ============================================================ -->
+    <section class="section-about" id="about">
+        <div class="container">
+            <div class="row g-5 align-items-center">
+                <div class="col-lg-6">
+                    <span class="badge-section reveal">About Web Design</span>
+                    <h2 class="heading-title reveal">Your Website Is <span class="highlight">The Digital Face of Your Brand</span></h2>
+                    <p class="text-secondary" style="font-size:16px; line-height:1.8; margin:20px 0 30px;">
+                        Your website is more than just an online presence—it's the digital face of your brand. It tells your story, reflects your values, and builds trust with your audience. At <strong style="color:var(--accent);">AYFRONEX</strong>, we create sleek, responsive, and engaging websites that not only look great but also deliver real results. Let your website make a lasting impression and give your business the digital edge it deserves.
+                    </p>
+                    <div style="display:flex; gap:20px; flex-wrap:wrap;">
+                        <div><span style="font-size:32px; font-weight:700; color:var(--accent);;">200+</span><br><span class="text-secondary" style="font-size:14px;">Websites Designed</span></div>
+                        <div><span style="font-size:32px; font-weight:700; color:var(--accent);;">97%</span><br><span class="text-secondary" style="font-size:14px;">Client Satisfaction</span></div>
+                        <div><span style="font-size:32px; font-weight:700; color:var(--accent);;">7d</span><br><span class="text-secondary" style="font-size:14px;">Average Delivery</span></div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="about-image reveal">
+                        <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=800&h=600&fit=crop" alt="Web Design">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    PROJECTS
+    ============================================================ -->
+    <section class="section-projects" id="projects">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="badge-section reveal">Our Portfolio</span>
+                <h2 class="heading-title reveal">Our <span class="highlight">Web Design</span> Projects</h2>
+                <p class="text-secondary" style="font-size:16px; max-width:600px; margin:12px auto 0;">Explore our recent website design projects for brands across industries.</p>
+            </div>
+
+            <div class="project-grid">
+                <div class="project-card" onclick="openLightbox(this)">
+                    <div class="card-image-wrap"><div class="card-image" style="background-image:url('https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=600&h=450&fit=crop');"></div></div>
+                    <div class="card-overlay"><div class="view-icon"><i class="fas fa-expand"></i></div><div class="project-title">Adventours Travel</div></div>
+                </div>
+                <div class="project-card" onclick="openLightbox(this)">
+                    <div class="card-image-wrap"><div class="card-image" style="background-image:url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=450&fit=crop');"></div></div>
+                    <div class="card-overlay"><div class="view-icon"><i class="fas fa-expand"></i></div><div class="project-title">Alpha Tech</div></div>
+                </div>
+                <div class="project-card" onclick="openLightbox(this)">
+                    <div class="card-image-wrap"><div class="card-image" style="background-image:url('https://images.unsplash.com/photo-1488590528505-98d2b853aba4?w=600&h=450&fit=crop');"></div></div>
+                    <div class="card-overlay"><div class="view-icon"><i class="fas fa-expand"></i></div><div class="project-title">GELEC Solutions</div></div>
+                </div>
+                <div class="project-card" onclick="openLightbox(this)">
+                    <div class="card-image-wrap"><div class="card-image" style="background-image:url('https://images.unsplash.com/photo-1517299321609-52687d1bc55a?w=600&h=450&fit=crop');"></div></div>
+                    <div class="card-overlay"><div class="view-icon"><i class="fas fa-expand"></i></div><div class="project-title">AI Future</div></div>
+                </div>
+                <div class="project-card" onclick="openLightbox(this)">
+                    <div class="card-image-wrap"><div class="card-image" style="background-image:url('https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=600&h=450&fit=crop');"></div></div>
+                    <div class="card-overlay"><div class="view-icon"><i class="fas fa-expand"></i></div><div class="project-title">TopGill</div></div>
+                </div>
+                <div class="project-card" onclick="openLightbox(this)">
+                    <div class="card-image-wrap"><div class="card-image" style="background-image:url('https://images.unsplash.com/photo-1557682250-33bd709cbe85?w=600&h=450&fit=crop');"></div></div>
+                    <div class="card-overlay"><div class="view-icon"><i class="fas fa-expand"></i></div><div class="project-title">BIW Safety</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    LIGHTBOX
+    ============================================================ -->
+    <div class="lightbox-overlay" id="lightbox">
+        <div class="lightbox-inner">
+            <button class="lightbox-close" onclick="closeLightbox()"><i class="fas fa-times"></i></button>
+            <button class="lightbox-prev" onclick="prevImage(event)"><i class="fas fa-chevron-left"></i></button>
+            <button class="lightbox-next" onclick="nextImage(event)"><i class="fas fa-chevron-right"></i></button>
+            <img id="lightboxImage" src="" alt="">
+            <div class="zoom-hint">🖱 Scroll to zoom • Drag to move</div>
+            <div class="lightbox-counter" id="lightboxCounter">1 / 1</div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+    FEATURES
+    ============================================================ -->
+    <section class="section-features">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="badge-section reveal">What We Offer</span>
+                <h2 class="heading-title reveal">Web Design <span class="highlight">That Delivers Results</span></h2>
+                <p class="text-secondary" style="font-size:16px; max-width:600px; margin:12px auto 0;">We create stunning, user-centric websites that drive engagement, conversions, and business growth.</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-item reveal">
+                    <div class="icon"><i class="fas fa-mobile-alt"></i></div>
+                    <h6>Responsive Design</h6>
+                    <p>Websites that adapt perfectly to every device—desktop, tablet, and mobile—for a seamless user experience.</p>
+                </div>
+                <div class="feature-item reveal">
+                    <div class="icon"><i class="fas fa-paint-brush"></i></div>
+                    <h6>UI/UX Design</h6>
+                    <p>Intuitive, user-friendly interfaces designed to maximize engagement and conversion rates.</p>
+                </div>
+                <div class="feature-item reveal">
+                    <div class="icon"><i class="fas fa-code"></i></div>
+                    <h6>Custom Development</h6>
+                    <p>Tailor-made websites built with the latest technologies to meet your unique business needs.</p>
+                </div>
+                <div class="feature-item reveal">
+                    <div class="icon"><i class="fas fa-shopping-cart"></i></div>
+                    <h6>E-Commerce Solutions</h6>
+                    <p>Powerful online stores with secure payment gateways and seamless checkout experiences.</p>
+                </div>
+                <div class="feature-item reveal">
+                    <div class="icon"><i class="fas fa-rocket"></i></div>
+                    <h6>Performance Optimization</h6>
+                    <p>Fast-loading websites optimized for speed, performance, and search engine visibility.</p>
+                </div>
+                <div class="feature-item reveal">
+                    <div class="icon"><i class="fas fa-headset"></i></div>
+                    <h6>Ongoing Support</h6>
+                    <p>Dedicated support and maintenance to keep your website running smoothly and securely.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    CONTACT
+    ============================================================ -->
+    <section class="section-contact" id="contact">
+        <div class="container">
+            <div class="row g-5 align-items-stretch">
+                <div class="col-lg-6">
+                    <span class="badge-section reveal">Get In Touch</span>
+                    <h2 class="heading-title reveal">Let's <span class="highlight">Build Your Brand</span></h2>
+                    <p class="text-secondary" style="border-left:3px solid var(--accent); padding-left:20px; margin:20px 0 30px; line-height:1.8;">Transform your brand in 24 hours. From logos to websites and social media creatives — we deliver stunning results, fast. High quality, quick turnaround, zero stress.</p>
+                    <div class="contact-info-item reveal">
+                        <div class="icon"><i class="fas fa-envelope"></i></div>
+                        <div><div class="label">E-mail address</div><div class="value">info@ayfronex.com</div></div>
+                    </div>
+                    <div class="contact-info-item reveal">
+                        <div class="icon"><i class="fas fa-phone"></i></div>
+                        <div><div class="label">Phone number</div><div class="value">(512) 649-4744</div></div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-card reveal">
+                        <h4 class="form-heading">Let's Grow <span>Together</span></h4>
+                        <p class="form-sub">Discover our full suite of creative solutions — from eye-catching logos to complete digital branding.</p>
+
+                        <div id="successMsg" class="success-msg"><strong>Success!</strong> Thank you for contacting us!</div>
+                        <div id="errorMsg" class="error-msg"><strong>Error!</strong> Something went wrong. Please try again.</div>
+
+                        <form id="contactForm">
+                            <div class="row g-3">
+                                <div class="col-6">
+                                    <div class="form-group"><label>Name *</label><input type="text" name="name" placeholder="Enter your name" required></div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group"><label>Email *</label><input type="email" name="email" placeholder="Enter your email" required></div>
+                                </div>
+                            </div>
+                            <div class="form-group"><label>Phone</label><input type="text" name="phone" placeholder="Enter your phone"></div>
+                            <div class="form-group"><label>Message *</label><textarea name="message" placeholder="Write your message here..." required></textarea></div>
+                            <button type="submit" class="btn-accent w-100" id="submitBtn"><span>Submit <i class="fas fa-arrow-right"></i></span></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+    FOOTER
+    ============================================================ -->
+    <footer>
+        <div class="container">
+            <div class="text-center">
+                <a href="#" class="footer-logo"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 56'%3E%3Crect width='200' height='56' rx='12' fill='%23f97316'/%3E%3Ctext x='18' y='37' font-family='Plus Jakarta Sans, sans-serif' font-size='26' fill='%23ffffff' font-weight='800'%3EAYFRONEX%3C/text%3E%3C/svg%3E" alt=""></a>
+                <h5 style="color:#fff; font-weight:600; margin-top:16px;">Get connected with AYFRONEX on social</h5>
+                <p class="text-secondary">Don't miss our new updates!</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i> Twitter / X</a>
+                    <a href="#"><i class="fab fa-facebook"></i> Facebook</a>
+                    <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+                    <a href="#"><i class="fab fa-linkedin"></i> Linkedin</a>
+                </div>
+            </div>
+            <div class="d-flex flex-wrap justify-content-between align-items-center pt-4 mt-4 border-top" style="border-color:var(--border-color)!important;">
+                <ul class="footer-links d-flex gap-4">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <p class="copy mb-0">© 2026 AYFRONEX. All Rights Reserved.</p>
+                <a href="#" class="text-secondary"><i class="fas fa-arrow-up"></i> Back to top</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================================
+    SCRIPTS
+    ============================================================ -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // ============================================================
+        // HEADER SCROLL
+        // ============================================================
+        window.addEventListener('scroll', function() {
+            document.querySelector('.tf-header').classList.toggle('scrolled', window.scrollY > 60);
+        });
+
+        // ============================================================
+        // OFF CANVAS
+        // ============================================================
+        const menuToggle = document.getElementById('menuToggle');
+        const offcanvas = document.getElementById('offcanvasMenu');
+        const closeBtn = document.getElementById('closeMenuBtn');
+        const overlay = document.getElementById('menuOverlay');
+
+        function openMenu() {
+            offcanvas.classList.add('show');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMenu() {
+            offcanvas.classList.remove('show');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        menuToggle.addEventListener('click', openMenu);
+        closeBtn.addEventListener('click', closeMenu);
+        overlay.addEventListener('click', closeMenu);
+
+        // ============================================================
+        // OFF CANVAS SUB MENU
+        // ============================================================
+        document.querySelectorAll('.has-sub-menu .mb-menu-link').forEach(el => {
+            el.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.dataset.target);
+                if (target) {
+                    target.classList.toggle('show');
+                    const icon = this.querySelector('i');
+                    if (icon) {
+                        icon.classList.toggle('fa-chevron-down');
+                        icon.classList.toggle('fa-chevron-up');
+                    }
+                }
+            });
+        });
+
+        // ============================================================
+        // LIGHTBOX
+        // ============================================================
+        let lightboxImages = [];
+        let currentIndex = 0;
+        let currentZoom = 1;
+        let translateX = 0;
+        let translateY = 0;
+        let isDragging = false;
+        let startX, startY, startTranslateX, startTranslateY;
+        const MIN_ZOOM = 1;
+        const MAX_ZOOM = 10;
+        const ZOOM_STEP = 0.1;
+
+        function openLightbox(card) {
+            const image = card.querySelector('.card-image');
+            if (!image) return;
+            const bgImage = image.style.backgroundImage;
+            const url = bgImage.replace(/^url\(["']?/, '').replace(/["']?\)$/, '');
+            if (!url) return;
+
+            const tab = card.closest('.section-projects');
+            const cards = tab.querySelectorAll('.project-card');
+            lightboxImages = [];
+            cards.forEach(c => {
+                const img = c.querySelector('.card-image');
+                if (img) {
+                    const bg = img.style.backgroundImage;
+                    const imgUrl = bg.replace(/^url\(["']?/, '').replace(/["']?\)$/, '');
+                    if (imgUrl) lightboxImages.push(imgUrl);
+                }
+            });
+
+            currentIndex = lightboxImages.indexOf(url);
+            if (currentIndex === -1) currentIndex = 0;
+
+            const imgElement = document.getElementById('lightboxImage');
+            imgElement.src = lightboxImages[currentIndex];
+            currentZoom = 1;
+            translateX = 0;
+            translateY = 0;
+            imgElement.style.transform = 'scale(1) translate(0px, 0px)';
+
+            document.getElementById('lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden';
+            updateCounter();
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function nextImage(e) {
+            if (e) e.stopPropagation();
+            if (lightboxImages.length === 0) return;
+            currentIndex = (currentIndex + 1) % lightboxImages.length;
+            updateLightbox();
+        }
+
+        function prevImage(e) {
+            if (e) e.stopPropagation();
+            if (lightboxImages.length === 0) return;
+            currentIndex = (currentIndex - 1 + lightboxImages.length) % lightboxImages.length;
+            updateLightbox();
+        }
+
+        function updateLightbox() {
+            const img = document.getElementById('lightboxImage');
+            img.src = lightboxImages[currentIndex];
+            currentZoom = 1;
+            translateX = 0;
+            translateY = 0;
+            img.style.transform = 'scale(1) translate(0px, 0px)';
+            updateCounter();
+        }
+
+        function updateCounter() {
+            document.getElementById('lightboxCounter').textContent = (currentIndex + 1) + ' / ' + lightboxImages.length;
+        }
+
+        // Lightbox events
+        document.addEventListener('DOMContentLoaded', function() {
+            const img = document.getElementById('lightboxImage');
+
+            img.addEventListener('wheel', function(e) {
+                const lightbox = document.getElementById('lightbox');
+                if (!lightbox.classList.contains('active')) return;
+                e.preventDefault();
+                e.stopPropagation();
+                currentZoom = e.deltaY < 0 ? Math.min(currentZoom + ZOOM_STEP, MAX_ZOOM) : Math.max(
+                    currentZoom - ZOOM_STEP, MIN_ZOOM);
+                if (currentZoom === 1) { translateX = 0;
+                    translateY = 0; }
+                this.style.transform = 'scale(' + currentZoom + ') translate(' + translateX + 'px, ' +
+                    translateY + 'px)';
+            }, { passive: false });
+
+            img.addEventListener('mousedown', function(e) {
+                const lightbox = document.getElementById('lightbox');
+                if (!lightbox.classList.contains('active') || currentZoom <= 1) return;
+                isDragging = true;
+                startX = e.clientX;
+                startY = e.clientY;
+                startTranslateX = translateX;
+                startTranslateY = translateY;
+                this.style.cursor = 'grabbing';
+                e.preventDefault();
+            });
+
+            document.addEventListener('mousemove', function(e) {
+                if (!isDragging) return;
+                translateX = startTranslateX + (e.clientX - startX);
+                translateY = startTranslateY + (e.clientY - startY);
+                img.style.transform = 'scale(' + currentZoom + ') translate(' + translateX + 'px, ' +
+                    translateY + 'px)';
+            });
+
+            document.addEventListener('mouseup', function() {
+                if (isDragging) {
+                    isDragging = false;
+                    img.style.cursor = 'grab';
+                }
+            });
+
+            document.addEventListener('keydown', function(e) {
+                const lightbox = document.getElementById('lightbox');
+                if (!lightbox.classList.contains('active')) return;
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowRight') nextImage(e);
+                if (e.key === 'ArrowLeft') prevImage(e);
+                if (e.key === 'r' || e.key === 'R') {
+                    currentZoom = 1;
+                    translateX = 0;
+                    translateY = 0;
+                    img.style.transform = 'scale(1) translate(0px, 0px)';
+                }
+            });
+        });
+
+        // ============================================================
+        // CONTACT FORM
+        // ============================================================
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = document.getElementById('submitBtn');
+            const orig = btn.innerHTML;
+            btn.innerHTML = '<span>Sending...</span>';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                document.getElementById('successMsg').style.display = 'block';
+                document.getElementById('errorMsg').style.display = 'none';
+                btn.innerHTML = '<span>✓ Sent!</span>';
+                setTimeout(() => {
+                    btn.innerHTML = orig;
+                    btn.disabled = false;
+                    document.getElementById('successMsg').style.display = 'none';
+                    this.reset();
+                }, 3000);
+            }, 1500);
+        });
+
+        // ============================================================
+        // SCROLL REVEAL
+        // ============================================================
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+        // ============================================================
+        // CLOSE MENU ON NAV LINK CLICK
+        // ============================================================
+        document.querySelectorAll('.offcanvas-menu .mb-menu-link, .offcanvas-menu .sub-nav-menu .item-link').forEach(
+            link => {
+                link.addEventListener('click', function() {
+                    if (!this.classList.contains('has-sub-menu') && !this.dataset.target) {
+                        closeMenu();
+                    }
+                });
+            });
+    </script>
+
+</body>
+</html>
