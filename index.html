@@ -14,9 +14,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
 
-    <!-- ✅ SMTP.js - Direct Gmail SMTP (No EmailJS, No Third-Party) -->
-    <script src="https://smtpjs.com/v3/smtp.js"></script>
-
     <style>
         /* ============================================================
            ROOT VARIABLES
@@ -2319,7 +2316,6 @@
                 const phone = document.getElementById('userPhone').value.trim();
                 const message = document.getElementById('userMessage').value.trim();
 
-                // Validation
                 if (!name || !email || !message) {
                     errorText.textContent = 'Please fill in all required fields.';
                     errorMsg.style.display = 'block';
@@ -2333,11 +2329,17 @@
                     return;
                 }
 
+                // ✅ Check if Email is defined
+                if (typeof Email === 'undefined') {
+                    errorText.textContent = 'SMTP library not loaded. Please check your internet or disable ad-blocker.';
+                    errorMsg.style.display = 'block';
+                    return;
+                }
+
                 const originalText = btn.innerHTML;
                 btn.innerHTML = '<span><i class="fas fa-spinner fa-spin"></i> Sending...</span>';
                 btn.disabled = true;
 
-                // HTML Email Body
                 const emailBody = `
                     <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background: #f9f9f9; border-radius: 10px;">
                         <h2 style="color: #f97316; border-bottom: 2px solid #f97316; padding-bottom: 10px;">New Contact Form Submission</h2>
@@ -2363,13 +2365,10 @@
                     </div>
                 `;
 
-                // ============================================================
-                // ⚠️ IMPORTANT: Replace "YOUR_APP_PASSWORD" with your Gmail App Password
-                // ============================================================
                 Email.send({
                     Host: "smtp.gmail.com",
                     Username: "adward.ayfronex@gmail.com",
-                    Password: "elxh oamh gzao wuua", // ⚠️ Replace with your 16-digit App Password
+                    Password: "elxhoamhgzaowuua", // ✅ BINA SPACE KE (16-digit App Password)
                     To: 'adward.ayfronex@gmail.com',
                     From: "adward.ayfronex@gmail.com",
                     Subject: `New Contact: ${name} - AYFRONEX`,
@@ -2472,6 +2471,7 @@
             startSlider();
         })();
     </script>
-
+    <!-- ✅ SMTP.js - Direct Gmail SMTP (No EmailJS, No Third-Party) -->
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
 </body>
 </html>
