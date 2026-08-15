@@ -5,14 +5,13 @@
     <title>AYFRONEX - Transform Your Brand</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="AYFRONEX - Transform Your Brand in Just 24 Hours">
-    <meta name="csrf-token" content="xytJBNYl28nZitdvySvB1ok9fo27fEQmsRgvjOJa">
-
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <!-- Fonts & Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
     <!-- CSS Libraries -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
@@ -20,8 +19,8 @@
 
     <style>
         /* ============================================================
-                   ROOT VARIABLES
-                   ============================================================ */
+           ROOT VARIABLES
+           ============================================================ */
         :root {
             --bg-primary: #07070d;
             --bg-secondary: #0f0f1a;
@@ -38,8 +37,8 @@
         }
 
         /* ============================================================
-                   RESET & BASE
-                   ============================================================ */
+           RESET & BASE
+           ============================================================ */
         * {
             margin: 0;
             padding: 0;
@@ -75,8 +74,8 @@
         }
 
         /* ============================================================
-                   SCROLLBAR
-                   ============================================================ */
+           SCROLLBAR
+           ============================================================ */
         ::-webkit-scrollbar {
             width: 6px;
         }
@@ -92,8 +91,8 @@
         }
 
         /* ============================================================
-                   BUTTONS
-                   ============================================================ */
+           BUTTONS
+           ============================================================ */
         .btn-accent {
             background: linear-gradient(135deg, #f97316, #ea580c);
             color: #fff;
@@ -130,8 +129,8 @@
         }
 
         /* ============================================================
-                   SECTION HEADINGS
-                   ============================================================ */
+           SECTION HEADINGS
+           ============================================================ */
         .badge-section {
             display: inline-block;
             color: var(--accent);
@@ -174,8 +173,8 @@
         }
 
         /* ============================================================
-                   HEADER WITH DROPDOWN
-                   ============================================================ */
+           HEADER WITH DROPDOWN
+           ============================================================ */
         .tf-header {
             position: fixed;
             top: 0;
@@ -309,8 +308,8 @@
         }
 
         /* ============================================================
-                   OFF CANVAS
-                   ============================================================ */
+           OFF CANVAS
+           ============================================================ */
         .offcanvas-menu {
             position: fixed;
             top: 0;
@@ -406,8 +405,8 @@
         }
 
         /* ============================================================
-                   HERO - IMAGE SLIDER WITH FADE
-                   ============================================================ */
+           HERO - IMAGE SLIDER WITH FADE
+           ============================================================ */
         .section-hero {
             padding: 0;
             background: var(--bg-primary);
@@ -570,8 +569,8 @@
         }
 
         /* ============================================================
-                   ABOUT
-                   ============================================================ */
+           ABOUT
+           ============================================================ */
         .section-about {
             padding: 80px 0;
             background: var(--bg-secondary);
@@ -634,8 +633,8 @@
         }
 
         /* ============================================================
-                   SERVICES
-                   ============================================================ */
+           SERVICES
+           ============================================================ */
         .section-services {
             padding: 80px 0;
             background: var(--bg-primary);
@@ -777,8 +776,8 @@
         }
 
         /* ============================================================
-                   PROJECTS
-                   ============================================================ */
+           PROJECTS
+           ============================================================ */
         .section-projects {
             padding: 80px 0;
             background: var(--bg-secondary);
@@ -1056,8 +1055,8 @@
         }
 
         /* ============================================================
-                   FEATURES
-                   ============================================================ */
+           FEATURES
+           ============================================================ */
         .section-features {
             padding: 80px 0;
             background: var(--bg-primary);
@@ -1255,8 +1254,8 @@
         }
 
         /* ============================================================
-                   PRICING
-                   ============================================================ */
+           PRICING
+           ============================================================ */
         .section-pricing {
             padding: 80px 0;
             background: var(--bg-secondary);
@@ -1320,8 +1319,8 @@
         }
 
         /* ============================================================
-                   CONTACT
-                   ============================================================ */
+           CONTACT
+           ============================================================ */
         .section-contact {
             padding: 80px 0;
             background: var(--bg-primary);
@@ -1452,8 +1451,8 @@
         }
 
         /* ============================================================
-                   FOOTER
-                   ============================================================ */
+           FOOTER
+           ============================================================ */
         footer {
             background: var(--bg-secondary);
             border-top: 1px solid var(--border-color);
@@ -1512,8 +1511,8 @@
         }
 
         /* ============================================================
-                   SCROLL REVEAL
-                   ============================================================ */
+           SCROLL REVEAL
+           ============================================================ */
         .reveal {
             opacity: 0;
             transform: translateY(40px);
@@ -1629,7 +1628,6 @@
     <section class="section-hero" id="home">
         <div class="hero-slider">
             <div class="hero-slide active" style="background-image: url('assets/img/programmer-night.jpg?w=1600&h=900&fit=crop');"></div>
-            <!-- <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1600&h=900&fit=crop');"></div> -->
             <div class="hero-slide" style="background-image: url('assets/img/close-up-retouching-app-computer-empty-studio-nobody-photography-office-with-professional-editing-equipment-technology-pictures-photograph-retouch-work.jpg?w=1600&h=900&fit=crop');"></div>
             <div class="hero-slide" style="background-image: url('assets/img/responsive-web-design-adaptive-user-interface-digital-devises-laptop-tablet-monitor_1199132-222053.webp?w=1600&h=900&fit=crop');"></div>
         </div>
@@ -2045,7 +2043,7 @@
     </section>
 
     <!-- ============================================================
-    CONTACT
+    CONTACT - EmailJS Integration
     ============================================================ -->
     <section class="section-contact" id="contact">
         <div class="container">
@@ -2068,8 +2066,12 @@
                         <h4 class="form-heading">Let's Grow <span>Together</span></h4>
                         <p class="form-sub">Discover our full suite of creative solutions — from eye-catching logos to complete digital branding.</p>
 
-                        <div id="successMsg" class="success-msg"><strong>Success!</strong> Thank you for contacting us!</div>
-                        <div id="errorMsg" class="error-msg"><strong>Error!</strong> Something went wrong. Please try again.</div>
+                        <div id="successMsg" class="success-msg" style="display:none;">
+                            <strong>✅ Success!</strong> <span id="successText">Thank you for contacting us!</span>
+                        </div>
+                        <div id="errorMsg" class="error-msg" style="display:none;">
+                            <strong>❌ Error!</strong> <span id="errorText">Something went wrong. Please try again.</span>
+                        </div>
 
                         <form id="contactForm">
                             <div class="row g-3">
@@ -2127,6 +2129,19 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 
     <script>
+        // ============================================================
+        // EMAILJS CONFIGURATION - Direct Gmail
+        // ============================================================
+        // ✅ APNI KEYS YAHAN UPDATE KAREIN
+        const EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY';      // EmailJS se copy karein
+        const EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID';      // EmailJS se copy karein
+        const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';    // EmailJS se copy karein
+
+        // Initialize EmailJS
+        (function() {
+            emailjs.init(EMAILJS_PUBLIC_KEY);
+        })();
+
         // ============================================================
         // HEADER SCROLL
         // ============================================================
@@ -2296,64 +2311,63 @@
             }
         });
 
-      // contact form submission - Vercel version
-document.getElementById('contactForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    const btn = document.getElementById('submitBtn');
-    const successMsg = document.getElementById('successMsg');
-    const errorMsg = document.getElementById('errorMsg');
-    const successText = document.getElementById('successText');
-    const errorText = document.getElementById('errorText');
-    
-    successMsg.style.display = 'none';
-    errorMsg.style.display = 'none';
-    
-    btn.innerHTML = '<span><i class="fas fa-spinner fa-spin"></i> Sending...</span>';
-    btn.disabled = true;
-    
-    const formData = new FormData(this);
-    const data = {
-        name: formData.get('name'),
-        email: formData.get('email'),
-        phone: formData.get('phone'),
-        message: formData.get('message')
-    };
-    
-    fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data)
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            successText.textContent = data.message || 'Thank you! Your message has been sent.';
-            successMsg.style.display = 'block';
-            this.reset();
-            btn.innerHTML = '<span>✓ Sent!</span>';
-            setTimeout(() => {
-                btn.innerHTML = '<span>Submit <i class="fas fa-arrow-right"></i></span>';
-                btn.disabled = false;
+        // ============================================================
+        // CONTACT FORM - EmailJS
+        // ============================================================
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('contactForm');
+            if (!form) return;
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                const btn = document.getElementById('submitBtn');
+                const successMsg = document.getElementById('successMsg');
+                const errorMsg = document.getElementById('errorMsg');
+                const successText = document.getElementById('successText');
+                const errorText = document.getElementById('errorText');
+
                 successMsg.style.display = 'none';
-            }, 5000);
-        } else {
-            errorText.textContent = data.message || 'Something went wrong. Please try again.';
-            errorMsg.style.display = 'block';
-            btn.innerHTML = '<span>Submit <i class="fas fa-arrow-right"></i></span>';
-            btn.disabled = false;
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        errorText.textContent = 'Network error. Please check your connection.';
-        errorMsg.style.display = 'block';
-        btn.innerHTML = '<span>Submit <i class="fas fa-arrow-right"></i></span>';
-        btn.disabled = false;
-    });
-});
+                errorMsg.style.display = 'none';
+
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '<span><i class="fas fa-spinner fa-spin"></i> Sending...</span>';
+                btn.disabled = true;
+
+                const formData = new FormData(form);
+                const templateParams = {
+                    from_name: formData.get('name'),
+                    from_email: formData.get('email'),
+                    phone: formData.get('phone') || 'Not provided',
+                    message: formData.get('message'),
+                    current_date: new Date().toLocaleString('en-US', { dateStyle: 'full', timeStyle: 'short' })
+                };
+
+                console.log('📤 Sending:', templateParams);
+
+                emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
+                    .then(function(response) {
+                        console.log('✅ Success:', response);
+                        successText.textContent = 'Thank you! Your message has been sent successfully.';
+                        successMsg.style.display = 'block';
+                        form.reset();
+                        btn.innerHTML = '<span>✓ Sent!</span>';
+                        setTimeout(() => {
+                            btn.innerHTML = originalText;
+                            btn.disabled = false;
+                            successMsg.style.display = 'none';
+                        }, 5000);
+                    })
+                    .catch(function(error) {
+                        console.error('❌ Error:', error);
+                        errorText.textContent = error.text || 'Failed to send message. Please try again.';
+                        errorMsg.style.display = 'block';
+                        btn.innerHTML = originalText;
+                        btn.disabled = false;
+                    });
+            });
+        });
+
         // ============================================================
         // SCROLL REVEAL
         // ============================================================
