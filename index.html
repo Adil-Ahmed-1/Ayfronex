@@ -2122,6 +2122,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 
+    <!-- ✅ SMTP.js - DIRECT GMAIL (NO EMAILJS) - LOAD AT END -->
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+
     <script>
         // ============================================================
         // HEADER SCROLL
@@ -2329,10 +2332,11 @@
                     return;
                 }
 
-                // ✅ Check if Email is defined
+                // ✅ CRITICAL CHECK: Agar Email library load nahi hui to error dikhao
                 if (typeof Email === 'undefined') {
-                    errorText.textContent = 'SMTP library not loaded. Please check your internet or disable ad-blocker.';
+                    errorText.textContent = 'SMTP library not loaded. Please disable ad-blocker and refresh the page.';
                     errorMsg.style.display = 'block';
+                    btn.disabled = false;
                     return;
                 }
 
@@ -2368,7 +2372,7 @@
                 Email.send({
                     Host: "smtp.gmail.com",
                     Username: "adward.ayfronex@gmail.com",
-                    Password: "elxhoamhgzaowuua", // ✅ BINA SPACE KE (16-digit App Password)
+                    Password: "elxhoamhgzaowuua", // ✅ Bina space ke (16-digit App Password)
                     To: 'adward.ayfronex@gmail.com',
                     From: "adward.ayfronex@gmail.com",
                     Subject: `New Contact: ${name} - AYFRONEX`,
@@ -2471,7 +2475,5 @@
             startSlider();
         })();
     </script>
-    <!-- ✅ SMTP.js - Direct Gmail SMTP (No EmailJS, No Third-Party) -->
-    <script src="https://smtpjs.com/v3/smtp.js"></script>
 </body>
 </html>
