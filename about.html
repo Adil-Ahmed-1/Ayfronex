@@ -9,10 +9,11 @@
     <!-- Fonts & Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 
     <style>
         /* ============================================================
-                   ROOT VARIABLES
+                   ROOT VARIABLES - MATCHING HOMEPAGE
                    ============================================================ */
         :root {
             --bg-primary: #050505;
@@ -21,8 +22,8 @@
             --text-primary: #f4f4f5;
             --text-secondary: #a1a1aa;
             --text-muted: #52525b;
-            --accent: #F3A43F;
-            --accent-glow: rgba(243, 164, 63, 0.12);
+            --accent: #f97316;
+            --accent-glow: rgba(249, 115, 22, 0.12);
             --border-color: rgba(255, 255, 255, 0.04);
             --radius: 16px;
             --radius-lg: 24px;
@@ -104,7 +105,7 @@
             width: 70px;
             height: 70px;
             border-radius: 50%;
-            border: 3px solid rgba(243, 164, 63, 0.08);
+            border: 3px solid rgba(249, 115, 22, 0.08);
             border-top-color: var(--accent);
             animation: spin 1s linear infinite;
         }
@@ -118,8 +119,8 @@
                    BUTTONS
                    ============================================================ */
         .btn-accent {
-            background: linear-gradient(135deg, #F3A43F, #D98E2E);
-            color: #050505;
+            background: linear-gradient(135deg, #f97316, #ea580c);
+            color: #fff;
             border: none;
             padding: 14px 36px;
             border-radius: 60px;
@@ -127,13 +128,13 @@
             font-size: 14px;
             transition: var(--transition);
             display: inline-block;
-            box-shadow: 0 4px 20px rgba(243, 164, 63, 0.2);
+            box-shadow: 0 4px 20px rgba(249, 115, 22, 0.2);
             cursor: pointer;
         }
         .btn-accent:hover {
             transform: translateY(-3px);
-            box-shadow: 0 12px 40px rgba(243, 164, 63, 0.35);
-            background: linear-gradient(135deg, #F5B960, #F3A43F);
+            box-shadow: 0 12px 40px rgba(249, 115, 22, 0.35);
+            background: linear-gradient(135deg, #f97316, #ea580c);
         }
 
         .btn-outline {
@@ -186,12 +187,12 @@
             letter-spacing: -0.02em;
         }
         .heading-title .highlight {
-            background: linear-gradient(135deg, #F3A43F, #FCD88A);
+            background: linear-gradient(135deg, #f97316, #fbbf24);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
         .text-gradient-gold {
-            background: linear-gradient(135deg, #F3A43F, #FCD88A, #F3A43F);
+            background: linear-gradient(135deg, #f97316, #fbbf24, #f97316);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -205,23 +206,17 @@
             left: 0;
             right: 0;
             z-index: 1000;
-            padding: 16px 40px;
-            background: transparent;
-            transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-            backface-visibility: hidden;
-            transform: translateZ(0);
+            padding: 14px 0;
+            background: rgba(7, 7, 13, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-color);
+            transition: var(--transition);
         }
         .tf-header.scrolled {
-            background: rgba(5, 5, 5, 0.92) !important;
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            box-shadow: 0 4px 40px rgba(0, 0, 0, 0.6);
-            padding: 10px 40px;
-            border-bottom: 1px solid var(--border-color);
-        }
-        .tf-header * {
-            transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-            backface-visibility: hidden;
+            padding: 6px 0;
+            background: rgba(7, 7, 13, 0.96);
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
         }
         .header-inner {
             max-width: 1340px;
@@ -231,16 +226,13 @@
             justify-content: space-between;
         }
         .logo-site img {
-            height: 44px;
-            width: auto;
-            transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-            filter: brightness(0) invert(1);
+            height: 42px;
+            transition: height 0.3s ease;
         }
         .tf-header.scrolled .logo-site img {
-            height: 36px;
+            height: 34px;
         }
 
-        /* Desktop Nav */
         .nav-menu-main {
             display: flex;
             align-items: center;
@@ -275,10 +267,9 @@
         .nav-menu-main .item-link:hover,
         .nav-menu-main .item-link.active {
             color: var(--accent);
-            background: rgba(243, 164, 63, 0.05);
+            background: rgba(249, 115, 22, 0.05);
         }
 
-        /* Dropdowns */
         .has-child {
             position: relative;
         }
@@ -316,7 +307,7 @@
         }
         .sub-menu-item .item-link:hover {
             color: var(--accent);
-            background: rgba(243, 164, 63, 0.06);
+            background: rgba(249, 115, 22, 0.06);
         }
 
         .mobile-menu {
@@ -451,14 +442,14 @@
             position: absolute;
             inset: 0;
             background: linear-gradient(135deg, rgba(64, 42, 114, 0.15), rgba(5, 5, 5, 0.92)),
-                url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1920&h=800&fit=crop') center/cover;
+                /* url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1920&h=800&fit=crop') center/cover; */
             z-index: 0;
         }
         .hero-image::after {
             content: '';
             position: absolute;
             inset: 0;
-            background: radial-gradient(ellipse at 70% 30%, rgba(243, 164, 63, 0.04), transparent 70%);
+            background: radial-gradient(ellipse at 70% 30%, rgba(249, 115, 22, 0.04), transparent 70%);
             z-index: 1;
         }
         .content-wrap {
@@ -498,13 +489,13 @@
         }
         .about-service-item:hover .service-icon {
             transform: scale(1.1) rotate(-4deg);
-            background: rgba(243, 164, 63, 0.15);
+            background: rgba(249, 115, 22, 0.15);
         }
         .service-icon {
             width: 48px;
             height: 48px;
             min-width: 48px;
-            background: rgba(243, 164, 63, 0.08);
+            background: rgba(249, 115, 22, 0.08);
             border-radius: 14px;
             display: flex;
             align-items: center;
@@ -534,7 +525,7 @@
             backdrop-filter: blur(10px);
         }
         .review-box:hover {
-            border-color: rgba(243, 164, 63, 0.15);
+            border-color: rgba(249, 115, 22, 0.15);
             transform: translateY(-4px);
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
         }
@@ -556,7 +547,7 @@
             backdrop-filter: blur(8px);
         }
         .box-quotes:hover {
-            border-color: rgba(243, 164, 63, 0.15);
+            border-color: rgba(249, 115, 22, 0.15);
             transform: translateY(-4px);
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
         }
@@ -565,7 +556,7 @@
             height: 60px;
             border-radius: 50%;
             object-fit: cover;
-            border: 2px solid rgba(243, 164, 63, 0.15);
+            border: 2px solid rgba(249, 115, 22, 0.15);
         }
         .box-quotes .icon {
             margin-bottom: 12px;
@@ -598,9 +589,6 @@
         @media(max-width:1024px) {
             .about-grid {
                 grid-template-columns: 1fr !important;
-            }
-            .about-left-img {
-                display: none !important;
             }
             .about-right {
                 margin-top: 30px;
@@ -682,7 +670,7 @@
             backdrop-filter: blur(8px);
         }
         .features-item:hover {
-            border-color: rgba(243, 164, 63, 0.2);
+            border-color: rgba(249, 115, 22, 0.2);
             transform: translateY(-6px);
             box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
             background: rgba(24, 24, 27, 0.4);
@@ -690,7 +678,7 @@
         .f-icon {
             width: 56px;
             height: 56px;
-            background: rgba(243, 164, 63, 0.08);
+            background: rgba(249, 115, 22, 0.08);
             border-radius: 16px;
             display: flex;
             align-items: center;
@@ -701,7 +689,7 @@
             font-size: 26px;
         }
         .features-item:hover .f-icon {
-            background: rgba(243, 164, 63, 0.15);
+            background: rgba(249, 115, 22, 0.15);
             transform: scale(1.08) rotate(-4deg);
         }
         .f-title {
@@ -746,14 +734,14 @@
             backdrop-filter: blur(8px);
         }
         .stat-card:hover {
-            border-color: rgba(243, 164, 63, 0.15);
+            border-color: rgba(249, 115, 22, 0.15);
             transform: translateY(-6px);
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
         }
         .stat-number {
             font-size: 44px;
             font-weight: 800;
-            background: linear-gradient(135deg, #F3A43F, #FCD88A);
+            background: linear-gradient(135deg, #f97316, #fbbf24);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             line-height: 1;
@@ -838,7 +826,7 @@
         }
 
         /* ============================================================
-                   CONTACT FORM
+                   CONTACT FORM - MATCHING HOMEPAGE
                    ============================================================ */
         .form-card {
             background: rgba(24, 24, 27, 0.25);
@@ -882,7 +870,7 @@
         .form-group input:focus,
         .form-group textarea:focus {
             border-color: var(--accent);
-            box-shadow: 0 0 0 4px rgba(243, 164, 63, 0.06);
+            box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.06);
             outline: none;
         }
         .form-group textarea {
@@ -928,7 +916,7 @@
         .contact-info-item .icon {
             width: 44px;
             height: 44px;
-            background: rgba(243, 164, 63, 0.08);
+            background: rgba(249, 115, 22, 0.08);
             border-radius: 12px;
             display: flex;
             align-items: center;
@@ -979,7 +967,7 @@
             border-color: var(--accent);
             color: var(--accent);
             transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(243, 164, 63, 0.15);
+            box-shadow: 0 8px 30px rgba(249, 115, 22, 0.15);
         }
 
         /* ============================================================
@@ -993,13 +981,6 @@
         .reveal.visible {
             opacity: 1;
             transform: translateY(0);
-        }
-        .reveal.fadeRotateX {
-            transform: translateY(40px) rotateX(8deg);
-            transform-origin: 50% 0%;
-        }
-        .reveal.fadeRotateX.visible {
-            transform: translateY(0) rotateX(0);
         }
         .reveal.fadeLeft {
             transform: translateX(-40px);
@@ -1039,7 +1020,7 @@
         }
 
         /* ============================================================
-                   FOOTER
+                   FOOTER - MATCHING HOMEPAGE
                    ============================================================ */
         footer {
             background: var(--bg-secondary);
@@ -1048,7 +1029,7 @@
         }
         footer .footer-logo img {
             height: 46px;
-            filter: brightness(0) invert(1);
+            /* filter: brightness(0) invert(1); */
         }
         footer .social-links {
             display: flex;
@@ -1110,12 +1091,12 @@
             width: 60px;
             height: 60px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #F3A43F, #D98E2E);
-            color: #050505;
+            background: linear-gradient(135deg, #f97316, #ea580c);
+            color: #fff;
             border: none;
             font-size: 28px;
             cursor: pointer;
-            box-shadow: 0 8px 30px rgba(243, 164, 63, 0.4);
+            box-shadow: 0 8px 30px rgba(249, 115, 22, 0.4);
             transition: transform 0.3s ease;
             float: right;
         }
@@ -1197,11 +1178,10 @@
         }
 
         .chatbot-message.user {
-            background: linear-gradient(135deg, #F3A43F, #D98E2E);
-            color: #050505;
+            background: linear-gradient(135deg, #f97316, #ea580c);
+            color: #fff;
             align-self: flex-end;
             border-bottom-right-radius: 4px;
-            font-weight: 500;
         }
 
         .chatbot-message .typing-dots {
@@ -1266,15 +1246,14 @@
         }
 
         .chatbot-input button {
-            background: linear-gradient(135deg, #F3A43F, #D98E2E);
+            background: linear-gradient(135deg, #f97316, #ea580c);
             border: none;
-            color: #050505;
+            color: #fff;
             padding: 10px 20px;
             border-radius: 30px;
             cursor: pointer;
             transition: var(--transition);
             font-size: 16px;
-            font-weight: 600;
         }
 
         .chatbot-input button:hover {
@@ -1301,9 +1280,9 @@
 <body>
 
     <!-- Preloader -->
-    <div class="preloader" id="preloader">
+    <!-- <div class="preloader" id="preloader">
         <div class="preloader-ring"></div>
-    </div>
+    </div> -->
 
     <!-- Scroll Top -->
     <button id="goTop"><i class="fas fa-chevron-up"></i></button>
@@ -1315,20 +1294,13 @@
         <div class="container">
             <div class="header-inner">
                 <a href="index.html" class="logo-site">
-                    <svg viewBox="0 0 200 50" width="160" height="40">
-                        <rect x="0" y="0" width="200" height="50" rx="10" fill="#F3A43F"/>
-                        <text x="14" y="33" font-family="Inter, sans-serif" font-size="22" font-weight="800" fill="#050505">AYFRONEX</text>
-                    </svg>
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 56'%3E%3Crect width='200' height='56' rx='12' fill='%23f97316'/%3E%3Ctext x='18' y='37' font-family='Plus Jakarta Sans, sans-serif' font-size='26' fill='%23ffffff' font-weight='800'%3EAYFRONEX%3C/text%3E%3C/svg%3E" alt="AYFRONEX">
                 </a>
                 <ul class="nav-menu-main">
                     <li class="menu-item"><a href="index.html" class="item-link">Home</a></li>
                     <li class="menu-item"><a href="about.html" class="item-link active">About</a></li>
-
-                    <!-- Services Dropdown -->
                     <li class="menu-item has-child">
-                        <a href="#" class="item-link">
-                            Services <span class="arrow"><i class="fas fa-chevron-down"></i></span>
-                        </a>
+                        <a href="#" class="item-link">Services <span class="arrow"><i class="fas fa-chevron-down"></i></span></a>
                         <ul class="sub-menu">
                             <li class="sub-menu-item"><a href="services/graphic-design.html" class="item-link">Graphic Design</a></li>
                             <li class="sub-menu-item"><a href="services/web-development.html" class="item-link">Web Development</a></li>
@@ -1339,21 +1311,15 @@
                             <li class="sub-menu-item"><a href="services/portfolio.html" class="item-link">Portfolio</a></li>
                         </ul>
                     </li>
-
                     <li class="menu-item"><a href="packages.html" class="item-link">Packages</a></li>
-
-                    <!-- Brief Forms Dropdown -->
                     <li class="menu-item has-child">
-                        <a href="#" class="item-link">
-                            Brief Forms <span class="arrow"><i class="fas fa-chevron-down"></i></span>
-                        </a>
+                        <a href="#" class="item-link">Brief Forms <span class="arrow"><i class="fas fa-chevron-down"></i></span></a>
                         <ul class="sub-menu">
                             <li class="sub-menu-item"><a href="brief-forms/logo.html" class="item-link">Logo Brief</a></li>
                             <li class="sub-menu-item"><a href="brief-forms/new-website.html" class="item-link">New Website</a></li>
                             <li class="sub-menu-item"><a href="brief-forms/existing-website.html" class="item-link">Existing Website</a></li>
                         </ul>
                     </li>
-
                     <li class="menu-item"><a href="contact.html" class="item-link">Contact</a></li>
                 </ul>
                 <a href="contact.html" class="btn-accent d-lg-flex">Get a Quote</a>
@@ -1368,10 +1334,7 @@
     <div class="offcanvas-menu" id="offcanvasMenu">
         <div class="canvas_head">
             <a href="index.html" class="offcanvas-logo">
-                <svg viewBox="0 0 200 50" width="140" height="35">
-                    <rect x="0" y="0" width="200" height="50" rx="10" fill="#F3A43F"/>
-                    <text x="14" y="33" font-family="Inter, sans-serif" font-size="22" font-weight="800" fill="#050505">AYFRONEX</text>
-                </svg>
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 56'%3E%3Crect width='200' height='56' rx='12' fill='%23f97316'/%3E%3Ctext x='18' y='37' font-family='Plus Jakarta Sans, sans-serif' font-size='26' fill='%23ffffff' font-weight='800'%3EAYFRONEX%3C/text%3E%3C/svg%3E" alt="AYFRONEX">
             </a>
             <button class="close-btn" id="closeMenuBtn"><i class="fas fa-times"></i></button>
         </div>
@@ -1416,9 +1379,6 @@
         <div class="content-wrap text-center">
             <div class="text-display-2 reveal visible">
                 <span class="text-gradient-gold">About Us</span>
-                <div class="flex items-center justify-center gap-4 flex-wrap mt-2">
-                    <span class="text-gradient-gold">Our Story</span>
-                </div>
             </div>
             <p class="text-secondary" style="font-size:18px; max-width:600px; margin:16px auto 0; line-height:1.7;">
                 Adding value to your business, making it worthy of global recognition.
@@ -1469,7 +1429,7 @@
                         </div>
                     </div>
 
-                    <a href="#contact" class="btn-accent reveal" style="margin-top:34px;transition-delay:.3s;">
+                    <a href="services/portfolio.html" class="btn-accent reveal" style="margin-top:34px;transition-delay:.3s;">
                         READ MORE <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
@@ -1481,16 +1441,16 @@
                         <div style="display:flex;justify-content:space-between;align-items:end;flex-wrap:wrap;gap:16px;margin-top:16px;">
                             <div>
                                 <div style="display:flex;align-items:center;gap:4px;margin-bottom:6px;">
-                                    <i class="fas fa-star" style="color:#22c55e;"></i>
-                                    <i class="fas fa-star" style="color:#22c55e;"></i>
-                                    <i class="fas fa-star" style="color:#22c55e;"></i>
-                                    <i class="fas fa-star" style="color:#22c55e;"></i>
-                                    <i class="fas fa-star" style="color:#22c55e;"></i>
+                                    <i class="fas fa-star" style="color:#f97316;"></i>
+                                    <i class="fas fa-star" style="color:#f97316;"></i>
+                                    <i class="fas fa-star" style="color:#f97316;"></i>
+                                    <i class="fas fa-star" style="color:#f97316;"></i>
+                                    <i class="fas fa-star" style="color:#f97316;"></i>
                                     <span style="color:var(--text-secondary);font-size:14px;font-weight:600;margin-left:6px;">Trustpilot</span>
                                 </div>
                             </div>
                             <div style="text-align:right;">
-                                <span style="font-size:38px;font-weight:700;color:var(--accent);">5K</span><span style="color:var(--accent);font-size:26px;">+</span>
+                                <span style="font-size:38px;font-weight:700;color:#f97316;">5K</span><span style="color:#f97316;font-size:26px;">+</span>
                                 <div style="font-size:13px;color:var(--text-muted);">Trusted Clients</div>
                             </div>
                         </div>
@@ -1504,46 +1464,11 @@
                             <div class="icon"><i class="fas fa-quote-left" style="font-size:24px;color:var(--text-muted);"></i></div>
                             <div class="desc">Great design feels effortless — because the thinking happens behind the scenes.</div>
                             <div class="cite">
-                                <div class="name">Samuel Fisher</div>
+                                <div class="name">Edward</div>
                                 <div class="line"></div>
                                 <div class="sub">AYFRONEX Design Lead</div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================
-    PARTNERS
-    ============================================================ -->
-    <section class="section-partner">
-        <div class="container">
-            <div class="partner-wrap">
-                <p style="font-weight:600;font-size:15px;line-height:1.5;">
-                    Trusted by 100+<br>top-tier brands
-                </p>
-                <div class="infiniteSlide_tech_main">
-                    <div class="infiniteSlide_partner">
-                        <span>TechVision</span>
-                        <span>CloudNine</span>
-                        <span>PixelCraft</span>
-                        <span>BrandForge</span>
-                        <span>NovaStar</span>
-                        <span>Elevate Co</span>
-                        <span>SwiftLabs</span>
-                        <span>UrbanEdge</span>
-                        <span>ZenithPro</span>
-                        <span>AuroraDigital</span>
-                        <span>TechVision</span>
-                        <span>CloudNine</span>
-                        <span>PixelCraft</span>
-                        <span>BrandForge</span>
-                        <span>NovaStar</span>
-                        <span>Elevate Co</span>
-                        <span>SwiftLabs</span>
-                        <span>UrbanEdge</span>
                     </div>
                 </div>
             </div>
@@ -1624,7 +1549,7 @@
     </section>
 
     <!-- ============================================================
-    CONTACT SECTION
+    CONTACT SECTION - MATCHING HOMEPAGE
     ============================================================ -->
     <section id="contact" style="padding:60px 0 80px;background:var(--bg-secondary);">
         <div class="container">
@@ -1662,7 +1587,6 @@
                             <strong>❌ Error!</strong> <span id="errorText">Something went wrong. Please try again.</span>
                         </div>
 
-                        <!-- EmailJS Form -->
                         <form id="contactForm">
                             <div class="row" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
                                 <div class="form-group">
@@ -1697,64 +1621,33 @@
     ============================================================ -->
     <footer>
         <div class="container">
-            <div class="footer-grid" style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px;">
-                <div>
-                    <svg viewBox="0 0 200 50" width="150" height="38" style="margin-bottom:16px;">
-                        <rect x="0" y="0" width="200" height="50" rx="10" fill="#F3A43F"/>
-                        <text x="14" y="33" font-family="Inter, sans-serif" font-size="22" font-weight="800" fill="#050505">AYFRONEX</text>
-                    </svg>
-                    <p style="color:var(--text-muted);font-size:14px;line-height:1.7;max-width:280px;margin-bottom:20px;">Professional logo design delivered fast. Your brand deserves the best.</p>
-                    <div style="display:flex;gap:10px;">
-                        <a href="#" style="width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.02);border:1px solid var(--border-color);display:flex;align-items:center;justify-content:center;color:var(--text-muted);transition:all .3s;"><i class="fab fa-twitter"></i></a>
-                        <a href="#" style="width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.02);border:1px solid var(--border-color);display:flex;align-items:center;justify-content:center;color:var(--text-muted);transition:all .3s;"><i class="fab fa-instagram"></i></a>
-                        <a href="#" style="width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.02);border:1px solid var(--border-color);display:flex;align-items:center;justify-content:center;color:var(--text-muted);transition:all .3s;"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" style="width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.02);border:1px solid var(--border-color);display:flex;align-items:center;justify-content:center;color:var(--text-muted);transition:all .3s;"><i class="fab fa-dribbble"></i></a>
-                    </div>
-                </div>
-                <div>
-                    <h4 style="color:var(--text-primary);font-weight:700;font-size:14px;margin-bottom:16px;">Pages</h4>
-                    <ul style="display:flex;flex-direction:column;gap:10px;">
-                        <li><a href="index.html" style="color:var(--text-muted);font-size:14px;transition:color .3s;">Home</a></li>
-                        <li><a href="about.html" style="color:var(--accent);font-size:14px;">About</a></li>
-                        <li><a href="services/portfolio.html" style="color:var(--text-muted);font-size:14px;transition:color .3s;">Portfolio</a></li>
-                        <li><a href="packages.html" style="color:var(--text-muted);font-size:14px;transition:color .3s;">Pricing</a></li>
-                        <li><a href="contact.html" style="color:var(--text-muted);font-size:14px;transition:color .3s;">Contact</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 style="color:var(--text-primary);font-weight:700;font-size:14px;margin-bottom:16px;">Services</h4>
-                    <ul style="display:flex;flex-direction:column;gap:10px;">
-                        <li><a href="services/graphic-design.html" style="color:var(--text-muted);font-size:14px;transition:color .3s;">Logo Design</a></li>
-                        <li><a href="services/web-design.html" style="color:var(--text-muted);font-size:14px;transition:color .3s;">Web Design</a></li>
-                        <li><a href="services/web-development.html" style="color:var(--text-muted);font-size:14px;transition:color .3s;">Web Development</a></li>
-                        <li><a href="services/video-editing.html" style="color:var(--text-muted);font-size:14px;transition:color .3s;">Video Editing</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 style="color:var(--text-primary);font-weight:700;font-size:14px;margin-bottom:16px;">Contact</h4>
-                    <ul style="display:flex;flex-direction:column;gap:12px;">
-                        <li style="display:flex;align-items:center;gap:10px;">
-                            <i class="fas fa-envelope" style="color:var(--accent);font-size:14px;"></i>
-                            <span style="color:var(--text-muted);font-size:14px;">adward.ayfronex@gmail.com</span>
-                        </li>
-                        <li style="display:flex;align-items:center;gap:10px;">
-                            <i class="fas fa-phone" style="color:var(--accent);font-size:14px;"></i>
-                            <span style="color:var(--text-muted);font-size:14px;">+92323-3703689</span>
-                        </li>
-                        <li style="display:flex;align-items:center;gap:10px;">
-                            <i class="fas fa-clock" style="color:var(--accent);font-size:14px;"></i>
-                            <span style="color:var(--text-muted);font-size:14px;">24/7 Available</span>
-                        </li>
-                    </ul>
+            <!-- Top Section -->
+            <div class="text-center">
+                <a href="index.html" class="footer-logo">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 56'%3E%3Crect width='200' height='56' rx='12' fill='%23f97316'/%3E%3Ctext x='18' y='37' font-family='Plus Jakarta Sans, sans-serif' font-size='26' fill='%23ffffff' font-weight='800'%3EAYFRONEX%3C/text%3E%3C/svg%3E" alt="AYFRONEX">
+                </a>
+                <h5 style="color:#fff; font-weight:600; margin-top:16px;">Get connected with Ayfornex on social</h5>
+                <p style="color:#7878a0;">Don't miss our new updates!</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i> Twitter / X</a>
+                    <a href="#"><i class="fab fa-facebook"></i> Facebook</a>
+                    <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+                    <a href="#"><i class="fab fa-linkedin"></i> Linkedin</a>
                 </div>
             </div>
-            <div class="divider" style="margin-bottom:24px;"></div>
-            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
-                <p style="color:#3f3f46;font-size:13px;">© 2025 AYFRONEX. All rights reserved.</p>
-                <div style="display:flex;gap:24px;">
-                    <a href="#" style="color:#3f3f46;font-size:13px;transition:color .3s;">Privacy Policy</a>
-                    <a href="#" style="color:#3f3f46;font-size:13px;transition:color .3s;">Terms of Service</a>
-                </div>
+
+            <!-- Bottom Section -->
+            <div class="footer-bottom d-flex flex-wrap justify-content-between align-items-center pt-4 mt-4 border-top" style="border-color:var(--border-color)!important;">
+                <ul class="footer-links d-flex gap-4">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services/portfolio.html">Services</a></li>
+                    <li><a href="packages.html">Packages</a></li>
+                    <li><a href="brief-forms/">Brief Form</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <p class="copy mb-0">© 2026 Ayfornex. All Rights Reserved.</p>
+                <a href="#" style="color:var(--text-secondary);"><i class="fas fa-arrow-up"></i> Back to top</a>
             </div>
         </div>
     </footer>

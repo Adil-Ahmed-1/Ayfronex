@@ -130,7 +130,7 @@
             letter-spacing: -0.02em;
         }
         .heading-title .highlight {
-            background: linear-gradient(135deg, #f97316, #fbbf24);
+            background: linear-gradient(135deg, #f97316, #ea580c);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -1630,9 +1630,9 @@
     ============================================================ -->
     <section class="section-hero" id="home">
         <div class="hero-slider">
-            <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1600&h=900&fit=crop');"></div>
-            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1600&h=900&fit=crop');"></div>
-            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1600&h=900&fit=crop');"></div>
+            <div class="hero-slide active" style="background-image: url('assets/img/web.jpg?w=1600&h=900&fit=crop');"></div>
+            <div class="hero-slide" style="background-image: url('assets/img/Video Editing.jpg?w=1600&h=900&fit=crop');"></div>
+            <div class="hero-slide" style="background-image: url('assets/img/SEO Services.jpg?w=1600&h=900&fit=crop');"></div>
         </div>
 
         <div class="container hero-content-wrap">
@@ -1644,8 +1644,8 @@
                 </h1>
                 <p class="text reveal visible">At Ayfornex, we do more than just design. From complete brand identities to website design and social media creatives, we create powerful digital experiences that stand out.</p>
                 <div class="bot-btns reveal visible">
-                    <a href="#services" class="btn-accent">Explore Services</a>
-                    <a href="#pricing" class="btn-outline">View Pricing Plans</a>
+                    <a href="./services/portfolio.html" class="btn-accent">Explore Services</a>
+                    <a href="packages.html" class="btn-outline">View Pricing Plans</a>
                 </div>
             </div>
         </div>
@@ -1698,8 +1698,8 @@
                     <div class="testimonial-box reveal mb-4">
                         <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                         <p class="quote">"Great design feels effortless — because the thinking happens behind the scenes. Trusted by 5K+ clients."</p>
-                        <div class="name">Samuel Fisher</div>
-                        <div class="role">Design Lead</div>
+                        <div class="name">Edward</div>
+                        <div class="role">AYFRONEX Design Lead</div>
                     </div>
                     <div class="testimonial-box reveal">
                         <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap;">
@@ -1799,8 +1799,9 @@
     <section class="section-projects" id="projects">
         <div class="container">
             <div class="text-center mb-5">
-                <span class="badge-section reveal">Projects</span>
+                <span class="badge-section reveal">Our Portfolio</span>
                 <h2 class="heading-title reveal">Our Recently <span class="highlight">Completed Projects</span></h2>
+                <p class="text-secondary" style="font-size:16px; max-width:600px; margin:12px auto 0;">Explore our diverse range of creative work across logo design, web development, video animation, and more.</p>
             </div>
 
             <div class="tab-buttons reveal">
@@ -1808,60 +1809,210 @@
                 <button class="tab-btn" data-tab="logo">Logo Design</button>
                 <button class="tab-btn" data-tab="video">Video Animation</button>
                 <button class="tab-btn" data-tab="illustration">Illustration</button>
+                <button class="tab-btn" data-tab="wordpress">WordPress</button>
+                <button class="tab-btn" data-tab="custom">Custom Website</button>
             </div>
 
+            <!-- Website Design -->
             <div class="tab-content active" id="tab-website">
                 <div class="project-grid">
-                    <div class="project-card" data-title="Tech Startup" data-desc="Modern website for a tech startup with seamless user experience." data-link="#" data-image="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop">
-                        <div class="card-image-wrap"><div class="card-image" style="background-image:url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=450&fit=crop');"></div></div>
-                        <div class="card-overlay"><div class="project-title">Tech Startup</div><button class="view-btn" onclick="event.stopPropagation(); openProjectModal(this.closest('.project-card'))"><i class="fas fa-eye"></i> View Project</button></div>
-                    </div>
-                    <div class="project-card" data-title="E-Commerce" data-desc="Full-featured e-commerce platform with smooth checkout process." data-link="#" data-image="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop">
-                        <div class="card-image-wrap"><div class="card-image" style="background-image:url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=450&fit=crop');"></div></div>
-                        <div class="card-overlay"><div class="project-title">E-Commerce</div><button class="view-btn" onclick="event.stopPropagation(); openProjectModal(this.closest('.project-card'))"><i class="fas fa-eye"></i> View Project</button></div>
-                    </div>
-                    <div class="project-card" data-title="Portfolio" data-desc="Creative portfolio website for a photographer with stunning gallery." data-link="#" data-image="https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800&h=600&fit=crop">
-                        <div class="card-image-wrap"><div class="card-image" style="background-image:url('https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=600&h=450&fit=crop');"></div></div>
-                        <div class="card-overlay"><div class="project-title">Portfolio</div><button class="view-btn" onclick="event.stopPropagation(); openProjectModal(this.closest('.project-card'))"><i class="fas fa-eye"></i> View Project</button></div>
-                    </div>
+                <div class="project-card" onclick="openLightbox(this)">
+                    <div class="card-image-wrap"><div class="card-image" style="background-image:url('../assets/img/threeinone-platform-mystartupcrew-public-2026-08-15-03_53_25 copy.png?w=600&h=450&fit=crop');"></div></div>
+                    <div class="card-overlay"><div class="view-icon"><i class="fas fa-expand"></i></div><div class="project-title"></div></div>
+                </div>
+                <div class="project-card" onclick="openLightbox(this)">
+                    <div class="card-image-wrap"><div class="card-image" style="background-image:url('../assets/img/Fastfood.png?w=600&h=450&fit=crop');"></div></div>
+                    <div class="card-overlay"><div class="view-icon"><i class="fas fa-expand"></i></div><div class="project-title"></div></div>
+                </div>
+                <div class="project-card" onclick="openLightbox(this)">
+                    <div class="card-image-wrap"><div class="card-image" style="background-image:url('../assets/img/medixen.png?w=600&h=450&fit=crop');"></div></div>
+                    <div class="card-overlay"><div class="view-icon"><i class="fas fa-expand"></i></div><div class="project-title"></div></div>
+                </div>
+                <div class="project-card" onclick="openLightbox(this)">
+                    <div class="card-image-wrap"><div class="card-image" style="background-image:url('../assets/img/dashbaord.png?w=600&h=450&fit=crop');"></div></div>
+                    <div class="card-overlay"><div class="view-icon"><i class="fas fa-expand"></i></div><div class="project-title"></div></div>
+                </div>
+                <div class="project-card" onclick="openLightbox(this)">
+                    <div class="card-image-wrap"><div class="card-image" style="background-image:url('../assets/img/catalyx-technoligies-inc-vercel-app-2026-08-15-03_49_31.png?w=600&h=450&fit=crop');"></div></div>
+                    <div class="card-overlay"><div class="view-icon"><i class="fas fa-expand"></i></div><div class="project-title"></div></div>
+                </div>
+                <div class="project-card" onclick="openLightbox(this)">
+                    <div class="card-image-wrap"><div class="card-image" style="background-image:url('../assets/img/BIW Safety.jpg?w=600&h=450&fit=crop');"></div></div>
+                    <div class="card-overlay"><div class="view-icon"><i class="fas fa-expand"></i></div><div class="project-title"></div></div>
                 </div>
             </div>
+            </div>
 
+            <!-- Logo Design -->
             <div class="tab-content" id="tab-logo">
                 <div class="project-grid">
-                    <div class="project-card" data-title="Modern Logo" data-desc="Sleek modern logo design for a tech company." data-link="#" data-image="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=800&h=600&fit=crop">
-                        <div class="card-image-wrap"><div class="card-image" style="background-image:url('https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=600&h=450&fit=crop');"></div></div>
-                        <div class="card-overlay"><div class="project-title">Modern Logo</div><button class="view-btn" onclick="event.stopPropagation(); openProjectModal(this.closest('.project-card'))"><i class="fas fa-eye"></i> View Project</button></div>
+                    <div class="project-card" onclick="openLightbox(this)">
+                        <div class="card-image" style="background-image:url('../assets/img/562a8d68-7d79-4e37-a833-537bea9c7b5e.jpg?w=600&h=600&fit=crop');"></div>
+                        <div class="card-overlay">
+                            <div class="view-icon"><i class="fas fa-expand"></i></div>
+                            <!-- <div class="project-title">Mascot Logo</div> -->
+                        </div>
                     </div>
-                    <div class="project-card" data-title="Vintage Logo" data-desc="Classic vintage logo with retro feel." data-link="#" data-image="https://images.unsplash.com/photo-1551817958-0d6ffb1b3b8a?w=800&h=600&fit=crop">
-                        <div class="card-image-wrap"><div class="card-image" style="background-image:url('https://images.unsplash.com/photo-1551817958-0d6ffb1b3b8a?w=600&h=450&fit=crop');"></div></div>
-                        <div class="card-overlay"><div class="project-title">Vintage Logo</div><button class="view-btn" onclick="event.stopPropagation(); openProjectModal(this.closest('.project-card'))"><i class="fas fa-eye"></i> View Project</button></div>
+                    <div class="project-card" onclick="openLightbox(this)">
+                        <div class="card-image" style="background-image:url('../assets/img/6524101.jpg?w=600&h=600&fit=crop');"></div>
+                        <div class="card-overlay">
+                            <div class="view-icon"><i class="fas fa-expand"></i></div>
+                            <!-- <div class="project-title">Vintage Tattoo</div> -->
+                        </div>
+                    </div>
+                    <div class="project-card" onclick="openLightbox(this)">
+                        <div class="card-image" style="background-image:url('../assets/img/10090485.jpg?w=600&h=600&fit=crop');"></div>
+                        <div class="card-overlay">
+                            <div class="view-icon"><i class="fas fa-expand"></i></div>
+                            <!-- <div class="project-title">Emblem Logo</div> -->
+                        </div>
+                    </div>
+                    <div class="project-card" onclick="openLightbox(this)">
+                        <div class="card-image" style="background-image:url('../assets/img/OKE9TT0.jpg?w=600&h=600&fit=crop');"></div>
+                        <div class="card-overlay">
+                            <div class="view-icon"><i class="fas fa-expand"></i></div>
+                            <!-- <div class="project-title">Tech Logo</div> -->
+                        </div>
+                    </div>
+                    <div class="project-card" onclick="openLightbox(this)">
+                        <div class="card-image" style="background-image:url('../assets/img/Brand Identity.jpg?w=600&h=600&fit=crop');"></div>
+                        <div class="card-overlay">
+                            <div class="view-icon"><i class="fas fa-expand"></i></div>
+                            <!-- <div class="project-title">Brand Identity</div> -->
+                        </div>
+                    </div>
+                    <div class="project-card" onclick="openLightbox(this)">
+                        <div class="card-image" style="background-image:url('../assets/img/Modern Logo.jpg?w=600&h=600&fit=crop');"></div>
+                        <div class="card-overlay">
+                            <div class="view-icon"><i class="fas fa-expand"></i></div>
+                            <!-- <div class="project-title">Modern Logo</div> -->
+                        </div>
                     </div>
                 </div>
             </div>
 
+            <!-- Video Animation -->
             <div class="tab-content" id="tab-video">
                 <div class="project-grid">
-                    <div class="project-card video-card" data-title="Promo Video" data-desc="Professional promotional video with stunning effects." data-link="#" data-image="https://images.unsplash.com/photo-1536240478700-b869070f9279?w=800&h=600&fit=crop">
-                        <div class="card-image-wrap"><div class="card-image" style="background-image:url('https://images.unsplash.com/photo-1536240478700-b869070f9279?w=600&h=450&fit=crop');"><div class="play-overlay"><i class="fas fa-play-circle"></i></div></div></div>
+                <div class="project-card" onclick="openVideo(this, 0)">
+                    <div class="card-image" style="background-image:url('../assets/img/Video Ani.jpg?w=600&h=450&fit=crop');"></div>
+                    <div class="play-overlay"><i class="fas fa-play-circle"></i></div>
+                </div>
+                <div class="project-card" onclick="openVideo(this, 1)">
+                    <div class="card-image" style="background-image:url('../assets/img/video animation1.jpg?w=600&h=450&fit=crop');"></div>
+                    <div class="play-overlay"><i class="fas fa-play-circle"></i></div>
+                </div>
+                <div class="project-card" onclick="openVideo(this, 2)">
+                    <div class="card-image" style="background-image:url('../assets/img/Video Editing.jpg?w=600&h=450&fit=crop');"></div>
+                    <div class="play-overlay"><i class="fas fa-play-circle"></i></div>
+                </div>
+                <div class="project-card" onclick="openVideo(this, 3)">
+                    <div class="card-image" style="background-image:url('../assets/img/view-3d-male-videographer.jpg?w=600&h=450&fit=crop');"></div>
+                    <div class="play-overlay"><i class="fas fa-play-circle"></i></div>
+                </div>
+                <!-- <div class="project-card" onclick="openVideo(this, 4)">
+                    <div class="card-image" style="background-image:url('https://images.unsplash.com/photo-1517299321609-52687d1bc55a?w=600&h=450&fit=crop');"></div>
+                    <div class="play-overlay"><i class="fas fa-play-circle"></i></div>
+                </div> -->
+                <!-- <div class="project-card" onclick="openVideo(this, 5)">
+                    <div class="card-image" style="background-image:url('https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=600&h=450&fit=crop');"></div>
+                    <div class="play-overlay"><i class="fas fa-play-circle"></i></div>
+                </div> -->
+            </div>
+            </div>
+
+            <!-- Illustration -->
+            <div class="tab-content" id="tab-illustration">
+                <div class="project-grid">
+                    <div class="project-card" onclick="openLightbox(this)">
+                        <div class="card-image" style="background-image:url('../assets/img/Mountain Illustration.jpg?w=600&h=600&fit=crop');"></div>
+                        <div class="card-overlay">
+                            <div class="view-icon"><i class="fas fa-expand"></i></div>
+                            <!-- <div class="project-title">Mountain Illustration</div> -->
+                        </div>
                     </div>
-                    <div class="project-card video-card" data-title="Animation" data-desc="Creative 2D animation for brand storytelling." data-link="#" data-image="https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=800&h=600&fit=crop">
-                        <div class="card-image-wrap"><div class="card-image" style="background-image:url('https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=600&h=450&fit=crop');"><div class="play-overlay"><i class="fas fa-play-circle"></i></div></div></div>
+                    <div class="project-card" onclick="openLightbox(this)">
+                        <div class="card-image" style="background-image:url('../assets/img/Lo-Fi Concept.jpg?w=600&h=600&fit=crop');"></div>
+                        <div class="card-overlay">
+                            <div class="view-icon"><i class="fas fa-expand"></i></div>
+                            <!-- <div class="project-title">Lo-Fi Concept</div> -->
+                        </div>
+                    </div>
+                    <div class="project-card" onclick="openLightbox(this)">
+                        <div class="card-image" style="background-image:url('../assets/img/Creative Vector.jpg?w=600&h=600&fit=crop');"></div>
+                        <div class="card-overlay">
+                            <div class="view-icon"><i class="fas fa-expand"></i></div>
+                            <!-- <div class="project-title">Creative Vector</div> -->
+                        </div>
+                    </div>
+                    <div class="project-card" onclick="openLightbox(this)">
+                        <div class="card-image" style="background-image:url('../assets/img/Retro Poster.jpg?w=600&h=600&fit=crop');"></div>
+                        <div class="card-overlay">
+                            <div class="view-icon"><i class="fas fa-expand"></i></div>
+                            <!-- <div class="project-title">Retro Poster</div> -->
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="tab-content" id="tab-illustration">
+            <!-- WordPress -->
+            <div class="tab-content" id="tab-wordpress">
                 <div class="project-grid">
-                    <div class="project-card" data-title="Digital Art" data-desc="Stunning digital art with vibrant colors and creative design." data-link="#" data-image="https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=800&h=600&fit=crop">
-                        <div class="card-image-wrap"><div class="card-image" style="background-image:url('https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=600&h=450&fit=crop');"></div></div>
-                        <div class="card-overlay"><div class="project-title">Digital Art</div><button class="view-btn" onclick="event.stopPropagation(); openProjectModal(this.closest('.project-card'))"><i class="fas fa-eye"></i> View Project</button></div>
-                    </div>
-                    <div class="project-card" data-title="Brand Illustration" data-desc="Custom brand illustration that tells a unique story." data-link="#" data-image="https://images.unsplash.com/photo-1579783901586-d88db74b4fe4?w=800&h=600&fit=crop">
-                        <div class="card-image-wrap"><div class="card-image" style="background-image:url('https://images.unsplash.com/photo-1579783901586-d88db74b4fe4?w=600&h=450&fit=crop');"></div></div>
-                        <div class="card-overlay"><div class="project-title">Brand Illustration</div><button class="view-btn" onclick="event.stopPropagation(); openProjectModal(this.closest('.project-card'))"><i class="fas fa-eye"></i> View Project</button></div>
-                    </div>
+                <div class="project-card" onclick="openLightbox(this)">
+                    <div class="card-image-wrap"><div class="card-image" style="background-image:url('../assets/img/threeinone-platform-mystartupcrew-public-2026-08-15-03_53_25 copy.png?w=600&h=450&fit=crop');"></div></div>
+                    <div class="card-overlay"><div class="view-icon"><i class="fas fa-expand"></i></div><div class="project-title"></div></div>
                 </div>
+                <div class="project-card" onclick="openLightbox(this)">
+                    <div class="card-image-wrap"><div class="card-image" style="background-image:url('../assets/img/Fastfood.png?w=600&h=450&fit=crop');"></div></div>
+                    <div class="card-overlay"><div class="view-icon"><i class="fas fa-expand"></i></div><div class="project-title"></div></div>
+                </div>
+                <div class="project-card" onclick="openLightbox(this)">
+                    <div class="card-image-wrap"><div class="card-image" style="background-image:url('../assets/img/medixen.png?w=600&h=450&fit=crop');"></div></div>
+                    <div class="card-overlay"><div class="view-icon"><i class="fas fa-expand"></i></div><div class="project-title"></div></div>
+                </div>
+                <div class="project-card" onclick="openLightbox(this)">
+                    <div class="card-image-wrap"><div class="card-image" style="background-image:url('../assets/img/dashbaord.png?w=600&h=450&fit=crop');"></div></div>
+                    <div class="card-overlay"><div class="view-icon"><i class="fas fa-expand"></i></div><div class="project-title"></div></div>
+                </div>
+                <div class="project-card" onclick="openLightbox(this)">
+                    <div class="card-image-wrap"><div class="card-image" style="background-image:url('../assets/img/catalyx-technoligies-inc-vercel-app-2026-08-15-03_49_31.png?w=600&h=450&fit=crop');"></div></div>
+                    <div class="card-overlay"><div class="view-icon"><i class="fas fa-expand"></i></div><div class="project-title"></div></div>
+                </div>
+                <div class="project-card" onclick="openLightbox(this)">
+                    <div class="card-image-wrap"><div class="card-image" style="background-image:url('../assets/img/BIW Safety.jpg?w=600&h=450&fit=crop');"></div></div>
+                    <div class="card-overlay"><div class="view-icon"><i class="fas fa-expand"></i></div><div class="project-title"></div></div>
+                </div>
+            </div>
+            </div>
+
+            <!-- Custom Website -->
+            <div class="tab-content" id="tab-custom">
+                <div class="project-grid">
+                <div class="project-card" onclick="openLightbox(this)">
+                    <div class="card-image-wrap"><div class="card-image" style="background-image:url('../assets/img/threeinone-platform-mystartupcrew-public-2026-08-15-03_53_25 copy.png?w=600&h=450&fit=crop');"></div></div>
+                    <div class="card-overlay"><div class="view-icon"><i class="fas fa-expand"></i></div><div class="project-title"></div></div>
+                </div>
+                <div class="project-card" onclick="openLightbox(this)">
+                    <div class="card-image-wrap"><div class="card-image" style="background-image:url('../assets/img/Fastfood.png?w=600&h=450&fit=crop');"></div></div>
+                    <div class="card-overlay"><div class="view-icon"><i class="fas fa-expand"></i></div><div class="project-title"></div></div>
+                </div>
+                <div class="project-card" onclick="openLightbox(this)">
+                    <div class="card-image-wrap"><div class="card-image" style="background-image:url('../assets/img/medixen.png?w=600&h=450&fit=crop');"></div></div>
+                    <div class="card-overlay"><div class="view-icon"><i class="fas fa-expand"></i></div><div class="project-title"></div></div>
+                </div>
+                <div class="project-card" onclick="openLightbox(this)">
+                    <div class="card-image-wrap"><div class="card-image" style="background-image:url('../assets/img/dashbaord.png?w=600&h=450&fit=crop');"></div></div>
+                    <div class="card-overlay"><div class="view-icon"><i class="fas fa-expand"></i></div><div class="project-title"></div></div>
+                </div>
+                <div class="project-card" onclick="openLightbox(this)">
+                    <div class="card-image-wrap"><div class="card-image" style="background-image:url('../assets/img/catalyx-technoligies-inc-vercel-app-2026-08-15-03_49_31.png?w=600&h=450&fit=crop');"></div></div>
+                    <div class="card-overlay"><div class="view-icon"><i class="fas fa-expand"></i></div><div class="project-title"></div></div>
+                </div>
+                <div class="project-card" onclick="openLightbox(this)">
+                    <div class="card-image-wrap"><div class="card-image" style="background-image:url('../assets/img/BIW Safety.jpg?w=600&h=450&fit=crop');"></div></div>
+                    <div class="card-overlay"><div class="view-icon"><i class="fas fa-expand"></i></div><div class="project-title"></div></div>
+                </div>
+            </div>
             </div>
         </div>
     </section>
@@ -1894,7 +2045,7 @@
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
                             <div class="feature-slide">
-                                <div class="feature-image"><img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=300&fit=crop" alt="Graphic Design"></div>
+                                <div class="feature-image"><img src="assets/img/graphic design.jpg?w=400&h=300&fit=crop" alt="Graphic Design"></div>
                                 <div class="feature-body">
                                     <div class="icon"><i class="fas fa-paint-brush"></i></div>
                                     <h6>Graphic Design</h6>
@@ -1905,7 +2056,7 @@
                         </div>
                         <div class="swiper-slide">
                             <div class="feature-slide">
-                                <div class="feature-image"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop" alt="Web Development"></div>
+                                <div class="feature-image"><img src="assets/img/web.jpg?w=400&h=300&fit=crop" alt="Web Development"></div>
                                 <div class="feature-body">
                                     <div class="icon"><i class="fas fa-code"></i></div>
                                     <h6>Web Development</h6>
@@ -1916,7 +2067,7 @@
                         </div>
                         <div class="swiper-slide">
                             <div class="feature-slide">
-                                <div class="feature-image"><img src="https://images.unsplash.com/photo-1536240478700-b869070f9279?w=400&h=300&fit=crop" alt="Video Editing"></div>
+                                <div class="feature-image"><img src="assets/img/video edit.jpg?w=400&h=300&fit=crop" alt="Video Editing"></div>
                                 <div class="feature-body">
                                     <div class="icon"><i class="fas fa-video"></i></div>
                                     <h6>Video Editing</h6>
@@ -1927,7 +2078,7 @@
                         </div>
                         <div class="swiper-slide">
                             <div class="feature-slide">
-                                <div class="feature-image"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop" alt="SEO Services"></div>
+                                <div class="feature-image"><img src="assets/img/SEO Services.jpg?w=400&h=300&fit=crop" alt="SEO Services"></div>
                                 <div class="feature-body">
                                     <div class="icon"><i class="fas fa-chart-line"></i></div>
                                     <h6>SEO Services</h6>
@@ -1938,7 +2089,7 @@
                         </div>
                         <div class="swiper-slide">
                             <div class="feature-slide">
-                                <div class="feature-image"><img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=300&fit=crop" alt="Responsive Design"></div>
+                                <div class="feature-image"><img src="assets/img/Responsive Design.jpg?w=400&h=300&fit=crop" alt="Responsive Design"></div>
                                 <div class="feature-body">
                                     <div class="icon"><i class="fas fa-mobile-alt"></i></div>
                                     <h6>Responsive Design</h6>
@@ -1949,7 +2100,7 @@
                         </div>
                         <div class="swiper-slide">
                             <div class="feature-slide">
-                                <div class="feature-image"><img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=300&fit=crop" alt="Fast Delivery"></div>
+                                <div class="feature-image"><img src="assets/img/Fast Delivery.jpg?w=400&h=300&fit=crop" alt="Fast Delivery"></div>
                                 <div class="feature-body">
                                     <div class="icon"><i class="fas fa-rocket"></i></div>
                                     <h6>Fast Delivery</h6>
@@ -2085,7 +2236,8 @@
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="#services">Services</a></li>
-                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#pricing">Packages</a></li>
+                    <li><a href="#pricing">Brief form</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
                 <p class="copy mb-0">© 2026 Ayfornex. All Rights Reserved.</p>
@@ -2186,10 +2338,10 @@
         // SERVICES ACCORDION
         // ============================================================
         const serviceImages = [
-            'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=500&fit=crop',
-            'https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=800&h=500&fit=crop',
-            'https://images.unsplash.com/photo-1536240478700-b869070f9279?w=800&h=500&fit=crop',
-            'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=500&fit=crop'
+            'assets/img/graphic.jpg?w=800&h=500&fit=crop',
+            'assets/img/web.jpg?w=800&h=500&fit=crop',
+            'assets/img/video edit.jpg?w=800&h=500&fit=crop',
+            'assets/img/digital-marketing.jpg?w=800&h=500&fit=crop'
         ];
 
         function toggleService(el) {
