@@ -802,9 +802,258 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* ============================================================
+                   SCROLL TOP
+                   ============================================================ */
+        #goTop {
+            position: fixed;
+            bottom: 30px;
+            right: 100px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(24, 24, 27, 0.9);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+            z-index: 90;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.4s;
+            color: var(--text-secondary);
+        }
+
+        #goTop.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #goTop:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(249, 115, 22, 0.15);
+        }
+
+        @media (max-width: 480px) {
+            #goTop {
+                right: 80px;
+                width: 42px;
+                height: 42px;
+                font-size: 14px;
+            }
+        }
+
+        /* ============================================================
+                   CHATBOT STYLES
+                   ============================================================ */
+        .chatbot-container {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 9999;
+            width: 380px;
+            max-width: 90vw;
+        }
+
+        .chatbot-toggle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #f97316, #ea580c);
+            color: #fff;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            box-shadow: 0 8px 30px rgba(249, 115, 22, 0.4);
+            transition: transform 0.3s ease;
+            float: right;
+        }
+
+        .chatbot-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .chatbot-window {
+            display: none;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            height: 500px;
+            max-height: 80vh;
+            margin-bottom: 16px;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .chatbot-window.open {
+            display: flex;
+        }
+
+        .chatbot-header {
+            padding: 16px 20px;
+            background: var(--bg-card);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .chatbot-header h5 {
+            color: #fff;
+            margin: 0;
+            font-size: 16px;
+        }
+        .chatbot-header h5 i {
+            color: var(--accent);
+        }
+
+        .chatbot-header .close-chat {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .chatbot-header .close-chat:hover {
+            color: var(--accent);
+        }
+
+        .chatbot-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 16px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .chatbot-message {
+            max-width: 85%;
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .chatbot-message.bot {
+            background: var(--bg-card);
+            color: var(--text-primary);
+            align-self: flex-start;
+            border: 1px solid var(--border-color);
+            border-bottom-left-radius: 4px;
+        }
+
+        .chatbot-message.user {
+            background: linear-gradient(135deg, #f97316, #ea580c);
+            color: #fff;
+            align-self: flex-end;
+            border-bottom-right-radius: 4px;
+        }
+
+        .chatbot-message .typing-dots {
+            display: inline-flex;
+            gap: 4px;
+        }
+
+        .chatbot-message .typing-dots span {
+            width: 8px;
+            height: 8px;
+            background: var(--text-muted);
+            border-radius: 50%;
+            animation: typing 1.4s infinite;
+        }
+
+        .chatbot-message .typing-dots span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        .chatbot-message .typing-dots span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes typing {
+            0%,
+            60%,
+            100% {
+                transform: translateY(0);
+                opacity: 0.4;
+            }
+            30% {
+                transform: translateY(-6px);
+                opacity: 1;
+            }
+        }
+
+        .chatbot-input {
+            padding: 12px 16px;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            gap: 10px;
+            flex-shrink: 0;
+        }
+
+        .chatbot-input input {
+            flex: 1;
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 30px;
+            padding: 10px 16px;
+            color: var(--text-primary);
+            font-family: inherit;
+            outline: none;
+            font-size: 14px;
+        }
+
+        .chatbot-input input:focus {
+            border-color: var(--accent);
+        }
+
+        .chatbot-input input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .chatbot-input button {
+            background: linear-gradient(135deg, #f97316, #ea580c);
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 16px;
+        }
+
+        .chatbot-input button:hover {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 480px) {
+            .chatbot-container {
+                bottom: 16px;
+                right: 16px;
+                width: calc(100% - 32px);
+            }
+            .chatbot-window {
+                height: 400px;
+            }
+            .chatbot-toggle {
+                width: 52px;
+                height: 52px;
+                font-size: 22px;
+            }
+        }
     </style>
 </head>
 <body>
+
+    <!-- Scroll Top Button -->
+    <button id="goTop"><i class="fas fa-chevron-up"></i></button>
 
     <!-- ============================================================
     HEADER
@@ -812,7 +1061,7 @@
     <header class="tf-header" id="tfHeader">
         <div class="container">
             <div class="header-inner">
-                <a href="#" class="logo-site">
+                <a href="../index.html" class="logo-site">
                     <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 56'%3E%3Crect width='200' height='56' rx='12' fill='%23f97316'/%3E%3Ctext x='18' y='37' font-family='Plus Jakarta Sans, sans-serif' font-size='26' fill='%23ffffff' font-weight='800'%3EAYFRONEX%3C/text%3E%3C/svg%3E" alt="AYFRONEX">
                 </a>
 
@@ -827,13 +1076,13 @@
                             Services <span class="arrow"><i class="fas fa-chevron-down"></i></span>
                         </a>
                         <ul class="sub-menu">
-                            <li class="sub-menu-item"><a href="services/graphic-design.html" class="item-link">Graphic Design</a></li>
-                            <li class="sub-menu-item"><a href="services/web-development.html" class="item-link">Web Development</a></li>
-                            <li class="sub-menu-item"><a href="services/web-design.html" class="item-link">Web Design</a></li>
-                            <li class="sub-menu-item"><a href="services/video-editing.html" class="item-link">Video Editing</a></li>
-                            <li class="sub-menu-item"><a href="services/seo.html" class="item-link">SEO Services</a></li>
-                            <li class="sub-menu-item"><a href="services/content-writing.html" class="item-link">Content Writing</a></li>
-                            <li class="sub-menu-item"><a href="services/portfolio.html" class="item-link">Portfolio</a></li>
+                            <li class="sub-menu-item"><a href="graphic-design.html" class="item-link">Graphic Design</a></li>
+                            <li class="sub-menu-item"><a href="web-development.html" class="item-link">Web Development</a></li>
+                            <li class="sub-menu-item"><a href="web-design.html" class="item-link">Web Design</a></li>
+                            <li class="sub-menu-item"><a href="video-editing.html" class="item-link">Video Editing</a></li>
+                            <li class="sub-menu-item"><a href="seo.html" class="item-link">SEO Services</a></li>
+                            <li class="sub-menu-item"><a href="content-writing.html" class="item-link active">Content Writing</a></li>
+                            <li class="sub-menu-item"><a href="portfolio.html" class="item-link">Portfolio</a></li>
                         </ul>
                     </li>
 
@@ -841,13 +1090,13 @@
 
                     <!-- Brief Forms Dropdown -->
                     <li class="menu-item">
-                        <a href="#" class="item-link active">
+                        <a href="#" class="item-link">
                             Brief Forms <span class="arrow"><i class="fas fa-chevron-down"></i></span>
                         </a>
                         <ul class="sub-menu">
-                            <li class="sub-menu-item"><a href="brief-forms/logo.html" class="item-link">Logo</a></li>
-                            <li class="sub-menu-item"><a href="brief-forms/new-website.html" class="item-link">New Website</a></li>
-                            <li class="sub-menu-item"><a href="brief-forms/existing-website.html" class="item-link">Existing Website</a></li>
+                            <li class="sub-menu-item"><a href="../brief-forms/logo.html" class="item-link">Logo Brief</a></li>
+                            <li class="sub-menu-item"><a href="../brief-forms/new-website.html" class="item-link">New Website</a></li>
+                            <li class="sub-menu-item"><a href="../brief-forms/existing-website.html" class="item-link">Existing Website</a></li>
                         </ul>
                     </li>
 
@@ -880,7 +1129,7 @@
                     <li><a href="web-development.html" class="item-link">Web Development</a></li>
                     <li><a href="web-design.html" class="item-link">Web Design</a></li>
                     <li><a href="video-editing.html" class="item-link">Video Editing</a></li>
-                    <li><a href="seo.html" class="item-link">SEO Services</a></li>
+                    <li><a href="seo.html" class="item-link active">SEO Services</a></li>
                     <li><a href="content-writing.html" class="item-link">Content Writing</a></li>
                     <li><a href="portfolio.html" class="item-link">Portfolio</a></li>
                 </ul>
@@ -935,8 +1184,8 @@
                     </p>
                     <div style="display:flex; gap:20px; flex-wrap:wrap;">
                         <div><span style="font-size:32px; font-weight:700; color:var(--accent);">500+</span><br><span class="text-secondary" style="font-size:14px;">SEO Campaigns</span></div>
-                        <div><span style="font-size:32px; font-weight:700; color:var(--accent);;">96%</span><br><span class="text-secondary" style="font-size:14px;">Success Rate</span></div>
-                        <div><span style="font-size:32px; font-weight:700; color:var(--accent);;">#1</span><br><span class="text-secondary" style="font-size:14px;">Google Rankings</span></div>
+                        <div><span style="font-size:32px; font-weight:700; color:var(--accent);">96%</span><br><span class="text-secondary" style="font-size:14px;">Success Rate</span></div>
+                        <div><span style="font-size:32px; font-weight:700; color:var(--accent);">#1</span><br><span class="text-secondary" style="font-size:14px;">Google Rankings</span></div>
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -1009,7 +1258,7 @@
                         <div class="plan-name">SEO Starter</div>
                         <div class="plan-sub">For small businesses</div>
                         <div class="price">$99 <span>/ month</span></div>
-                        <a href="#" class="btn-accent mt-3 d-inline-block">Get Started</a>
+                        <a href="#contact" class="btn-accent mt-3 d-inline-block">Get Started</a>
                         <ul class="mt-4">
                             <li><i class="fas fa-check"></i> Keyword Research (10 keywords)</li>
                             <li><i class="fas fa-check"></i> On-Page SEO Optimization</li>
@@ -1024,7 +1273,7 @@
                         <div class="plan-name">SEO Pro</div>
                         <div class="plan-sub">For growing businesses</div>
                         <div class="price">$299 <span>/ month</span></div>
-                        <a href="#" class="btn-accent mt-3 d-inline-block">Get Started</a>
+                        <a href="#contact" class="btn-accent mt-3 d-inline-block">Get Started</a>
                         <ul class="mt-4">
                             <li><i class="fas fa-check"></i> Comprehensive Keyword Research</li>
                             <li><i class="fas fa-check"></i> On-Page & Technical SEO</li>
@@ -1040,7 +1289,7 @@
     </section>
 
     <!-- ============================================================
-    CONTACT
+    CONTACT - WITH EMAILJS
     ============================================================ -->
     <section class="section-contact" id="contact">
         <div class="container">
@@ -1051,11 +1300,11 @@
                     <p class="text-secondary" style="border-left:3px solid var(--accent); padding-left:20px; margin:20px 0 30px; line-height:1.8;">Transform your brand in 24 hours. From logos to websites and social media creatives — we deliver stunning results, fast. High quality, quick turnaround, zero stress.</p>
                     <div class="contact-info-item reveal">
                         <div class="icon"><i class="fas fa-envelope"></i></div>
-                        <div><div class="label">E-mail address</div><div class="value">info@ayfronex.com</div></div>
+                        <div><div class="label">E-mail address</div><div class="value">adward.ayfronex@gmail.com</div></div>
                     </div>
                     <div class="contact-info-item reveal">
                         <div class="icon"><i class="fas fa-phone"></i></div>
-                        <div><div class="label">Phone number</div><div class="value">(512) 649-4744</div></div>
+                        <div><div class="label">Phone number</div><div class="value">+92323-3703689</div></div>
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -1063,20 +1312,20 @@
                         <h4 class="form-heading">Let's Grow <span>Together</span></h4>
                         <p class="form-sub">Discover our full suite of creative solutions — from eye-catching logos to complete digital branding.</p>
 
-                        <div id="successMsg" class="success-msg"><strong>Success!</strong> Thank you for contacting us!</div>
-                        <div id="errorMsg" class="error-msg"><strong>Error!</strong> Something went wrong. Please try again.</div>
+                        <div id="successMsg" class="success-msg"><strong>✅ Success!</strong> <span id="successText">Thank you for contacting us!</span></div>
+                        <div id="errorMsg" class="error-msg"><strong>❌ Error!</strong> <span id="errorText">Something went wrong. Please try again.</span></div>
 
                         <form id="contactForm">
                             <div class="row g-3">
                                 <div class="col-6">
-                                    <div class="form-group"><label>Name *</label><input type="text" name="name" placeholder="Enter your name" required></div>
+                                    <div class="form-group"><label>Name *</label><input type="text" id="userName" placeholder="Enter your name" required></div>
                                 </div>
                                 <div class="col-6">
-                                    <div class="form-group"><label>Email *</label><input type="email" name="email" placeholder="Enter your email" required></div>
+                                    <div class="form-group"><label>Email *</label><input type="email" id="userEmail" placeholder="Enter your email" required></div>
                                 </div>
                             </div>
-                            <div class="form-group"><label>Phone</label><input type="text" name="phone" placeholder="Enter your phone"></div>
-                            <div class="form-group"><label>Message *</label><textarea name="message" placeholder="Write your message here..." required></textarea></div>
+                            <div class="form-group"><label>Phone</label><input type="text" id="userPhone" placeholder="Enter your phone"></div>
+                            <div class="form-group"><label>Message *</label><textarea id="userMessage" placeholder="Write your message here..." required></textarea></div>
                             <button type="submit" class="btn-accent w-100" id="submitBtn"><span>Submit <i class="fas fa-arrow-right"></i></span></button>
                         </form>
                     </div>
@@ -1115,11 +1364,122 @@
     </footer>
 
     <!-- ============================================================
+    CHATBOT - AI ASSISTANT
+    ============================================================ -->
+    <div class="chatbot-container">
+        <div class="chatbot-window" id="chatWindow">
+            <div class="chatbot-header">
+                <h5><i class="fas fa-robot"></i> AI Assistant</h5>
+                <button class="close-chat" onclick="toggleChat()"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="chatbot-messages" id="chatMessages">
+                <div class="chatbot-message bot">👋 Welcome to AYFRONEX! How can I help you today?</div>
+                <div class="chatbot-message bot">💡 You can ask me about our services, pricing, or anything else!</div>
+            </div>
+            <div class="chatbot-input">
+                <input type="text" id="chatInput" placeholder="Type your message..." onkeypress="if(event.key==='Enter') sendMessage()">
+                <button onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+        <button class="chatbot-toggle" onclick="toggleChat()">
+            <i class="fas fa-comment-dots"></i>
+        </button>
+    </div>
+
+    <!-- ============================================================
     SCRIPTS
     ============================================================ -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
     <script>
+        // ============================================================
+        // EMAILJS - INITIALIZE
+        // ⚠️ REPLACE "YOUR_PUBLIC_KEY_HERE" WITH YOUR ACTUAL PUBLIC KEY
+        // Get it from: https://dashboard.emailjs.com/admin/account/api-keys
+        // ============================================================
+        (function() {
+            emailjs.init("YOUR_PUBLIC_KEY_HERE");
+        })();
+
+        // ============================================================
+        // CONTACT FORM - EMAILJS
+        // ============================================================
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('contactForm');
+            if (!form) return;
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                const btn = document.getElementById('submitBtn');
+                const successMsg = document.getElementById('successMsg');
+                const errorMsg = document.getElementById('errorMsg');
+                const successText = document.getElementById('successText');
+                const errorText = document.getElementById('errorText');
+
+                successMsg.style.display = 'none';
+                errorMsg.style.display = 'none';
+
+                const name = document.getElementById('userName').value.trim();
+                const email = document.getElementById('userEmail').value.trim();
+                const phone = document.getElementById('userPhone').value.trim();
+                const message = document.getElementById('userMessage').value.trim();
+
+                // Validation
+                if (!name || !email || !message) {
+                    errorText.textContent = 'Please fill in all required fields.';
+                    errorMsg.style.display = 'block';
+                    return;
+                }
+
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    errorText.textContent = 'Please enter a valid email address.';
+                    errorMsg.style.display = 'block';
+                    return;
+                }
+
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '<span><i class="fas fa-spinner fa-spin"></i> Sending...</span>';
+                btn.disabled = true;
+
+                // ⚠️ UPDATE THESE THREE VALUES
+                const SERVICE_ID = 'service_b23rffz'; // ✅ Your Service ID
+                const TEMPLATE_ID = 'ayfronex_contact'; // ⚠️ Create template in EmailJS
+                const PUBLIC_KEY = 'AmaK53N9o34A9tQaC'; // ⚠️ Your Public Key
+
+                const templateParams = {
+                    from_name: name,
+                    from_email: email,
+                    phone: phone || 'Not provided',
+                    message: message,
+                    to_email: 'adward.ayfronex@gmail.com'
+                };
+
+                emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY)
+                    .then(function(response) {
+                        console.log('✅ Email sent successfully:', response);
+                        successText.textContent = 'Thank you! Your message has been sent successfully. We will get back to you soon.';
+                        successMsg.style.display = 'block';
+                        form.reset();
+                        btn.innerHTML = '<span>✓ Sent!</span>';
+                        setTimeout(() => {
+                            btn.innerHTML = originalText;
+                            btn.disabled = false;
+                            successMsg.style.display = 'none';
+                        }, 5000);
+                    })
+                    .catch(function(error) {
+                        console.error('❌ EmailJS Error:', error);
+                        errorText.textContent = error.text || 'Failed to send message. Please try again or contact us directly at adward.ayfronex@gmail.com';
+                        errorMsg.style.display = 'block';
+                        btn.innerHTML = originalText;
+                        btn.disabled = false;
+                    });
+            });
+        });
+
         // ============================================================
         // HEADER SCROLL
         // ============================================================
@@ -1170,29 +1530,6 @@
         });
 
         // ============================================================
-        // CONTACT FORM
-        // ============================================================
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const btn = document.getElementById('submitBtn');
-            const orig = btn.innerHTML;
-            btn.innerHTML = '<span>Sending...</span>';
-            btn.disabled = true;
-
-            setTimeout(() => {
-                document.getElementById('successMsg').style.display = 'block';
-                document.getElementById('errorMsg').style.display = 'none';
-                btn.innerHTML = '<span>✓ Sent!</span>';
-                setTimeout(() => {
-                    btn.innerHTML = orig;
-                    btn.disabled = false;
-                    document.getElementById('successMsg').style.display = 'none';
-                    this.reset();
-                }, 3000);
-            }, 1500);
-        });
-
-        // ============================================================
         // SCROLL REVEAL
         // ============================================================
         const revealObserver = new IntersectionObserver((entries) => {
@@ -1214,6 +1551,84 @@
                     }
                 });
             });
+
+        // ============================================================
+        // SCROLL TOP
+        // ============================================================
+        const goTop = document.getElementById('goTop');
+        window.addEventListener('scroll', () => {
+            goTop.classList.toggle('show', window.scrollY > 600);
+        });
+        goTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+        // ============================================================
+        // CHATBOT
+        // ============================================================
+        function toggleChat() {
+            const window = document.getElementById('chatWindow');
+            window.classList.toggle('open');
+            if (window.classList.contains('open')) {
+                document.getElementById('chatInput').focus();
+            }
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const messages = document.getElementById('chatMessages');
+            const text = input.value.trim();
+
+            if (!text) return;
+
+            messages.innerHTML += `<div class="chatbot-message user">${text}</div>`;
+            input.value = '';
+            messages.scrollTop = messages.scrollHeight;
+
+            // Show typing indicator
+            const typingId = 'typing-' + Date.now();
+            messages.innerHTML += `
+                <div class="chatbot-message bot" id="${typingId}">
+                    <div class="typing-dots">
+                        <span></span><span></span><span></span>
+                    </div>
+                </div>
+            `;
+            messages.scrollTop = messages.scrollHeight;
+
+            setTimeout(() => {
+                const typingEl = document.getElementById(typingId);
+                if (typingEl) typingEl.remove();
+
+                const reply = getAIResponse(text.toLowerCase());
+                messages.innerHTML += `<div class="chatbot-message bot">${reply}</div>`;
+                messages.scrollTop = messages.scrollHeight;
+            }, 800);
+        }
+
+        function getAIResponse(message) {
+            const responses = {
+                'hello|hi|hey|howdy': '👋 Hello! Welcome to AYFRONEX! How can I assist you with your brand transformation today?',
+                'services|what do you do|offer': '🎨 We offer: Graphic Design, 🌐 Web Development & Design, 📹 Video Editing, 📈 SEO Services, and 📝 Content Writing. What would you like to know more about?',
+                'price|cost|how much|pricing|plans': '💲 We have flexible pricing plans starting from $50 for logos and $499 for complete websites. Check our Pricing section for detailed plans!',
+                'website|web|site|development': '🌐 We build modern, responsive websites starting at $499. Includes 5 pages, jQuery slider, social media integration, and more!',
+                'logo|branding|identity': '🎨 Our logo design packages start at $50 and include 4-5 custom concepts, unlimited revisions, and all file formats (PNG, JPEG, SVG).',
+                'video|editing|animation': '📹 We create professional videos and animations for your brand. Contact us for a custom quote based on your needs!',
+                'seo|marketing|rank': '📈 Our SEO services help you rank higher on Google and attract more customers. We use proven, data-driven strategies for the best results.',
+                'time|how long|delivery|deadline': '⏱️ We deliver most projects within 24-72 hours. Quality work with quick turnaround!',
+                'contact|reach|email|phone': '📧 You can reach us at adward.ayfronex@gmail.com or call +92323-3703689. Or just fill out the contact form on our website!',
+                'thanks|thank you|thx|appreciate': 'You\'re welcome! 😊 Is there anything else I can help you with?',
+                'bye|goodbye|see you|exit': 'Goodbye! 👋 Feel free to come back anytime. Have a great day!',
+                'who are you|what are you': '🤖 I\'m AYFRONEX\'s AI Assistant! I\'m here to help you learn about our services, pricing, and answer any questions you have.',
+                'help|support': '💡 I can help you with: \n• Information about our services\n• Pricing details\n• Project timelines\n• Contact information\nJust ask me anything!'
+            };
+
+            for (const [keywords, reply] of Object.entries(responses)) {
+                if (keywords.split('|').some(k => message.includes(k))) {
+                    return reply;
+                }
+            }
+
+            return '🤔 I\'m not sure about that. Can you please rephrase? Or you can contact us directly at adward.ayfronex@gmail.com for personalized assistance!';
+        }
     </script>
 
 </body>

@@ -9,10 +9,11 @@
     <!-- Fonts & Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-    <!-- CSS Libraries -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+
+    <!-- EmailJS -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
     <style>
         /* ============================================================
@@ -33,11 +34,7 @@
             --transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
@@ -48,41 +45,19 @@
             -moz-osx-font-smoothing: grayscale;
         }
 
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-        ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        img {
-            max-width: 100%;
-        }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; padding: 0; margin: 0; }
+        img { max-width: 100%; }
 
-        .container {
-            max-width: 1200px;
-            padding: 0 20px;
-            margin: 0 auto;
-        }
+        .container { max-width: 1200px; padding: 0 20px; margin: 0 auto; }
 
         /* ============================================================
            SCROLLBAR
            ============================================================ */
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: var(--bg-primary);
-        }
-        ::-webkit-scrollbar-thumb {
-            background: var(--accent);
-            border-radius: 10px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #ea580c;
-        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-primary); }
+        ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #ea580c; }
 
         /* ============================================================
            BUTTONS
@@ -161,9 +136,7 @@
         }
 
         @media (max-width: 768px) {
-            .heading-title {
-                font-size: 32px;
-            }
+            .heading-title { font-size: 32px; }
         }
 
         /* ============================================================
@@ -198,9 +171,7 @@
             height: 42px;
             transition: height 0.3s ease;
         }
-        .tf-header.scrolled .logo-site img {
-            height: 34px;
-        }
+        .tf-header.scrolled .logo-site img { height: 34px; }
 
         .nav-menu-main {
             display: flex;
@@ -208,9 +179,7 @@
             align-items: center;
         }
 
-        .nav-menu-main .menu-item {
-            position: relative;
-        }
+        .nav-menu-main .menu-item { position: relative; }
 
         .nav-menu-main .item-link {
             color: var(--text-secondary);
@@ -288,15 +257,9 @@
         }
 
         @media (max-width: 1199px) {
-            .nav-menu-main {
-                display: none;
-            }
-            .mobile-menu {
-                display: block;
-            }
-            .tf-header .btn-accent.d-lg-flex {
-                display: none !important;
-            }
+            .nav-menu-main { display: none; }
+            .mobile-menu { display: block; }
+            .tf-header .btn-accent.d-lg-flex { display: none !important; }
         }
 
         /* ============================================================
@@ -316,9 +279,7 @@
             overflow-y: auto;
             border-left: 1px solid var(--border-color);
         }
-        .offcanvas-menu.show {
-            right: 0;
-        }
+        .offcanvas-menu.show { right: 0; }
 
         .offcanvas-menu .canvas_head {
             display: flex;
@@ -327,9 +288,7 @@
             padding-bottom: 20px;
             border-bottom: 1px solid var(--border-color);
         }
-        .offcanvas-menu .offcanvas-logo img {
-            height: 36px;
-        }
+        .offcanvas-menu .offcanvas-logo img { height: 36px; }
         .offcanvas-menu .close-btn {
             background: none;
             border: none;
@@ -339,9 +298,7 @@
             padding: 4px 8px;
             transition: color 0.3s;
         }
-        .offcanvas-menu .close-btn:hover {
-            color: var(--accent);
-        }
+        .offcanvas-menu .close-btn:hover { color: var(--accent); }
 
         .offcanvas-menu .nav-ul-mb li {
             border-bottom: 1px solid rgba(255, 255, 255, 0.03);
@@ -368,9 +325,7 @@
             transition: max-height 0.4s ease;
             padding-left: 20px;
         }
-        .offcanvas-menu .sub-nav-menu.show {
-            max-height: 400px;
-        }
+        .offcanvas-menu .sub-nav-menu.show { max-height: 400px; }
         .offcanvas-menu .sub-nav-menu .item-link {
             display: block;
             padding: 12px 0;
@@ -391,10 +346,7 @@
             visibility: hidden;
             transition: all 0.4s ease;
         }
-        .menu-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
+        .menu-overlay.active { opacity: 1; visibility: visible; }
 
         /* ============================================================
            HERO
@@ -425,9 +377,7 @@
             will-change: opacity;
         }
 
-        .hero-slide.active {
-            opacity: 1;
-        }
+        .hero-slide.active { opacity: 1; }
 
         .hero-slide::after {
             content: '';
@@ -524,57 +474,28 @@
             transform: scale(1.2);
         }
 
-        .hero-dots .dot:hover {
-            background: rgba(255, 255, 255, 0.5);
-        }
+        .hero-dots .dot:hover { background: rgba(255, 255, 255, 0.5); }
 
         @media (max-width: 992px) {
-            .section-hero .title {
-                font-size: 44px;
-            }
+            .section-hero .title { font-size: 44px; }
         }
 
         @media (max-width: 576px) {
-            .hero-content-wrap {
-                padding: 120px 0 60px;
-            }
-            .section-hero .title {
-                font-size: 32px;
-            }
-            .section-hero .text {
-                font-size: 16px;
-            }
-            .bot-btns {
-                flex-direction: column;
-                align-items: center;
-            }
-            .btn-outline {
-                margin-top: 6px;
-            }
-            .hero-dots {
-                bottom: 20px;
-                gap: 8px;
-            }
-            .hero-dots .dot {
-                width: 10px;
-                height: 10px;
-            }
+            .hero-content-wrap { padding: 120px 0 60px; }
+            .section-hero .title { font-size: 32px; }
+            .section-hero .text { font-size: 16px; }
+            .bot-btns { flex-direction: column; align-items: center; }
+            .btn-outline { margin-top: 6px; }
+            .hero-dots { bottom: 20px; gap: 8px; }
+            .hero-dots .dot { width: 10px; height: 10px; }
         }
 
         @keyframes fadeInScale {
-            0% {
-                opacity: 0;
-                transform: scale(1.05);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
+            0% { opacity: 0; transform: scale(1.05); }
+            100% { opacity: 1; transform: scale(1); }
         }
 
-        .hero-slide.active {
-            animation: fadeInScale 1.8s ease-out forwards;
-        }
+        .hero-slide.active { animation: fadeInScale 1.8s ease-out forwards; }
 
         /* ============================================================
            ABOUT
@@ -654,9 +575,7 @@
             height: 100%;
         }
 
-        .services-left .heading-title {
-            margin-bottom: 16px;
-        }
+        .services-left .heading-title { margin-bottom: 16px; }
 
         .services-left p {
             color: var(--text-secondary);
@@ -681,9 +600,7 @@
             transition: transform 0.6s ease;
         }
 
-        .service-image-container:hover img {
-            transform: scale(1.03);
-        }
+        .service-image-container:hover img { transform: scale(1.03); }
 
         .service-accordion-wrapper {
             display: flex;
@@ -700,9 +617,7 @@
             transition: var(--transition);
         }
 
-        .service-accordion:hover {
-            border-color: rgba(249, 115, 22, 0.3);
-        }
+        .service-accordion:hover { border-color: rgba(249, 115, 22, 0.3); }
 
         .service-accordion.active {
             border-color: var(--accent);
@@ -730,9 +645,7 @@
             transition: max-height 0.4s ease, padding 0.3s ease;
         }
 
-        .service-accordion.active .accordion-content {
-            max-height: 300px;
-        }
+        .service-accordion.active .accordion-content { max-height: 300px; }
 
         .service-accordion .accordion-content-inner {
             padding-top: 14px;
@@ -769,18 +682,12 @@
         }
 
         @media (max-width: 992px) {
-            .services-left {
-                margin-bottom: 30px;
-            }
-            .service-image-container {
-                height: 220px;
-            }
+            .services-left { margin-bottom: 30px; }
+            .service-image-container { height: 220px; }
         }
 
         @media (max-width: 576px) {
-            .service-image-container {
-                height: 180px;
-            }
+            .service-image-container { height: 180px; }
         }
 
         /* ============================================================
@@ -862,9 +769,7 @@
             will-change: transform;
         }
 
-        .project-card:hover .card-image {
-            transform: translateY(-70%);
-        }
+        .project-card:hover .card-image { transform: translateY(-70%); }
 
         .project-card .card-overlay {
             position: absolute;
@@ -880,9 +785,7 @@
             padding: 20px;
         }
 
-        .project-card:hover .card-overlay {
-            opacity: 1;
-        }
+        .project-card:hover .card-overlay { opacity: 1; }
 
         .project-card .card-overlay .view-btn {
             background: linear-gradient(135deg, #f97316, #ea580c);
@@ -924,9 +827,7 @@
             pointer-events: none;
         }
 
-        .project-card.video-card:hover .play-overlay {
-            opacity: 1;
-        }
+        .project-card.video-card:hover .play-overlay { opacity: 1; }
 
         .project-card .play-overlay i {
             font-size: 52px;
@@ -934,21 +835,12 @@
             filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.5));
         }
 
-        .project-card.video-card .card-overlay {
-            display: none;
-        }
+        .project-card.video-card .card-overlay { display: none; }
 
-        .project-card.video-card:hover .card-image {
-            transform: scale(1.05);
-        }
+        .project-card.video-card:hover .card-image { transform: scale(1.05); }
 
-        .tab-content {
-            display: none;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
 
         .project-modal {
             display: none;
@@ -963,9 +855,7 @@
             padding: 40px 20px;
         }
 
-        .project-modal.active {
-            display: flex;
-        }
+        .project-modal.active { display: flex; }
 
         .project-modal-content {
             background: var(--bg-card);
@@ -992,9 +882,7 @@
             padding: 4px 8px;
         }
 
-        .project-modal-content .modal-close:hover {
-            color: var(--accent);
-        }
+        .project-modal-content .modal-close:hover { color: var(--accent); }
 
         .project-modal-content .modal-image {
             width: 100%;
@@ -1042,24 +930,14 @@
         }
 
         @media (max-width: 992px) {
-            .project-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .project-modal-content {
-                padding: 28px 20px;
-            }
+            .project-grid { grid-template-columns: repeat(2, 1fr); }
+            .project-modal-content { padding: 28px 20px; }
         }
 
         @media (max-width: 576px) {
-            .project-grid {
-                grid-template-columns: 1fr;
-            }
-            .project-modal-content {
-                padding: 20px 16px;
-            }
-            .project-modal-content .modal-title {
-                font-size: 20px;
-            }
+            .project-grid { grid-template-columns: 1fr; }
+            .project-modal-content { padding: 20px 16px; }
+            .project-modal-content .modal-title { font-size: 20px; }
         }
 
         /* ============================================================
@@ -1109,9 +987,7 @@
             transition: transform 0.6s ease;
         }
 
-        .feature-slide:hover .feature-image img {
-            transform: scale(1.06);
-        }
+        .feature-slide:hover .feature-image img { transform: scale(1.06); }
 
         .feature-slide .feature-body {
             padding: 18px 20px 20px;
@@ -1161,9 +1037,7 @@
             box-shadow: 0 16px 50px rgba(249, 115, 22, 0.1);
         }
 
-        .feature-slide:hover .feature-body p {
-            color: #c8c8d8;
-        }
+        .feature-slide:hover .feature-body p { color: #c8c8d8; }
 
         .features-nav {
             display: flex;
@@ -1221,44 +1095,20 @@
         }
 
         @media (max-width: 992px) {
-            .feature-slide {
-                height: 350px;
-                max-width: 280px;
-            }
-            .feature-slide .feature-image {
-                height: 150px;
-            }
-            .feature-slide .feature-body {
-                padding: 14px 16px 16px;
-            }
-            .feature-slide .feature-body h6 {
-                font-size: 16px;
-            }
-            .feature-slide .feature-body p {
-                font-size: 13px;
-            }
+            .feature-slide { height: 350px; max-width: 280px; }
+            .feature-slide .feature-image { height: 150px; }
+            .feature-slide .feature-body { padding: 14px 16px 16px; }
+            .feature-slide .feature-body h6 { font-size: 16px; }
+            .feature-slide .feature-body p { font-size: 13px; }
         }
 
         @media (max-width: 576px) {
-            .feature-slide {
-                height: 320px;
-                max-width: 260px;
-            }
-            .feature-slide .feature-image {
-                height: 130px;
-            }
-            .feature-slide .feature-body {
-                padding: 12px 14px 14px;
-            }
-            .feature-slide .feature-body h6 {
-                font-size: 15px;
-            }
-            .feature-slide .feature-body p {
-                font-size: 12px;
-            }
-            .feature-slide .feature-body .icon {
-                font-size: 22px;
-            }
+            .feature-slide { height: 320px; max-width: 260px; }
+            .feature-slide .feature-image { height: 130px; }
+            .feature-slide .feature-body { padding: 12px 14px 14px; }
+            .feature-slide .feature-body h6 { font-size: 15px; }
+            .feature-slide .feature-body p { font-size: 12px; }
+            .feature-slide .feature-body .icon { font-size: 22px; }
         }
 
         /* ============================================================
@@ -1389,9 +1239,7 @@
             color: #fff;
         }
 
-        .form-card .form-heading span {
-            color: var(--accent);
-        }
+        .form-card .form-heading span { color: var(--accent); }
 
         .form-card .form-sub {
             color: var(--text-secondary);
@@ -1453,9 +1301,7 @@
         }
 
         @media (max-width: 768px) {
-            .form-card {
-                padding: 24px 18px;
-            }
+            .form-card { padding: 24px 18px; }
         }
 
         /* ============================================================
@@ -1467,9 +1313,7 @@
             padding: 60px 0 30px;
         }
 
-        footer .footer-logo img {
-            height: 46px;
-        }
+        footer .footer-logo img { height: 46px; }
 
         footer .social-links {
             display: flex;
@@ -1501,9 +1345,7 @@
             transition: color 0.3s;
         }
 
-        footer .footer-links a:hover {
-            color: var(--accent);
-        }
+        footer .footer-links a:hover { color: var(--accent); }
 
         footer .copy {
             color: var(--text-muted);
@@ -1533,7 +1375,7 @@
         }
 
         /* ============================================================
-           CHATBOT STYLES
+           CHATBOT
            ============================================================ */
         .chatbot-container {
             position: fixed;
@@ -1558,9 +1400,7 @@
             float: right;
         }
 
-        .chatbot-toggle:hover {
-            transform: scale(1.1);
-        }
+        .chatbot-toggle:hover { transform: scale(1.1); }
 
         .chatbot-window {
             display: none;
@@ -1574,9 +1414,7 @@
             overflow: hidden;
         }
 
-        .chatbot-window.open {
-            display: flex;
-        }
+        .chatbot-window.open { display: flex; }
 
         .chatbot-header {
             padding: 16px 20px;
@@ -1594,6 +1432,8 @@
             font-size: 16px;
         }
 
+        .chatbot-header h5 i { color: var(--accent); }
+
         .chatbot-header .close-chat {
             background: none;
             border: none;
@@ -1602,9 +1442,7 @@
             cursor: pointer;
         }
 
-        .chatbot-header .close-chat:hover {
-            color: var(--accent);
-        }
+        .chatbot-header .close-chat:hover { color: var(--accent); }
 
         .chatbot-messages {
             flex: 1;
@@ -1651,22 +1489,12 @@
             animation: typing 1.4s infinite;
         }
 
-        .chatbot-message .typing-dots span:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-        .chatbot-message .typing-dots span:nth-child(3) {
-            animation-delay: 0.4s;
-        }
+        .chatbot-message .typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+        .chatbot-message .typing-dots span:nth-child(3) { animation-delay: 0.4s; }
 
         @keyframes typing {
-            0%, 60%, 100% {
-                transform: translateY(0);
-                opacity: 0.4;
-            }
-            30% {
-                transform: translateY(-6px);
-                opacity: 1;
-            }
+            0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+            30% { transform: translateY(-6px); opacity: 1; }
         }
 
         .chatbot-input {
@@ -1689,13 +1517,9 @@
             font-size: 14px;
         }
 
-        .chatbot-input input:focus {
-            border-color: var(--accent);
-        }
+        .chatbot-input input:focus { border-color: var(--accent); }
 
-        .chatbot-input input::placeholder {
-            color: var(--text-muted);
-        }
+        .chatbot-input input::placeholder { color: var(--text-muted); }
 
         .chatbot-input button {
             background: linear-gradient(135deg, #f97316, #ea580c);
@@ -1708,24 +1532,12 @@
             font-size: 16px;
         }
 
-        .chatbot-input button:hover {
-            transform: scale(1.05);
-        }
+        .chatbot-input button:hover { transform: scale(1.05); }
 
         @media (max-width: 480px) {
-            .chatbot-container {
-                bottom: 16px;
-                right: 16px;
-                width: calc(100% - 32px);
-            }
-            .chatbot-window {
-                height: 400px;
-            }
-            .chatbot-toggle {
-                width: 52px;
-                height: 52px;
-                font-size: 22px;
-            }
+            .chatbot-container { bottom: 16px; right: 16px; width: calc(100% - 32px); }
+            .chatbot-window { height: 400px; }
+            .chatbot-toggle { width: 52px; height: 52px; font-size: 22px; }
         }
     </style>
 </head>
@@ -1737,29 +1549,38 @@
     <header class="tf-header" id="tfHeader">
         <div class="container">
             <div class="header-inner">
-                <a href="#" class="logo-site">
+                <a href="index.html" class="logo-site">
                     <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 56'%3E%3Crect width='200' height='56' rx='12' fill='%23f97316'/%3E%3Ctext x='18' y='37' font-family='Plus Jakarta Sans, sans-serif' font-size='26' fill='%23ffffff' font-weight='800'%3EAYFRONEX%3C/text%3E%3C/svg%3E" alt="AYFRONEX">
                 </a>
 
                 <ul class="nav-menu-main">
-                    <li class="menu-item"><a href="#" class="item-link active">Home</a></li>
-                    <li class="menu-item"><a href="#about" class="item-link">About</a></li>
+                    <li class="menu-item"><a href="index.html" class="item-link active">Home</a></li>
+                    <li class="menu-item"><a href="about.html" class="item-link">About</a></li>
                     <li class="menu-item">
                         <a href="#" class="item-link">Services <span class="arrow"><i class="fas fa-chevron-down"></i></span></a>
                         <ul class="sub-menu">
-                            <li class="sub-menu-item"><a href="#" class="item-link">Graphic Design</a></li>
-                            <li class="sub-menu-item"><a href="#" class="item-link">Web Development</a></li>
-                            <li class="sub-menu-item"><a href="#" class="item-link">Web Design</a></li>
-                            <li class="sub-menu-item"><a href="#" class="item-link">Video Editing</a></li>
-                            <li class="sub-menu-item"><a href="#" class="item-link">SEO Services</a></li>
-                            <li class="sub-menu-item"><a href="#" class="item-link">Content Writing</a></li>
+                            <li class="sub-menu-item"><a href="services/graphic-design.html" class="item-link">Graphic Design</a></li>
+                            <li class="sub-menu-item"><a href="services/web-development.html" class="item-link">Web Development</a></li>
+                            <li class="sub-menu-item"><a href="services/web-design.html" class="item-link">Web Design</a></li>
+                            <li class="sub-menu-item"><a href="services/video-editing.html" class="item-link">Video Editing</a></li>
+                            <li class="sub-menu-item"><a href="services/seo.html" class="item-link">SEO Services</a></li>
+                            <li class="sub-menu-item"><a href="services/content-writing.html" class="item-link">Content Writing</a></li>
+                            <li class="sub-menu-item"><a href="services/portfolio.html" class="item-link">Portfolio</a></li>
                         </ul>
                     </li>
-                    <li class="menu-item"><a href="#pricing" class="item-link">Packages</a></li>
-                    <li class="menu-item"><a href="#contact" class="item-link">Contact</a></li>
+                    <li class="menu-item"><a href="packages.html" class="item-link">Packages</a></li>
+                    <li class="menu-item">
+                        <a href="#" class="item-link">Brief Forms <span class="arrow"><i class="fas fa-chevron-down"></i></span></a>
+                        <ul class="sub-menu">
+                            <li class="sub-menu-item"><a href="brief-forms/logo.html" class="item-link">Logo Brief</a></li>
+                            <li class="sub-menu-item"><a href="brief-forms/new-website.html" class="item-link">New Website</a></li>
+                            <li class="sub-menu-item"><a href="brief-forms/existing-website.html" class="item-link">Existing Website</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item"><a href="contact.html" class="item-link">Contact</a></li>
                 </ul>
 
-                <a href="#contact" class="btn-accent d-lg-flex d-none">Get a Quote</a>
+                <a href="contact.html" class="btn-accent d-lg-flex d-none">Get a Quote</a>
                 <span class="mobile-menu" id="menuToggle"><i class="fas fa-bars"></i></span>
             </div>
         </div>
@@ -1770,25 +1591,36 @@
     ============================================================ -->
     <div class="offcanvas-menu" id="offcanvasMenu">
         <div class="canvas_head">
-            <a href="#" class="offcanvas-logo"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 56'%3E%3Crect width='200' height='56' rx='12' fill='%23f97316'/%3E%3Ctext x='18' y='37' font-family='Plus Jakarta Sans, sans-serif' font-size='26' fill='%23ffffff' font-weight='800'%3EAYFRONEX%3C/text%3E%3C/svg%3E" alt=""></a>
+            <a href="index.html" class="offcanvas-logo">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 56'%3E%3Crect width='200' height='56' rx='12' fill='%23f97316'/%3E%3Ctext x='18' y='37' font-family='Plus Jakarta Sans, sans-serif' font-size='26' fill='%23ffffff' font-weight='800'%3EAYFRONEX%3C/text%3E%3C/svg%3E" alt="">
+            </a>
             <button class="close-btn" id="closeMenuBtn"><i class="fas fa-times"></i></button>
         </div>
         <ul class="nav-ul-mb">
-            <li><a href="#" class="mb-menu-link active">Home</a></li>
-            <li><a href="#about" class="mb-menu-link">About</a></li>
+            <li><a href="index.html" class="mb-menu-link active">Home</a></li>
+            <li><a href="about.html" class="mb-menu-link">About</a></li>
             <li class="has-sub-menu">
                 <span class="mb-menu-link" data-target="#subMenuServices">Services <i class="fas fa-chevron-down"></i></span>
                 <ul class="sub-nav-menu" id="subMenuServices">
-                    <li><a href="#" class="item-link">Graphic Design</a></li>
-                    <li><a href="#" class="item-link">Web Development</a></li>
-                    <li><a href="#" class="item-link">Web Design</a></li>
-                    <li><a href="#" class="item-link">Video Editing</a></li>
-                    <li><a href="#" class="item-link">SEO Services</a></li>
-                    <li><a href="#" class="item-link">Content Writing</a></li>
+                    <li><a href="services/graphic-design.html" class="item-link">Graphic Design</a></li>
+                    <li><a href="services/web-development.html" class="item-link">Web Development</a></li>
+                    <li><a href="services/web-design.html" class="item-link">Web Design</a></li>
+                    <li><a href="services/video-editing.html" class="item-link">Video Editing</a></li>
+                    <li><a href="services/seo.html" class="item-link">SEO Services</a></li>
+                    <li><a href="services/content-writing.html" class="item-link">Content Writing</a></li>
+                    <li><a href="services/portfolio.html" class="item-link">Portfolio</a></li>
                 </ul>
             </li>
-            <li><a href="#pricing" class="mb-menu-link">Packages</a></li>
-            <li><a href="#contact" class="mb-menu-link">Contact</a></li>
+            <li><a href="packages.html" class="mb-menu-link">Packages</a></li>
+            <li class="has-sub-menu">
+                <span class="mb-menu-link" data-target="#subMenuBriefForms">Brief Forms <i class="fas fa-chevron-down"></i></span>
+                <ul class="sub-nav-menu" id="subMenuBriefForms">
+                    <li><a href="assets/brief-forms/logo.html" class="item-link">Logo Brief</a></li>
+                    <li><a href="assets/brief-forms/new-website.html" class="item-link">New Website</a></li>
+                    <li><a href="assets/brief-forms/existing-website.html" class="item-link">Existing Website</a></li>
+                </ul>
+            </li>
+            <li><a href="contact.html" class="mb-menu-link">Contact</a></li>
         </ul>
     </div>
     <div class="menu-overlay" id="menuOverlay"></div>
@@ -1859,7 +1691,7 @@
                             </div>
                         </div>
                     </div>
-                    <a href="#services" class="btn-accent mt-4 reveal">Read More</a>
+                    <a href="about.html" class="btn-accent mt-4 reveal">Read More</a>
                 </div>
 
                 <div class="col-lg-6">
@@ -1975,6 +1807,7 @@
                 <button class="tab-btn active" data-tab="website">Website Design</button>
                 <button class="tab-btn" data-tab="logo">Logo Design</button>
                 <button class="tab-btn" data-tab="video">Video Animation</button>
+                <button class="tab-btn" data-tab="illustration">Illustration</button>
             </div>
 
             <div class="tab-content active" id="tab-website">
@@ -2014,6 +1847,19 @@
                     </div>
                     <div class="project-card video-card" data-title="Animation" data-desc="Creative 2D animation for brand storytelling." data-link="#" data-image="https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=800&h=600&fit=crop">
                         <div class="card-image-wrap"><div class="card-image" style="background-image:url('https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=600&h=450&fit=crop');"><div class="play-overlay"><i class="fas fa-play-circle"></i></div></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="tab-illustration">
+                <div class="project-grid">
+                    <div class="project-card" data-title="Digital Art" data-desc="Stunning digital art with vibrant colors and creative design." data-link="#" data-image="https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=800&h=600&fit=crop">
+                        <div class="card-image-wrap"><div class="card-image" style="background-image:url('https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=600&h=450&fit=crop');"></div></div>
+                        <div class="card-overlay"><div class="project-title">Digital Art</div><button class="view-btn" onclick="event.stopPropagation(); openProjectModal(this.closest('.project-card'))"><i class="fas fa-eye"></i> View Project</button></div>
+                    </div>
+                    <div class="project-card" data-title="Brand Illustration" data-desc="Custom brand illustration that tells a unique story." data-link="#" data-image="https://images.unsplash.com/photo-1579783901586-d88db74b4fe4?w=800&h=600&fit=crop">
+                        <div class="card-image-wrap"><div class="card-image" style="background-image:url('https://images.unsplash.com/photo-1579783901586-d88db74b4fe4?w=600&h=450&fit=crop');"></div></div>
+                        <div class="card-overlay"><div class="project-title">Brand Illustration</div><button class="view-btn" onclick="event.stopPropagation(); openProjectModal(this.closest('.project-card'))"><i class="fas fa-eye"></i> View Project</button></div>
                     </div>
                 </div>
             </div>
@@ -2138,7 +1984,7 @@
                         <div class="plan-name">Basic Plan</div>
                         <div class="plan-sub">For startups</div>
                         <div class="price">$50 <span>/ project</span></div>
-                        <a href="#contact" class="btn-accent mt-3 d-inline-block">Get Started</a>
+                        <a href="contact.html" class="btn-accent mt-3 d-inline-block">Get Started</a>
                         <ul class="mt-4">
                             <li><i class="fas fa-check"></i> 4 to 5 Custom Logo Design</li>
                             <li><i class="fas fa-check"></i> Unlimited Revision Rounds</li>
@@ -2153,7 +1999,7 @@
                         <div class="plan-name">Enterprise Plan</div>
                         <div class="plan-sub">For organisations</div>
                         <div class="price">$499 <span>/ project</span></div>
-                        <a href="#contact" class="btn-accent mt-3 d-inline-block">Get Started</a>
+                        <a href="contact.html" class="btn-accent mt-3 d-inline-block">Get Started</a>
                         <ul class="mt-4">
                             <li><i class="fas fa-check"></i> 5 Page Website</li>
                             <li><i class="fas fa-check"></i> 3 Banner Design</li>
@@ -2169,7 +2015,7 @@
     </section>
 
     <!-- ============================================================
-    CONTACT - EMAILJS
+    CONTACT
     ============================================================ -->
     <section class="section-contact" id="contact">
         <div class="container">
@@ -2199,7 +2045,6 @@
                             <strong>❌ Error!</strong> <span id="errorText">Something went wrong. Please try again.</span>
                         </div>
 
-                        <!-- ✅ EmailJS Form -->
                         <form id="contactForm">
                             <div class="row g-3">
                                 <div class="col-6">
@@ -2237,8 +2082,8 @@
             </div>
             <div class="d-flex flex-wrap justify-content-between align-items-center pt-4 mt-4 border-top" style="border-color:var(--border-color)!important;">
                 <ul class="footer-links d-flex gap-4">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#about">About</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
                     <li><a href="#services">Services</a></li>
                     <li><a href="#pricing">Pricing</a></li>
                     <li><a href="#contact">Contact</a></li>
@@ -2250,17 +2095,17 @@
     </footer>
 
     <!-- ============================================================
-    CHATBOT - AI ASSISTANT
+    CHATBOT
     ============================================================ -->
     <div class="chatbot-container">
         <div class="chatbot-window" id="chatWindow">
             <div class="chatbot-header">
-                <h5><i class="fas fa-robot" style="color: var(--accent);"></i> Ayfronex</h5>
+                <h5><i class="fas fa-robot"></i> AI Assistant</h5>
                 <button class="close-chat" onclick="toggleChat()"><i class="fas fa-times"></i></button>
             </div>
             <div class="chatbot-messages" id="chatMessages">
                 <div class="chatbot-message bot">👋 Welcome to AYFRONEX! How can I help you today?</div>
-                <!-- <div class="chatbot-message bot">💡 You can ask me about our services, pricing, or anything else!</div> -->
+                <div class="chatbot-message bot">💡 You can ask me about our services, pricing, or anything else!</div>
             </div>
             <div class="chatbot-input">
                 <input type="text" id="chatInput" placeholder="Type your message..." onkeypress="if(event.key==='Enter') sendMessage()">
@@ -2278,96 +2123,15 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 
-    <!-- ✅ EmailJS Library -->
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-
     <script>
         // ============================================================
-        // INITIALIZE EMAILJS
+        // EMAILJS INITIALIZATION
         // ⚠️ REPLACE "YOUR_PUBLIC_KEY_HERE" WITH YOUR ACTUAL PUBLIC KEY
         // Get it from: https://dashboard.emailjs.com/admin/account/api-keys
         // ============================================================
         (function() {
-            emailjs.init("AmaK53N9o34A9tQaC");
+            emailjs.init("YOUR_PUBLIC_KEY_HERE");
         })();
-
-        // ============================================================
-        // CONTACT FORM - EMAILJS
-        // ============================================================
-        document.addEventListener('DOMContentLoaded', function() {
-            const form = document.getElementById('contactForm');
-            if (!form) return;
-
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-
-                const btn = document.getElementById('submitBtn');
-                const successMsg = document.getElementById('successMsg');
-                const errorMsg = document.getElementById('errorMsg');
-                const successText = document.getElementById('successText');
-                const errorText = document.getElementById('errorText');
-
-                successMsg.style.display = 'none';
-                errorMsg.style.display = 'none';
-
-                const name = document.getElementById('userName').value.trim();
-                const email = document.getElementById('userEmail').value.trim();
-                const phone = document.getElementById('userPhone').value.trim();
-                const message = document.getElementById('userMessage').value.trim();
-
-                if (!name || !email || !message) {
-                    errorText.textContent = 'Please fill in all required fields.';
-                    errorMsg.style.display = 'block';
-                    return;
-                }
-
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (!emailRegex.test(email)) {
-                    errorText.textContent = 'Please enter a valid email address.';
-                    errorMsg.style.display = 'block';
-                    return;
-                }
-
-                const originalText = btn.innerHTML;
-                btn.innerHTML = '<span><i class="fas fa-spinner fa-spin"></i> Sending...</span>';
-                btn.disabled = true;
-
-                // ⚠️ REPLACE THESE WITH YOUR ACTUAL VALUES
-                const SERVICE_ID = 'service_b23rffz'; // ✅ Your Service ID
-                const TEMPLATE_ID = 'ayfronex_contact'; // ⚠️ Create template in EmailJS
-                const PUBLIC_KEY = 'AmaK53N9o34A9tQaC'; // ⚠️ Your Public Key
-
-                const templateParams = {
-                    from_name: name,
-                    from_email: email,
-                    phone: phone || 'Not provided',
-                    message: message,
-                    to_email: 'adward.ayfronex@gmail.com',
-                    to_name: 'AYFRONEX Admin'
-                };
-
-                emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY)
-                    .then(function(response) {
-                        console.log('✅ Email sent:', response);
-                        successText.textContent = 'Thank you! Your message has been sent successfully. We will get back to you soon.';
-                        successMsg.style.display = 'block';
-                        form.reset();
-                        btn.innerHTML = '<span>✓ Sent!</span>';
-                        setTimeout(() => {
-                            btn.innerHTML = originalText;
-                            btn.disabled = false;
-                            successMsg.style.display = 'none';
-                        }, 5000);
-                    })
-                    .catch(function(error) {
-                        console.error('❌ Error:', error);
-                        errorText.textContent = 'Failed to send message. Please try again or contact us directly at adward.ayfronex@gmail.com';
-                        errorMsg.style.display = 'block';
-                        btn.innerHTML = originalText;
-                        btn.disabled = false;
-                    });
-            });
-        });
 
         // ============================================================
         // HEADER SCROLL
@@ -2539,6 +2303,83 @@
         });
 
         // ============================================================
+        // CONTACT FORM - EMAILJS
+        // ============================================================
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('contactForm');
+            if (!form) return;
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                const btn = document.getElementById('submitBtn');
+                const successMsg = document.getElementById('successMsg');
+                const errorMsg = document.getElementById('errorMsg');
+                const successText = document.getElementById('successText');
+                const errorText = document.getElementById('errorText');
+
+                successMsg.style.display = 'none';
+                errorMsg.style.display = 'none';
+
+                const name = document.getElementById('userName').value.trim();
+                const email = document.getElementById('userEmail').value.trim();
+                const phone = document.getElementById('userPhone').value.trim();
+                const message = document.getElementById('userMessage').value.trim();
+
+                if (!name || !email || !message) {
+                    errorText.textContent = 'Please fill in all required fields.';
+                    errorMsg.style.display = 'block';
+                    return;
+                }
+
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    errorText.textContent = 'Please enter a valid email address.';
+                    errorMsg.style.display = 'block';
+                    return;
+                }
+
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '<span><i class="fas fa-spinner fa-spin"></i> Sending...</span>';
+                btn.disabled = true;
+
+                // ⚠️ UPDATE THESE THREE VALUES
+                const SERVICE_ID = 'service_b23rffz'; // ✅ Your Service ID
+                const TEMPLATE_ID = 'ayfronex_contact'; // ✅ Your Template ID
+                const PUBLIC_KEY = 'AmaK53N9o34A9tQaC'; // ⚠️ Your actual Public Key
+
+                const templateParams = {
+                    from_name: name,
+                    from_email: email,
+                    phone: phone || 'Not provided',
+                    message: message,
+                    to_email: 'adward.ayfronex@gmail.com'
+                };
+
+                emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY)
+                    .then(function(response) {
+                        console.log('✅ Email sent successfully:', response);
+                        successText.textContent = 'Thank you! Your message has been sent successfully. We will get back to you soon.';
+                        successMsg.style.display = 'block';
+                        form.reset();
+                        btn.innerHTML = '<span>✓ Sent!</span>';
+                        setTimeout(() => {
+                            btn.innerHTML = originalText;
+                            btn.disabled = false;
+                            successMsg.style.display = 'none';
+                        }, 5000);
+                    })
+                    .catch(function(error) {
+                        console.error('❌ EmailJS Error:', error);
+                        errorText.textContent = error.text || 'Failed to send message. Please try again or contact us directly at adward.ayfronex@gmail.com';
+                        errorMsg.style.display = 'block';
+                        btn.innerHTML = originalText;
+                        btn.disabled = false;
+                    });
+            });
+        });
+
+        // ============================================================
         // SCROLL REVEAL
         // ============================================================
         const revealObserver = new IntersectionObserver((entries) => {
@@ -2633,7 +2474,6 @@
             input.value = '';
             messages.scrollTop = messages.scrollHeight;
 
-            // Show typing indicator
             const typingId = 'typing-' + Date.now();
             messages.innerHTML += `
                 <div class="chatbot-message bot" id="${typingId}">
@@ -2680,5 +2520,6 @@
             return '🤔 I\'m not sure about that. Can you please rephrase? Or you can contact us directly at adward.ayfronex@gmail.com for personalized assistance!';
         }
     </script>
+
 </body>
 </html>
