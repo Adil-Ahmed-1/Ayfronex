@@ -1026,6 +1026,186 @@
         }
 
         /* ============================================================
+           WHY CHOOSE US - CLEAN MODERN DESIGN
+           ============================================================ */
+        .section-why-choose {
+            padding: 80px 0;
+            background: var(--bg-secondary);
+            position: relative;
+        }
+
+        /* Left Side - Heading */
+        .why-heading {
+            position: relative;
+        }
+
+        .badge-why {
+            display: inline-block;
+            color: var(--accent);
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            margin-bottom: 8px;
+        }
+
+        .why-main-title {
+            font-size: 48px;
+            font-weight: 800;
+            line-height: 1.1;
+            color: #fff;
+        }
+
+        .why-main-title .highlight {
+            background: linear-gradient(135deg, #f97316, #ea580c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .why-sub-text {
+            color: var(--text-secondary);
+            font-size: 16px;
+            line-height: 1.8;
+            margin-top: 12px;
+            max-width: 380px;
+        }
+
+        .why-stats {
+            display: flex;
+            gap: 30px;
+            margin-top: 24px;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-number {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--accent);
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* Right Side - Cards */
+        .why-card-simple {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 28px 24px;
+            transition: var(--transition);
+            height: 100%;
+            position: relative;
+        }
+
+        .why-card-simple:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .why-card-simple .card-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 12px;
+            background: rgba(249, 115, 22, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            color: var(--accent);
+            margin-bottom: 14px;
+            transition: var(--transition);
+        }
+
+        .why-card-simple:hover .card-icon {
+            background: linear-gradient(135deg, #f97316, #ea580c);
+            color: #fff;
+            transform: scale(1.05);
+        }
+
+        .why-card-simple .card-headline {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .why-card-simple .card-text {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        .why-card-simple .card-line {
+            width: 40px;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 3px;
+            margin-top: 14px;
+            transition: var(--transition);
+        }
+
+        .why-card-simple:hover .card-line {
+            width: 60px;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .why-main-title {
+                font-size: 38px;
+            }
+            .why-stats {
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .why-heading {
+                text-align: center;
+                margin-bottom: 30px;
+            }
+            .why-sub-text {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .why-stats {
+                justify-content: center;
+            }
+            .why-card-simple {
+                text-align: center;
+            }
+            .why-card-simple .card-icon {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .why-card-simple .card-line {
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .why-main-title {
+                font-size: 30px;
+            }
+            .stat-number {
+                font-size: 22px;
+            }
+            .why-card-simple {
+                padding: 20px 16px;
+            }
+        }
+
+        /* ============================================================
            PROJECTS
            ============================================================ */
         .section-projects {
@@ -1579,50 +1759,6 @@
 
         .blog-card .blog-read-more:hover {
             gap: 14px;
-        }
-
-        /* ============================================================
-           WHY CHOOSE US - ADDED FOR WORD COUNT
-           ============================================================ */
-        .section-why-choose {
-            padding: 80px 0;
-            background: var(--bg-secondary);
-        }
-
-        .why-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius);
-            padding: 30px 24px;
-            text-align: center;
-            transition: var(--transition);
-            height: 100%;
-        }
-
-        .why-card:hover {
-            border-color: var(--accent);
-            transform: translateY(-6px);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-        }
-
-        .why-card .icon {
-            font-size: 40px;
-            color: var(--accent);
-            margin-bottom: 16px;
-        }
-
-        .why-card h5 {
-            color: #fff;
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-
-        .why-card p {
-            color: var(--text-secondary);
-            font-size: 14px;
-            line-height: 1.7;
-            margin: 0;
         }
 
         /* ============================================================
@@ -2352,45 +2488,84 @@
     </section>
 
     <!-- ============================================================
-    WHY CHOOSE US - ADDED FOR WORD COUNT AND SEO
+    WHY CHOOSE US - CLEAN MODERN DESIGN
     ============================================================ -->
     <section class="section-why-choose" id="why-choose" aria-label="Why Choose AYFRONEX">
         <div class="container">
-            <div class="text-center mb-5">
-                <span class="badge-section reveal">Why Choose Us</span>
-                <h2 class="heading-title reveal">Why <span class="highlight">AYFRONEX</span> is the Right Choice</h2>
-                <p class="text-secondary" style="font-size:16px; max-width:600px; margin:12px auto 0;">We combine creativity, technology, and strategy to deliver exceptional results for your brand.</p>
-            </div>
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="why-card reveal">
-                        <div class="icon" aria-hidden="true"><i class="fas fa-clock"></i></div>
-                        <h5>24-72 Hour Delivery</h5>
-                        <p>We understand the importance of speed in business. That's why we deliver high-quality design and development projects within 24 to 72 hours, without compromising on quality. Our rapid turnaround time ensures you get your brand assets when you need them most.</p>
+            <div class="row g-5 align-items-center">
+                <!-- Left Side - Heading -->
+                <div class="col-lg-4">
+                    <div class="why-heading reveal">
+                        <span class="badge-why">Why</span>
+                        <h2 class="why-main-title">Choose <span class="highlight">Us?</span></h2>
+                        <p class="why-sub-text">Every day we work hard to make life of our clients better and happier.</p>
+                        <div class="why-stats">
+                            <div class="stat-item">
+                                <span class="stat-number">5K+</span>
+                                <span class="stat-label">Happy Clients</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">99%</span>
+                                <span class="stat-label">Satisfaction</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">24/7</span>
+                                <span class="stat-label">Support</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="why-card reveal">
-                        <div class="icon" aria-hidden="true"><i class="fas fa-users"></i></div>
-                        <h5>Trusted by 5K+ Clients</h5>
-                        <p>Over 5,000 businesses worldwide trust AYFRONEX for their branding, web development, and digital marketing needs. Our impressive 99% client satisfaction rate speaks volumes about the quality of our work and commitment to excellence.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="why-card reveal">
-                        <div class="icon" aria-hidden="true"><i class="fas fa-medal"></i></div>
-                        <h5>100% Satisfaction Guarantee</h5>
-                        <p>We stand behind our work with a 100% satisfaction guarantee. If you're not completely happy with the results, we'll revise until you are fully satisfied. Your success is our success, and we won't rest until you love the final product.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row mt-4">
-                <div class="col-12">
-                    <div class="why-card reveal" style="text-align:left; padding:30px;">
-                        <h5 style="text-align:center;">Comprehensive Digital Solutions</h5>
-                        <p>AYFRONEX is a full-service creative agency offering end-to-end solutions for your brand. From the initial concept to the final launch, we handle everything — logo design, brand identity, website development, video production, SEO optimization, content writing, and social media management. Our team of experienced designers, developers, and marketers work together to create cohesive digital experiences that drive real results.</p>
-                        <p>Whether you're a startup looking to establish your brand presence or an established business seeking to revamp your digital strategy, AYFRONEX has the expertise and resources to bring your vision to life. We combine creativity with technical excellence to deliver solutions that not only look great but also perform exceptionally well in search engines and convert visitors into loyal customers.</p>
-                        <p>Our commitment to quality, speed, and customer satisfaction has made us a trusted partner for businesses across industries. We believe in building long-term relationships with our clients, providing ongoing support and strategic guidance to help your brand grow and evolve in an ever-changing digital landscape.</p>
+
+                <!-- Right Side - Cards Grid -->
+                <div class="col-lg-8">
+                    <div class="row g-4">
+                        <!-- Card 1 -->
+                        <div class="col-md-6">
+                            <div class="why-card-simple reveal">
+                                <div class="card-icon">
+                                    <i class="fas fa-rocket"></i>
+                                </div>
+                                <h4 class="card-headline">Fast Delivery</h4>
+                                <p class="card-text">Get your brand assets delivered within 24-72 hours without compromising on quality.</p>
+                                <div class="card-line"></div>
+                            </div>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div class="col-md-6">
+                            <div class="why-card-simple reveal">
+                                <div class="card-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <h4 class="card-headline">5K+ Clients</h4>
+                                <p class="card-text">Trusted by over 5,000 businesses worldwide with a 99% satisfaction rate.</p>
+                                <div class="card-line"></div>
+                            </div>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div class="col-md-6">
+                            <div class="why-card-simple reveal">
+                                <div class="card-icon">
+                                    <i class="fas fa-medal"></i>
+                                </div>
+                                <h4 class="card-headline">100% Guarantee</h4>
+                                <p class="card-text">We stand behind our work with a 100% satisfaction guarantee. Love it or we revise it.</p>
+                                <div class="card-line"></div>
+                            </div>
+                        </div>
+
+                        <!-- Card 4 -->
+                        <div class="col-md-6">
+                            <div class="why-card-simple reveal">
+                                <div class="card-icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <h4 class="card-headline">24/7 Support</h4>
+                                <p class="card-text">Our team is available around the clock to assist you with any questions or concerns.</p>
+                                <div class="card-line"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -3325,6 +3500,7 @@
         console.log('✅ X-Robots-Tag Added');
         console.log('✅ Publisher Schema Added');
         console.log('✅ H6 Tags Converted to H5');
+        console.log('✅ Why Choose Us - Clean Modern Design Added');
     </script>
 
 </body>
